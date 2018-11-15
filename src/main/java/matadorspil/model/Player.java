@@ -29,5 +29,19 @@ private boolean hasGetOutOfJail;
         account.addToBalance(amount);
     }
 
+    public int getPosition(){
+        return(position);
+    }
 
+    public void setPosition(int position){
+        this.position=position;
+    }
+
+    public Color getColor(){
+        return(this.color);
+    }
+
+    public int getBalance(){
+        return(account.getBalance());
+    }
 }
