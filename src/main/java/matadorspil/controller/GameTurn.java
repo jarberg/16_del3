@@ -1,5 +1,4 @@
 package matadorspil.controller;
 
-public class Gamecontroller {
-
+public class GameTurn {
 }

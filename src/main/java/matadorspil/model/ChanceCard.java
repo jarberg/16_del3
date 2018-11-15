@@ -1,5 +1,4 @@
 package matadorspil.model;
 
-public class Die {
-
+public class ChanceCard {
 }
