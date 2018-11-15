@@ -1,6 +1,6 @@
-package matadorspil.controller;
+package monopoly.controller;
 
-import matadorspil.model.*;
+import monopoly.model.*;
 
 public class Gamecontroller {
     Player player;

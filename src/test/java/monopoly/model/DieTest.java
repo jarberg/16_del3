@@ -1,4 +1,4 @@
-package matadorspil.model;
+package monopoly.model;
 
 import org.junit.After;
 import org.junit.Before;
