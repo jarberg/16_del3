@@ -25,4 +25,9 @@ private boolean hasGetOutOfJail;
         return(name+";"+color+";"+account.getBalance());
     }
 
+    public void addToBalance(int amount){
+        account.addToBalance(amount);
+    }
+
+
 }
