@@ -44,4 +44,6 @@ private boolean hasGetOutOfJail;
     public int getBalance(){
         return(account.getBalance());
     }
+
+
 }
