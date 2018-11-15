@@ -8,7 +8,7 @@ private int value;
         roll();
     }
 
-    private void roll(){
+    public void roll(){
         this.value = 1 + (int)(Math.random() * 6);
     }
     public int getValue(){
