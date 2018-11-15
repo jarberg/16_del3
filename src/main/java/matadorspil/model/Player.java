@@ -45,5 +45,19 @@ private boolean hasGetOutOfJail;
         return(account.getBalance());
     }
 
+    public boolean isWinner(){
+        return(this.isWinner);
+    }
 
+    public void setWinner(boolean isWinner){
+        this.isWinner=isWinner;
+    }
+
+    public boolean hasGetOutOfJail(){
+        return(this.hasGetOutOfJail);
+    }
+
+    public void setGetOutOfJail(boolean hasCard){
+        this.hasGetOutOfJail=hasCard;
+    }
 }
