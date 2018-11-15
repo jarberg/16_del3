@@ -1,4 +1,4 @@
-package matadorspil;
+package matadorspil.application;
 
 import gui_main.GUI;
 import gui_fields.GUI_Field;
