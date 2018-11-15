@@ -64,7 +64,7 @@ public class DieTest {
             sum += die.getValue();
             sum += die2.getValue();
         }
-        assertTrue(sum <= 60 && sum >= 10);
+        assertTrue(sum <= 120 && sum >= 20);
     }
 
 
