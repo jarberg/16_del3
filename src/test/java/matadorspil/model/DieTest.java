@@ -22,13 +22,15 @@ public class DieTest {
 
     @Test
     public void shouldReturnBetweenOneAndSix() {
+        die.roll();
         int returnValue = die.getValue();
         assertTrue(returnValue <= 6 && returnValue >=1);
     }
 
     @Test
     public void shouldAlwaysHaveValue(){
-
+        int returnValueOnCreation = die.getValue();
+        assertTrue(returnValueOnCreation <= 6 && returnValueOnCreation >=1);
     }
 
 
