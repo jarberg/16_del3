@@ -21,7 +21,7 @@ public class DieTest {
     }
 
     @Test
-    public void shouldReturnBetweenOneAndSix() {
+    public void shouldRollBetweenOneAndSix() {
         die.roll();
         int returnValue = die.getValue();
         assertTrue(returnValue <= 6 && returnValue >=1);
