@@ -2,8 +2,8 @@ package monopoly.controller;
 
 import monopoly.model.*;
 
-public class Gamecontroller {
-    Player player;
+public class GameController {
+
     Playerlist playerList;
     Board board;
     Deck deck;

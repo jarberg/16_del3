@@ -5,15 +5,18 @@ public class Account {
 private int balance;
 
     public Account(){
-        balance=0;
+        this.balance = 0;
     }
 
     public int getBalance(){
-        return(balance);
+        return this.balance;
     }
 
     public void addToBalance(int amount){
-        balance=balance+amount;
+        balance += amount;
+
+        if(balance < 0)
+            balance = 0;
     }
 
 

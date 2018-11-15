@@ -2,6 +2,7 @@ package monopoly.model;
 
 public class ChanceCard {
 
+/*
     private String name;
     private int effectID;
 
@@ -20,4 +21,6 @@ public class ChanceCard {
     public int getEffectID(){
         return this.effectID;
     }
+*/
+
 }
