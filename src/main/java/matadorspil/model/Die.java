@@ -4,8 +4,12 @@ public class Die {
 
 private int value;
 
+    public Die(){
+        roll();
+    }
+
     private void roll(){
-        value = 1 + (int)(Math.random() * 6);
+        this.value = 1 + (int)(Math.random() * 6);
     }
     public int getValue(){
         return value;
