@@ -32,7 +32,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>matadorspil.application.Main</mainClass>
+                            <mainClass>monopoly.application.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
