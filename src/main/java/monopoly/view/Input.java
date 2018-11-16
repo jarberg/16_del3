@@ -9,7 +9,7 @@ public class Input {
     public String[] reader(String filePath){
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath);
         Scanner scanner = new Scanner(resourceAsStream);
-        List<String> stringList = new ArrayList();
+        List<String> stringList = new ArrayList<>();
         while (scanner.hasNext()) {
             stringList.add(scanner.nextLine());
         }
@@ -20,14 +20,10 @@ public class Input {
     public String[][] twoDStringBuilder(String filePath, String fileName){
         String newFilepath = filePath+fileName;
         String[] stringList = reader(newFilepath);
-        String[][] finalStringList = new String[stringList.length][3];
+        String[][] finalStringList = new String[stringList.length][5];
 
         for (int i = 0; i < finalStringList.length; i++) {
-            for (int j = 0; j <finalStringList[i].length ; j++) {
-                finalStringList[i][j] = stringList[i].split(":")[0];
-            }
             finalStringList[i] = stringList[i].split(":");
-
         }
         return finalStringList;
     }
@@ -50,12 +46,10 @@ public class Input {
 
     public String[][] getChanceCards(String filePath){ return twoDStringBuilder(filePath,"/ChanceCards.txt"); }
 
-    public String[] getMenuText(String filePath){return oneDStringBuilder(filePath,"/Menu.txt"); }
+    public String[][] getMenuText(String filePath){return twoDStringBuilder(filePath,"/Menu.txt"); }
 
     public String[] getFieldMessages(String filePath){return oneDStringBuilder(filePath,"/FieldMessages.txt"); }
 
     public String[] getFieldDescriptions(String filePath){ return oneDStringBuilder(filePath, "/FieldDescriptions.txt"); }
-
-
 
 }
