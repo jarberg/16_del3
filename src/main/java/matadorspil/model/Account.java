@@ -9,7 +9,7 @@ private int balance;
     }
 
     public int getBalance(){
-        return(balance);
+        return balance ;
     }
 
     public void addToBalance(int amount){

@@ -17,12 +17,12 @@ private boolean hasGetOutOfJail;
     }
 
     public boolean equals(String otherPlayer) {
-        return (this.name==otherPlayer);
+        return this.name==otherPlayer;
     }
 
     @Override
     public String toString() {
-        return(name+";"+color+";"+account.getBalance());
+        return name+";"+color+";"+account.getBalance();
     }
 
     public void addToBalance(int amount){
@@ -30,7 +30,7 @@ private boolean hasGetOutOfJail;
     }
 
     public int getPosition(){
-        return(position);
+        return position;
     }
 
     public void setPosition(int position){
@@ -38,15 +38,15 @@ private boolean hasGetOutOfJail;
     }
 
     public Color getColor(){
-        return(this.color);
+        return this.color;
     }
 
     public int getBalance(){
-        return(account.getBalance());
+        return account.getBalance();
     }
 
     public boolean isWinner(){
-        return(this.isWinner);
+        return this.isWinner;
     }
 
     public void setWinner(boolean isWinner){
@@ -54,7 +54,7 @@ private boolean hasGetOutOfJail;
     }
 
     public boolean hasGetOutOfJail(){
-        return(this.hasGetOutOfJail);
+        return this.hasGetOutOfJail ;
     }
 
     public void setGetOutOfJail(boolean hasCard){

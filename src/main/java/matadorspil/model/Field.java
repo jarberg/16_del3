@@ -23,12 +23,12 @@ public class Field {
         this.description = description;
         this.borderColor = Color.black;
         this.buyable = false;
-        this.owner = "none";
+        this.owner = "bank";
 
         }
 
         public boolean isOwner(String name){
-            return(this.owner==name);
+            return this.owner==name ;
     }
 
 }
