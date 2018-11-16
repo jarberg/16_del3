@@ -1,6 +1,7 @@
 package monopoly.view;
 
 import gui_fields.GUI_Field;
+import gui_fields.GUI_Player;
 import gui_main.GUI;
 
 import java.awt.*;
@@ -12,6 +13,8 @@ public class MonopolyView {
     private String[] languages;
     private String[] playerAmounts;
     private ArrayList<Color> colors;
+    private GUI_Player[] guiPlayers;
+
 
     public MonopolyView(){
         this.languages = new String[]{"Danish", "English"};
@@ -31,7 +34,32 @@ public class MonopolyView {
 
     public void showGameGUI(GUI_Field[] board){
         this.gui.close();
-        this.gui = new GUI(board);
+        this.gui = new GUI(board,Color.green);
+    }
+
+    public void addPlayer(String name, Color color){
+        GUI_Player player = new GUI_Player(name);
+        player.getCar().setPrimaryColor(color);
+        this.gui.addPlayer(player);
+    }
+
+    public void initlializeGUIplayerArray(int size){
+        this.guiPlayers = new GUI_Player[size];
+    }
+
+    private GUI_Player getGUIplayerByName(String name){
+        GUI_Player player = null;
+        for(GUI_Player guiPlayer : this.guiPlayers){
+            if(guiPlayer.getName().equals(name))
+                player = guiPlayer;
+        }
+        return player;
+    }
+
+    public void showPlayer(String name, int position){
+        GUI_Player player = getGUIplayerByName(name);
+        GUI_Field targetField = this.gui.getFields()[position];
+        targetField.setCar(player,true);
     }
 
     public String getUserLanguage(){
