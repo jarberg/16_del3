@@ -17,7 +17,7 @@ public class Input {
         return returnList;
     }
 
-    public String[][] twoDStringBuilder(String filePath, String fileName){
+    private String[][] twoDStringBuilder(String filePath, String fileName){
         String newFilepath = filePath+fileName;
         String[] stringList = reader(newFilepath);
         String[][] finalStringList = new String[stringList.length][5];
@@ -28,7 +28,7 @@ public class Input {
         return finalStringList;
     }
 
-    public String[] oneDStringBuilder(String filePath, String fileName){
+    private String[] oneDStringBuilder(String filePath, String fileName){
         String newFilepath = filePath+fileName;
         String[] fields = reader(newFilepath);
         String[] finalFields = new String[fields.length];
@@ -51,5 +51,7 @@ public class Input {
     public String[] getFieldMessages(String filePath){return oneDStringBuilder(filePath,"/FieldMessages.txt"); }
 
     public String[] getFieldDescriptions(String filePath){ return oneDStringBuilder(filePath, "/FieldDescriptions.txt"); }
+
+    public String[] getDirectoryList(){return reader("TextFiles"); }
 
 }
