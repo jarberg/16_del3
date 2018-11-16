@@ -29,6 +29,11 @@ public class MonopolyView {
         this.gui = emptyGUI;
     }
 
+    public void showGameGUI(GUI_Field[] board){
+        this.gui.close();
+        this.gui = new GUI(board);
+    }
+
     public String getUserLanguage(){
         //Consider implementing default english language from controller and not hardcoding msg here.
         String languageChoice = getUserChoice("Choose a language", languages);
