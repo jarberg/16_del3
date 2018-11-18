@@ -10,11 +10,13 @@ import java.util.ArrayList;
 public class MonopolyView {
 
     private GUI gui;
+    private GUI_Field[] guiBoard;
     private String[] languages;
     private String[] playerAmounts;
     private ArrayList<Color> colors;
     private ArrayList<GUI_Player> guiPlayers;
-
+    private static final int MIN_AGE = 0;
+    private static final int MAX_AGE = 120;
 
     public MonopolyView(){
         //Consider de-hardcoding language choices and player numbers.
@@ -31,13 +33,13 @@ public class MonopolyView {
 
     public void showEmptyGUI(){
         GUI_Field[] emptyFieldArray = new GUI_Field[0];
-        GUI emptyGUI = new GUI(emptyFieldArray);
-        this.gui = emptyGUI;
+        this.gui = new GUI(emptyFieldArray);
     }
 
     public void showGameGUI(GUI_Field[] board){
+        //This should need a dependency to board or field with a method making gui board.
         this.gui.close();
-        this.gui = new GUI(board,Color.green);
+        this.gui = new GUI(board, Color.green);
     }
 
     public void addPlayer(String name, Color color){
@@ -48,6 +50,31 @@ public class MonopolyView {
         this.gui.addPlayer(player);
     }
 
+    public void spawnPlayer(String name){
+        GUI_Player player = getGUIplayerByName(name);
+        showPlayer(player,0);
+    }
+
+    public void movePlayer(String name, int position, int movement){
+        //Does player position start on 0? Should.
+        GUI_Player player = getGUIplayerByName(name);
+        for (int i = 0; i < movement ; i++) {
+            removePlayer(player, position);
+            position++;
+            position = position % guiBoard.length;
+            showPlayer(player, position);
+        }
+    }
+
+    private void showPlayer(GUI_Player player, int position){
+        GUI_Field targetField = this.gui.getFields()[position];
+        targetField.setCar(player,true);
+    }
+
+    private void removePlayer(GUI_Player player, int position){
+        GUI_Field targetField = this.gui.getFields()[position];
+        targetField.setCar(player,false);
+    }
 
     private GUI_Player getGUIplayerByName(String name){
         GUI_Player player = null;
@@ -58,49 +85,33 @@ public class MonopolyView {
         return player;
     }
 
-    public void showPlayer(String name, int position){
-        GUI_Player player = getGUIplayerByName(name);
-        GUI_Field targetField = this.gui.getFields()[position];
-        targetField.setCar(player,true);
-    }
-
-    public String getUserLanguage(){
-        //Consider implementing default english language from controller and not hardcoding msg here.
-        String languageChoice = getUserChoice("Choose a language", languages);
-        return languageChoice;
-    }
-
-    public int getPlayerAmount(String message){
-        String playerAmountString = getUserChoice(message, playerAmounts);
-        int playerAmount = Integer.parseInt(playerAmountString);
-        return playerAmount;
-    }
-
-    public String getPlayerName(String message){
-        String name = this.gui.getUserString(message);
-        //Add logic in Controller to make sure name doesn't match any other name + allow for 4x same name.
-        return name;
-    }
-
     public Color getUserColor(String message){
         ColorHandler colorHandler = new ColorHandler(gui, colors);
         return colorHandler.getUserColor(message);
     }
 
+    public int getPlayerAmount(String message){
+        String playerAmountString = getUserChoice(message, playerAmounts);
+        return Integer.parseInt(playerAmountString);
+    }
 
+    public String getUserLanguage(){
+        //Consider implementing default english language from controller and not hardcoding msg here.
+        return getUserChoice("Choose a language", languages);
+    }
+
+    private String getUserChoice(String message, String... options){
+        return gui.getUserSelection(message, options);
+    }
+
+    public String getPlayerName(String message){
+        //Add logic in Controller to make sure name doesn't match any other name + allow for 4x same name.
+        return gui.getUserString(message);
+    }
 
     public int getUserAge(String message){
-        int userAgeInput = this.gui.getUserInteger(message, 0,120);
-        return userAgeInput;
+        return gui.getUserInteger(message, MIN_AGE, MAX_AGE);
     }
-
-    public String getUserChoice(String message, String... options){
-        String userChoice = this.gui.getUserSelection(message, options);
-        return userChoice;
-    }
-
-
-
 
 
 }
