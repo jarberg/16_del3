@@ -67,6 +67,15 @@ public class MonopolyView {
         }
     }
 
+    private GUI_Player getGUIplayerByName(String name){
+        GUI_Player player = null;
+        for(GUI_Player guiPlayer : this.guiPlayers){
+            if(guiPlayer.getName().equals(name))
+                player = guiPlayer;
+        }
+        return player;
+    }
+
     private void showPlayer(GUI_Player player, int position){
         GUI_Field targetField = this.gui.getFields()[position];
         targetField.setCar(player,true);
@@ -75,15 +84,6 @@ public class MonopolyView {
     private void removePlayer(GUI_Player player, int position){
         GUI_Field targetField = this.gui.getFields()[position];
         targetField.setCar(player,false);
-    }
-
-    private GUI_Player getGUIplayerByName(String name){
-        GUI_Player player = null;
-        for(GUI_Player guiPlayer : this.guiPlayers){
-            if(guiPlayer.getName().equals(name))
-                player = guiPlayer;
-        }
-        return player;
     }
 
     public Color getUserColor(String message){
@@ -112,6 +112,11 @@ public class MonopolyView {
 
     public int getUserAge(String message){
         return gui.getUserInteger(message, MIN_AGE, MAX_AGE);
+    }
+
+    public void showWinner(String name){
+        GUI_Player player = getGUIplayerByName(name);
+        new WinAnimation(gui, player);
     }
 
 

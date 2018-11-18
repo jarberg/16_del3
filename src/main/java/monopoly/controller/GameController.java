@@ -9,4 +9,6 @@ public class GameController {
     Deck deck;
     Die die;
 
+    //Consider using singleton implementation
+
 }
