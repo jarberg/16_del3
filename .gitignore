@@ -6,3 +6,6 @@
 .idea/dictionaries
 -idea/artifacts
 target
+META-INF
+.idea/artifacts
+.idea/compiler.xml
