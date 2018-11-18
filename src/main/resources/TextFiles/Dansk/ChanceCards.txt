@@ -7,7 +7,7 @@
 1:Du har spist for meget slik. BETAL $2 til banken.
 1:Du har lavet dine lektier! MODTAG $2 fra banken.
 1:Det er din fødselsdag! \\n alle giver $1. \\n tillykke med fødselsdagen.
-1:Ryk frem til FELT. 
+1:Ryk frem til FELT.
 1:GRATIS FELT!. Ryk frem til Skaterparken for at lave det perfekte grind! \\n Hvis ingen ejer den, får du den GRATIS! \\n Ellers skal du betale leje til ejeren.
 
 

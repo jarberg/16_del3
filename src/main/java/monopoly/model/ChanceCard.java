@@ -1,26 +1,33 @@
 package monopoly.model;
 
 public class ChanceCard {
+    private String description ="";
+    private int effectID = 0;
 
-/*
-    private String name;
-    private int effectID;
 
-    ChanceCard(){
+    public ChanceCard() {
+
     }
 
-    ChanceCard(String name, int effektID){
-        this.name = name;
-        this.effectID = effektID;
+    public ChanceCard(String description, int effectID){
+        this.description=description;
+        this.effectID = effectID;
     }
 
-    public String getName(){
-        return this.name;
+    public String getDescription(){
+        return this.description;
     }
 
     public int getEffectID(){
         return this.effectID;
     }
-*/
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public void setEffectID(int effectID){
+       this.effectID = effectID;
+    }
 
 }
