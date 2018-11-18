@@ -1,18 +1,14 @@
 package monopoly.application;
 
-<<<<<<< HEAD
+import gui_fields.GUI_Field;
+import gui_fields.GUI_Street;
+import monopoly.view.MonopolyView;
 
-=======
-import monopoly.view.Input;
->>>>>>> inputfix
+import java.awt.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
-<<<<<<< HEAD
-=======
-    public static void main(String[] args) {
-
->>>>>>> inputfix
     }
+
 }
