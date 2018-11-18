@@ -2,8 +2,6 @@ package monopoly.model;
 
 public class Die {
 
-<<<<<<< HEAD
-=======
 private int value;
 
     public Die(){
@@ -16,5 +14,4 @@ private int value;
     public int getValue(){
         return value;
     }
->>>>>>> development
 }

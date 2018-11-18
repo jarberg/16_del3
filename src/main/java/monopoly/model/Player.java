@@ -1,10 +1,5 @@
 package monopoly.model;
 
-<<<<<<< HEAD
-public class Player {
-
-}
-=======
 import java.awt.*;
 
 public class Player {
@@ -71,4 +66,4 @@ public class Player {
         this.hasGetOutOfJail=hasCard;
     }
 }
->>>>>>> development
+

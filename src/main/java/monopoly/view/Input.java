@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Input {
 
-    public String[] reader(String filePath){
+    private String[] reader(String filePath){
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath);
         Scanner scanner = new Scanner(resourceAsStream);
         List<String> stringList = new ArrayList<>();

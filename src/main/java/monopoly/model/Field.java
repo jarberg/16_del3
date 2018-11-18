@@ -1,13 +1,8 @@
 package monopoly.model;
 
-<<<<<<< HEAD
-public class Field {
-
-=======
 import java.awt.*;
 
 public class Field {
-
     private String ownerName;
     private String title;
     private String subtitle;
@@ -17,6 +12,7 @@ public class Field {
     private Color borderColor;
     private boolean buyable;
     private int value;
+
 
     public Field(String title, String subtitle, String description, String message, Color color, int value){
         this.title = title;
@@ -30,10 +26,10 @@ public class Field {
         this.ownerName = "Bank";
         }
 
-        public boolean isOwner(String name){
+    public boolean isOwner(String name){
             return this.ownerName.equals(name);
     }
 
->>>>>>> development
+
 }
 
