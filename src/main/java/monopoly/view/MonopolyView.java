@@ -56,7 +56,6 @@ public class MonopolyView {
     }
 
     public void movePlayer(String name, int position, int movement) throws InterruptedException {
-        //Does player position start on 0? Should.
         GUI_Player player = getGUIplayerByName(name);
         for (int i = 0; i < movement ; i++) {
             removePlayer(player, position);
