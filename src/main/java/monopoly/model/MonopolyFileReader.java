@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class MonopolyFileReader {
 
-    //indlæser den valgte filsti
+    //reads from given filepath
     private String[] fileReader(String filePath){
         InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath);
         Scanner scanner = new Scanner(resourceAsStream);
