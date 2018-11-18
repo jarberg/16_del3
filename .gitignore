@@ -4,7 +4,10 @@
 .idea/vcs.xml
 .idea/workspace.xml
 .idea/dictionaries
+<<<<<<< HEAD
 -idea/artifacts
+=======
+>>>>>>> development
 target
 META-INF
 .idea/artifacts
