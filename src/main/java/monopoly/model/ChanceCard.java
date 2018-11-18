@@ -1,4 +1,4 @@
-package matadorspil.model;
+package monopoly.model;
 
 public class ChanceCard {
 }

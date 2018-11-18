@@ -1,4 +1,4 @@
-package matadorspil.view;
+package monopoly.view;
 
 public class MonopolyView {
 }
