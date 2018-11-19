@@ -1,6 +1,6 @@
 package monopoly.model;
 
-public class CardEffect {
+public abstract class CardEffect {
 
 
 
@@ -12,7 +12,10 @@ public class CardEffect {
 
     public void setCardEffectbyID(int ID){
 
+
     }
+
+    public abstract void test();
 
 
 }
