@@ -1,0 +1,5 @@
+Vælg antal spillere:
+det er:tur
+Købte:for:money
+solgte:til:for:money
+rullede:og landede på:felt:måtte betale:money
