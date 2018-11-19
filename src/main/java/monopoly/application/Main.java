@@ -3,6 +3,8 @@ package monopoly.application;
 import monopoly.model.deck.Deck;
 import monopoly.model.MonopolyReader;
 
+
+
 public class Main {
     public static String filePath="TextFiles/Dansk";
 
