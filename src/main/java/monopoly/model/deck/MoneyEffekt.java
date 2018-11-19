@@ -2,7 +2,7 @@ package monopoly.model.deck;
 
 import monopoly.model.player.Player;
 
-public class RawMoneyEffekt extends CardEffect {
+public class MoneyEffekt extends CardEffect {
 
     public void getMoneyFromOtherAllPlayers(Player player, Player[] playerList){
 
