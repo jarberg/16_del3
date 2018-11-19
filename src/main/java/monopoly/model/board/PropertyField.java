@@ -15,6 +15,7 @@ public class PropertyField extends Field {
         this.value = value;
     }
 
+    @Override
     public void resolveEffect(Player player){
         if(this.owner == null){
             player.addToBalance(-value);
