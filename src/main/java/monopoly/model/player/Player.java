@@ -1,4 +1,4 @@
-package monopoly.model;
+package monopoly.model.player;
 
 import java.awt.*;
 

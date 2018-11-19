@@ -1,14 +1,18 @@
 package monopoly.application;
 
-import gui_fields.GUI_Field;
-import gui_fields.GUI_Street;
-import monopoly.view.MonopolyView;
-
-import java.awt.*;
+import monopoly.model.deck.Deck;
+import monopoly.model.MonopolyReader;
 
 public class Main {
+    public static String filePath="TextFiles/Dansk";
+
+    private static MonopolyReader monoRead = new MonopolyReader();
+    private static Deck deck = new Deck(11);
+
     public static void main(String[] args){
 
+        deck.makeDeck(monoRead.getChanceCards(filePath));
+        System.out.println(deck.getCardDescription(0));
     }
 
 }
