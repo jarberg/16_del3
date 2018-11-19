@@ -2,9 +2,9 @@ package monopoly.model;
 
 import java.awt.*;
 
-public class Field {
+public abstract class Field {
 
-    private String ownerName;
+    private Player owner;
     private String title;
     private String subtitle;
     private String description;
@@ -14,7 +14,7 @@ public class Field {
     private boolean buyable;
     private int value;
 
-    public Field(String title, String subtitle, String description, String message, Color color, int value){
+    public Field(String title, String subtitle, String description, String message, Color color, int value, Player player){
         this.title = title;
         this.subtitle = subtitle;
         this.message = message;
@@ -23,11 +23,11 @@ public class Field {
         this.description = description;
         this.borderColor = Color.black;
         this.buyable = false;
-        this.ownerName = "Bank";
-        }
+        this.owner = player;
+    }
 
-        public boolean isOwner(String name){
-            return this.ownerName.equals(name);
+    public boolean isOwner(Player player){
+        return this.owner.equals(player);
     }
 
 }
