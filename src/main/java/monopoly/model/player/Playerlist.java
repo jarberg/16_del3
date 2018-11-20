@@ -1,17 +1,30 @@
 package monopoly.model.player;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class Playerlist {
 
-    private int playerAmount = 2;
+    private Deque<Player> playerList;
 
-    public Playerlist(int playerAmount){
-        this.playerAmount=playerAmount;
+    public Playerlist(Player... players){
+        playerList = new ArrayDeque<>();
+        addPlayers(players);
     }
 
-    Playerlist[] playerList = new Playerlist[playerAmount];
-
-    public Playerlist[] getPlayerList(){
-        return playerList;
+    private void addPlayers(Player... players){
+        for(Player player : players){
+            playerList.addLast(player);
+        }
     }
+
+    public Player getNextPlayer(){
+        return playerList.getFirst();
+    }
+
+    public void changePlayerTurn(){
+        playerList.addLast(playerList.pollFirst());
+    }
+
 
 }
