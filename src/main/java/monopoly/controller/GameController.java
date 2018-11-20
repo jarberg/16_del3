@@ -7,13 +7,21 @@ public class GameController {
 
     private MonopolyView view;
     private Board board;
+    private String filepath = "TextFiles/";
 
     public GameController(){
-        this.view = new MonopolyView();
+        view = new MonopolyView();
     }
 
     public void setupGame(){
+        view.showEmptyGUI();
+        String language = view.getUserLanguage();
+        setFilepathLanguage(language);
 
+    }
+
+    private void setFilepathLanguage(String language){
+        filepath = filepath + language;
     }
 
     public void playGame(){
