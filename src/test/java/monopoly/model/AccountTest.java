@@ -39,5 +39,13 @@ public class AccountTest {
 
     }
 
+    @Test
+    public void shouldNotHaveBalanceLessThanZero(){
+        int addAmount = -999;
+        account.addToBalance(addAmount);
+        assertEquals(account.getBalance(),0);
+
+    }
+
 
 }
