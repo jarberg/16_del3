@@ -10,11 +10,13 @@ public class Player {
     private int position;
     private boolean isWinner;
     private boolean hasGetOutOfJail;
+    private static int startPosition = 0;
 
     public Player(String name, Color color){
         this.name = name;
         this.color = color;
         this.account = new Account();
+        this.position = startPosition;
     }
 
     public boolean equals(String otherPlayer) {
