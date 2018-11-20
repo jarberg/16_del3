@@ -20,7 +20,7 @@ public class Player {
     }
 
     public boolean equals(String otherPlayer) {
-        return this.name==otherPlayer;
+        return this.name.equals(otherPlayer);
     }
 
     @Override
