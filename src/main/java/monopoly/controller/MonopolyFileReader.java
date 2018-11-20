@@ -1,4 +1,4 @@
-package monopoly.model;
+package monopoly.controller;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
