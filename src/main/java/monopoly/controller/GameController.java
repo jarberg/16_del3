@@ -19,7 +19,6 @@ public class GameController {
 
     public void setupGame(){
         setupLanguage();
-        board = new Board();
     }
 
     private void setupLanguage(){
