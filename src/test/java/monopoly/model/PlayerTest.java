@@ -80,5 +80,29 @@ public class PlayerTest {
         assertEquals(player.getPosition(),currentPosition+addPosition);
     }
 
+    @Test
+    public void shouldNotHaveBalanceLessThanZero() {
+        int addAmount = -999;
+        player.addToBalance(addAmount);
+        assertEquals(player.getBalance(), 0);
+
+    }
+
+    @Test
+    public void shouldReturnStringOfVariables(){
+        assertEquals(player.toString(),player.getName()+";"+player.getColor()+";"+player.getBalance());
+    }
+
+    @Test
+    public void shouldNotEqualAnotherPlayerName(){
+        String otherPlayerName = "Jens";
+        assertFalse(player.equals(otherPlayerName));
+    }
+
+    @Test
+    public void shouldEqualSamePlayerName(){
+        String samePlayerName = "bo";
+        assertTrue(player.equals(samePlayerName));
+    }
 
 }
