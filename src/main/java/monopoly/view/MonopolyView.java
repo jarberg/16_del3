@@ -11,7 +11,6 @@ public class MonopolyView {
 
     private GUI gui;
     private GUI_Field[] guiBoard;
-    private String[] languages;
     private String[] playerAmounts;
     private ArrayList<Color> colors;
     private ArrayList<GUI_Player> guiPlayers;
@@ -20,7 +19,6 @@ public class MonopolyView {
 
     public MonopolyView(){
         //Consider de-hardcoding language choices and player numbers.
-        this.languages = new String[]{"Danish", "English"};
         this.playerAmounts = new String[]{"2", "3", "4"};
         this.colors = new ArrayList<>();
         this.guiPlayers = new ArrayList<>();
@@ -95,7 +93,7 @@ public class MonopolyView {
         return Integer.parseInt(playerAmountString);
     }
 
-    public String getUserLanguage(){
+    public String getUserLanguage(String[] languages){
         //Consider implementing default english language from controller and not hardcoding msg here.
         return getUserChoice("Choose a language", languages);
     }

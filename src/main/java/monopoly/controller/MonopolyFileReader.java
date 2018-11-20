@@ -49,6 +49,6 @@ public class MonopolyFileReader {
 
     public String[] getFieldDescriptions(String filePath){ return oneDStringArray(filePath, "/FieldDescriptions.txt"); }
 
-    public String[] getDirectoryList(){ return fileReader("TextFiles/"); }
+    public String[] getDirectoriesStringArray(){ return fileReader("TextFiles/"); }
 
 }
