@@ -1,21 +1,21 @@
-ï»¿START:modtager sin SU. nasserÃ¸v!
+START:modtager sin SU. nasserøv!
 CHANCE:trak et chancekort kort
-FÃ†NGSEL:besÃ¸ger en ven der er frihedsbesvÃ¦ret
-GÃ… I FÃ†NGSEL:glemte at indfÃ¸re komplekse tal i din selvangivelse. GÃ¥ i fÃ¦ngsel
-GRATIS PARKERING: er en meget trÃ¦t bil.
+FÆNGSEL:besøger en ven der er frihedsbesværet
+GÅ I FÆNGSEL:glemte at indføre komplekse tal i din selvangivelse. Gå i fængsel
+GRATIS PARKERING: er en meget træt bil.
 BURGERBAREN:spiser en burger. 
 PIZZARIAET:spiser en pizza.
-SLIKBUTIKKEN:mÃ¦sker sig i slik
-KIOSKEN:skal lige ha 2 pakker smÃ¸ger, mÃ¦lk og kondomer.
-MUSEET:kigger lidt pÃ¥ en dinosaurbil.
-BILIOTEKET:gik pÃ¥ bibloteket for at se om dinosaurbiller faktiks er en ting.
-SKATERPARKEN:vÃ¦ltede pÃ¥ sit board og slog sin aksel.
-SVÃ˜MMEBASINET:kiggede forvirret pÃ¥ vandet.. biler kan jo ikke svÃ¸mme???!!
+SLIKBUTIKKEN:mæsker sig i slik
+KIOSKEN:skal lige ha 2 pakker smøger, mælk og kondomer.
+MUSEET:kigger lidt på en dinosaurbil.
+BILIOTEKET:gik på bibloteket for at se om dinosaurbiller faktiks er en ting.
+SKATERPARKEN:væltede på sit board og slog sin aksel.
+SVØMMEBASINET:kiggede forvirret på vandet.. biler kan jo ikke svømme???!!
 SPILLEHALLEN:spillede et racer spil. lol nej matadorspillet ofc.
-BIOGRAFEN:kÃ¸bte popcorn og sÃ¥ MATADORSPIL THE MOVIE. 5 stjerner.
-LEGETÃ˜JSBUTIKKEN:kÃ¸bte en analog udgave af MatadorSpillet the movie the game
-DYREHANDLEN:ville gerne have en tiger men mÃ¥tte nÃ¸jes med en hamster.
-BOWLINGHALLEN:prÃ¸vede men var dÃ¥rlig til bowling
-ZOOLOGISK HAVE:kiggede pÃ¥ tigerne
-VANDLANDET:er lige sÃ¥ forvirret over vandlandet som svÃ¸mmebasinet
+BIOGRAFEN:købte popcorn og så MATADORSPIL THE MOVIE. 5 stjerner.
+LEGETØJSBUTIKKEN:købte en analog udgave af MatadorSpillet the movie the game
+DYREHANDLEN:ville gerne have en tiger men måtte nøjes med en hamster.
+BOWLINGHALLEN:prøvede men var dårlig til bowling
+ZOOLOGISK HAVE:kiggede på tigerne
+VANDLANDET:er lige så forvirret over vandlandet som svømmebasinet
 STRANDPROMENADEN:er stadig forvirret, men ku godt li sandet.

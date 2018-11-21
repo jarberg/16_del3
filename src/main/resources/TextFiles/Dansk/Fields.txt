@@ -1,21 +1,21 @@
-START:2:board
-CHANCE:0:board
-FÆNGSEL:2:board
-GÅ I FÆNGSEL::board
-GRATIS PARKERING:0:board
-BURGERBAREN:1:board
-PIZZARIAET:1:board
-SLIKBUTIKKEN:1:board
-KIOSKEN:1:board
-MUSEET:2:board
-BILIOTEKET:2:board
-SKATERPARKEN:2:board
-SVØMMEBASINET:2:board
-SPILLEHALLEN:3:board
-BIOGRAFEN:3:board
-LEGETØJSBUTIKKEN:3:board
-DYREHANDLEN:3:board
-BOWLINGHALLEN:4:board
-ZOOLOGISK HAVE:4:board
-VANDLANDET:5:board
-SRANDPROMENADEN:5:board
+START:2:board:white
+CHANCE:0:board:white
+FÆNGSEL:2:board:white
+GÅ I FÆNGSEL::board:white
+GRATIS PARKERING:0:board:white
+BURGERBAREN:1:board:brown
+PIZZARIAET:1:board:brown
+SLIKBUTIKKEN:1:board:babyBlue
+KIOSKEN:1:board:babyBlue
+MUSEET:2:board:purple
+BILIOTEKET:2:board:purple
+SKATERPARKEN:2:board:yellow
+SVØMMEBASINET:2:board:yellow
+SPILLEHALLEN:3:board:red
+BIOGRAFEN:3:board:red
+LEGETØJSBUTIKKEN:3:board:orange
+DYREHANDLEN:3:board:orange
+BOWLINGHALLEN:4:board:green
+ZOOLOGISK HAVE:4:board:green
+VANDLANDET:5:board:blue
+SRANDPROMENADEN:5:board:blue

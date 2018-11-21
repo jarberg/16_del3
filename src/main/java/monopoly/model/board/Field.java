@@ -1,6 +1,6 @@
 package monopoly.model.board;
 
-import monopoly.model.Player;
+import monopoly.model.player.Player;
 
 import java.awt.*;
 
@@ -23,6 +23,11 @@ public abstract class Field {
     }
 
     public abstract void resolveEffect(Player player);
+
+    public String getTitle(){return title;};
+    public String getSubtitle(){return subtitle;};
+    public String getDescription(){return description;};
+    public String getMessage(){return message;};
 
 }
 

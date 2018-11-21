@@ -1,5 +1,6 @@
 package monopoly.model;
 
+import monopoly.model.player.Account;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

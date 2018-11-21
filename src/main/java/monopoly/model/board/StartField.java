@@ -1,6 +1,6 @@
 package monopoly.model.board;
 
-import monopoly.model.Player;
+import monopoly.model.player.Player;
 
 import java.awt.*;
 
@@ -14,5 +14,4 @@ public class StartField extends Field{
     public void resolveEffect(Player player) {
 
     }
-
 }
