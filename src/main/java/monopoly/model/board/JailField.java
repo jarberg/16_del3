@@ -1,5 +1,6 @@
 package monopoly.model.board;
 
+
 import monopoly.model.player.Player;
 
 import java.awt.*;

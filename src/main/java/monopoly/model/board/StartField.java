@@ -13,5 +13,4 @@ public class StartField extends Field{
     @Override
     public void resolveEffect(Player player) {
     }
-
 }
