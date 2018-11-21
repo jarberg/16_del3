@@ -1,4 +1,4 @@
-package monopoly.controller.fieldcontrollers;
+package monopoly.controller.fieldControllers;
 
 import monopoly.controller.GameController;
 import monopoly.controller.ViewController;

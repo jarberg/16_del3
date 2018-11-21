@@ -1,4 +1,4 @@
-package monopoly.controller.fieldcontrollers;
+package monopoly.controller.fieldControllers;
 
 public class ChanceFieldController extends FieldController {
 
