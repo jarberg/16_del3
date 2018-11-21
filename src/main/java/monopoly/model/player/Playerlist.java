@@ -26,5 +26,6 @@ public class Playerlist {
         playerList.addLast(playerList.pollFirst());
     }
 
+    //Sort by age method?
 
 }
