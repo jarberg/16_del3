@@ -8,11 +8,13 @@ public class PropertyField extends Field {
 
     private int value;
     private Player owner;
+    private int pairIndex;
 
-    public PropertyField(String title, String subtitle, String description, String message, Color color, Player owner, int value){
+    public PropertyField(String title, String subtitle, String description, String message, Color color, Player owner, int value, int pairIndex){
         super(title, subtitle, description, message, color);
         this.owner = owner;
         this.value = value;
+        this.pairIndex = pairIndex;
     }
 
     @Override
@@ -37,9 +39,10 @@ public class PropertyField extends Field {
     public Player getOwner(){
         return this.owner;
     }
-
     public boolean isOwner(Player player){
         return this.owner.equals(player);
     }
+    public int getPairIndex(){return pairIndex;}
+
 
 }
