@@ -19,8 +19,8 @@ public class Player {
         this.position = startPosition;
     }
 
-    public boolean equals(String otherPlayer) {
-        return this.name.equals(otherPlayer);
+    public boolean equals(String otherPlayerName) {
+        return this.name.equals(otherPlayerName);
     }
 
     @Override
