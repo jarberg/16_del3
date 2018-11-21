@@ -4,6 +4,8 @@ public class Die {
 
 private int value;
 
+    //consider making dynamic with sides int or result array
+
     public Die(){
         roll();
     }
