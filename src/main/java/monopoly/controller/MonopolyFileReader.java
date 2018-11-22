@@ -55,7 +55,7 @@ public class MonopolyFileReader {
 
     public String getMenuMessage(String filePath, String messageKey){
         Map<String, String> messageMap = new HashMap<>();
-        try(InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath)){
+        try(InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath+"/Menu.txt")){
             try(Scanner scanner = new Scanner(resourceAsStream)){
                 while(scanner.hasNext()){
                     String line = scanner.nextLine();

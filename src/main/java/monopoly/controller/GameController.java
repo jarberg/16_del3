@@ -3,7 +3,6 @@ package monopoly.controller;
 import monopoly.model.board.Board;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
-import monopoly.view.MonopolyView;
 
 import java.awt.*;
 
@@ -19,6 +18,7 @@ public class GameController {
 
     public GameController(){
         viewController = new ViewController();
+        fileReader = new MonopolyFileReader();
         setFilepathLanguage(defaultLanguage);
     }
 
@@ -26,8 +26,9 @@ public class GameController {
         setupLanguage();
         createGameBoard();
         playerAmount = getPlayerAmount();
-        createAndAddPlayers();
-        //showGameBoard();
+        createPlayers();
+        showGameBoard();
+        addPlayersToGUI();
     }
 
     private void setupLanguage(){
@@ -38,15 +39,11 @@ public class GameController {
 
 
     private void createGameBoard(){
-        board.setupBoard(fileReader.getFieldsText(languageFilepath), fileReader.getFieldDescriptions(languageFilepath), fileReader.getFieldMessages(languageFilepath));
+        this.board = new Board();
         this.board.setupBoard(fileReader.getFieldsText(languageFilepath),fileReader.getFieldDescriptions(languageFilepath),fileReader.getFieldMessages(languageFilepath));
-        viewController.showGameGUI(board.getBoard());
     }
 
-
-
-
-    private void createAndAddPlayers(){
+    private void createPlayers(){
         Playerlist players = new Playerlist();
         for (int i = 0; i < getPlayerAmount(); i++) {
             String name = viewController.getPlayerName();
@@ -55,7 +52,9 @@ public class GameController {
             players.addPlayer(new Player(name, age, color));
         }
         this.players = players;
+    }
 
+    private void addPlayersToGUI(){
         for(Player player : players.getPlayerDeque()){
             viewController.addPlayer(player);
         }
@@ -69,7 +68,7 @@ public class GameController {
     }
 
     private void showGameBoard(){
-
+        viewController.showGameGUI(board.getBoard());
     }
 
 

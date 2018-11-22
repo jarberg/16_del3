@@ -40,7 +40,7 @@ public class ViewController {
     }
     public void showGameGUI(Field[] FieldToGUIField){
         //This should need a dependency to board or field with a method making gui board.
-        view.showGameGUI(view.FieldToGUIField(board.getBoard()));
+        view.showGameGUI(view.FieldToGUIField(FieldToGUIField));
     }
 
     public String getPlayerName() {
