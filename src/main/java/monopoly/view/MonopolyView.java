@@ -2,7 +2,9 @@ package monopoly.view;
 
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
+import gui_fields.GUI_Street;
 import gui_main.GUI;
+import monopoly.model.board.Field;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -31,8 +33,28 @@ public class MonopolyView {
         GUI_Field[] emptyFieldArray = new GUI_Field[0];
         this.gui = new GUI(emptyFieldArray);
     }
+    public GUI_Street[] FieldToGUIField(Field[] field){
+        GUI_Street[] gui_field = new GUI_Street[field.length];
 
-    public void showGameGUI(GUI_Field[] board){
+        for (int i = 0; i < field.length; i++) {
+            String fieldTitel= field[i].getTitle();
+            Color fieldColor= field[i].getColor();
+            String fieldDescrip = field[i].getDescription();
+            String fieldmess = field[i].getMessage();
+            String fieldSub = field[i].getSubtitle();
+
+            gui_field[i] = new GUI_Street();
+            gui_field[i].setTitle(fieldTitel);
+            gui_field[i].setSubText(fieldSub);
+            gui_field[i].setDescription(fieldDescrip);
+            gui_field[i].setForeGroundColor(fieldColor);
+            gui_field[i].setBackGroundColor(fieldColor);
+        }
+        
+        return gui_field;
+    }
+    
+    public void showGameGUI(GUI_Street[] board){
         //This should need a dependency to board or field with a method making gui board.
         this.gui.close();
         this.gui = new GUI(board, Color.green);

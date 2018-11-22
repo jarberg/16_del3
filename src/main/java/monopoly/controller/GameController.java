@@ -24,7 +24,7 @@ public class GameController {
 
     public void setupGame(){
         setupLanguage();
-        //createGameBoard();
+        createGameBoard();
         playerAmount = getPlayerAmount();
         createAndAddPlayers();
         //showGameBoard();
@@ -36,12 +36,15 @@ public class GameController {
         setFilepathLanguage(userLanguage);
     }
 
-    /*
+
     private void createGameBoard(){
-
-
+        board.setupBoard(fileReader.getFieldsText(languageFilepath), fileReader.getFieldDescriptions(languageFilepath), fileReader.getFieldMessages(languageFilepath));
+        this.board.setupBoard(fileReader.getFieldsText(languageFilepath),fileReader.getFieldDescriptions(languageFilepath),fileReader.getFieldMessages(languageFilepath));
+        viewController.showGameGUI(board.getBoard());
     }
-    */
+
+
+
 
     private void createAndAddPlayers(){
         Playerlist players = new Playerlist();
@@ -68,6 +71,7 @@ public class GameController {
     private void showGameBoard(){
 
     }
+
 
     private void setFilepathLanguage(String language){
         languageFilepath = "TextFiles/" + language;

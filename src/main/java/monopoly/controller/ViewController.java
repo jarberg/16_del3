@@ -1,7 +1,10 @@
 package monopoly.controller;
 
 import monopoly.model.player.Player;
+
+import monopoly.model.board.Field;
 import monopoly.view.MonopolyView;
+import monopoly.model.board.Board;
 
 public class ViewController {
 
@@ -9,9 +12,11 @@ public class ViewController {
     private MonopolyView view;
     private String filepath;
     private TranslatorController translator;
+    private Board board;
 
     public ViewController(){
         this.fileReader = new MonopolyFileReader();
+        this.view = new MonopolyView();
     }
 
     public String getUserLanguage(){
@@ -32,6 +37,10 @@ public class ViewController {
         String[] playerOptions = {"2", "3", "4"};
         String message = translator.getPlayerAmountChoiceMessage();
         return view.getPlayerAmount(message, playerOptions);
+    }
+    public void showGameGUI(Field[] FieldToGUIField){
+        //This should need a dependency to board or field with a method making gui board.
+        view.showGameGUI(view.FieldToGUIField(board.getBoard()));
     }
 
     public String getPlayerName() {
