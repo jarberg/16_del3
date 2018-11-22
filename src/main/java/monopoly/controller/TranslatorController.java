@@ -14,7 +14,18 @@ public class TranslatorController {
         return getMenuStringByKey("PLAYER_AMOUNT");
     }
 
+    public String getPlayerNameMessage() {
+        return getMenuStringByKey("ASK_PLAYER_NAME");
+    }
+
+    public String getPlayerAgeMessage() {
+        return getMenuStringByKey("ASK_PLAYER_AGE");
+    }
+
     private String getMenuStringByKey(String key){
         return fileReader.getMenuMessage(filePath, key);
     }
+
+
+
 }

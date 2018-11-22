@@ -1,5 +1,6 @@
 package monopoly.controller;
 
+import monopoly.model.player.Player;
 import monopoly.view.MonopolyView;
 
 public class ViewController {
@@ -33,4 +34,17 @@ public class ViewController {
         return view.getPlayerAmount(message, playerOptions);
     }
 
+    public String getPlayerName() {
+        String message = translator.getPlayerNameMessage();
+        return view.getPlayerName(message);
+    }
+
+    public int getPlayerAge() {
+        String message = translator.getPlayerAgeMessage();
+        return view.getUserAge(message);
+    }
+
+    public void addPlayer(Player player){
+        view.addPlayer(player.getName(), player.getColor());
+    }
 }

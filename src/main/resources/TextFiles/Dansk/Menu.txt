@@ -1,1 +1,3 @@
 PLAYER_AMOUNT:::Hvor mange spillere er i?
+ASK_PLAYER_NAME:::Hvem er du?
+ASK_PLAYER_AGE:::Hvor gammel er du?
