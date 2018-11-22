@@ -38,15 +38,14 @@ public class GameController {
     }
     */
 
-    /*
+
     private int getPlayerAmount(){
         if(playerAmount == 0){
             playerAmount = viewController.getPlayerAmount();
         }
         return playerAmount;
-        //int playerAmount = viewController.getPlayerAmount();
     }
-    */
+
 
     /*
     private void createAndAddPlayers(){

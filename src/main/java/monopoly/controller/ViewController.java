@@ -2,13 +2,12 @@ package monopoly.controller;
 
 import monopoly.view.MonopolyView;
 
-import java.io.FileReader;
-
 public class ViewController {
 
     private MonopolyFileReader fileReader;
     private MonopolyView view;
     private String filepath;
+    private TranslatorController translator;
 
     public ViewController(){
         this.fileReader = new MonopolyFileReader();
@@ -25,6 +24,13 @@ public class ViewController {
 
     public void setFilepath(String filepath){
         this.filepath = filepath;
+        this.translator = new TranslatorController(filepath);
+    }
+
+    public int getPlayerAmount(){
+        String[] playerOptions = {"2", "3", "4"};
+        String message = translator.getPlayerAmountChoiceMessage();
+        return view.getPlayerAmount(message, playerOptions);
     }
 
 }

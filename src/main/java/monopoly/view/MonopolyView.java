@@ -11,7 +11,6 @@ public class MonopolyView {
 
     private GUI gui;
     private GUI_Field[] guiBoard;
-    private String[] playerAmounts;
     private ArrayList<Color> colors;
     private ArrayList<GUI_Player> guiPlayers;
     private static final int MIN_AGE = 0;
@@ -19,7 +18,6 @@ public class MonopolyView {
 
     public MonopolyView(){
         //Consider de-hardcoding language choices and player numbers.
-        this.playerAmounts = new String[]{"2", "3", "4"};
         this.colors = new ArrayList<>();
         this.guiPlayers = new ArrayList<>();
         //Consider de-hardcoding colors.
@@ -88,7 +86,7 @@ public class MonopolyView {
         return colorHandler.getUserColor(message);
     }
 
-    public int getPlayerAmount(String message){
+    public int getPlayerAmount(String message, String[] playerAmounts){
         String playerAmountString = getUserChoice(message, playerAmounts);
         return Integer.parseInt(playerAmountString);
     }
