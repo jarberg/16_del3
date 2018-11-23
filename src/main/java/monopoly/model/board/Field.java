@@ -31,5 +31,7 @@ public abstract class Field {
     public Color getColor(){return color;}
 
 
+
+
 }
 

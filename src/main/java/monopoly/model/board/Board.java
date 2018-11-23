@@ -1,4 +1,6 @@
 package monopoly.model.board;
+import monopoly.model.player.Player;
+
 import java.awt.Color;
 public class Board {
     Field[] Fields= new Field[24];
@@ -27,25 +29,25 @@ public class Board {
                     break;
                 case 10: color= Color.PINK;
                     break;
-                case 11: color= Color.LIGHT_GRAY;
+                case 11: color= Color.GRAY;
                     break;
 
             }
             switch (Integer.valueOf(fields[i][1])) {
                 case 1:
-                    Fields[i] = new StartField(fields[i][0], fields[i][1], descrip[i], mess[i], Color.white);
+                    Fields[i] = new StartField(fields[i][0], fields[i][1], descrip[i], mess[i], color);
                     break;
                 case 2:
-                    Fields[i] = new ChanceField(fields[i][0], fields[i][2], descrip[i], mess[i], Color.white);
+                    Fields[i] = new ChanceField(fields[i][0], fields[i][2], descrip[i], mess[i], color);
                     break;
                 case 3:
-                    Fields[i] = new JailField(fields[i][0], fields[i][2], descrip[i], mess[i], Color.white);
+                    Fields[i] = new JailField(fields[i][0], fields[i][2], descrip[i], mess[i], color);
                     break;
                 case 4:
-                    Fields[i] = new GoToJailField(fields[i][0], fields[i][2], descrip[i], mess[i], Color.white);
+                    Fields[i] = new GoToJailField(fields[i][0], fields[i][2], descrip[i], mess[i], color);
                     break;
                 case 5:
-                    Fields[i] = new ParkingField(fields[i][0], fields[i][2], descrip[i], mess[i], Color.white);
+                    Fields[i] = new ParkingField(fields[i][0], fields[i][2], descrip[i], mess[i], color);
                     break;
                 case 6:
                     Fields[i] = new PropertyField(fields[i][0], fields[i][2],descrip[i], mess[i], color, null, Integer.valueOf(fields[i][1]), Integer.valueOf(fields[i][4]));
@@ -54,4 +56,6 @@ public class Board {
         }
     }
     public Field[] getFields(){return Fields;}
+
+
 }

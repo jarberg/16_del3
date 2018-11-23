@@ -19,23 +19,9 @@ public class PropertyField extends Field {
 
     @Override
     public void resolveEffect(Player player){
-        if(this.owner == null){
-            player.addToBalance(-value);
-            this.owner = player;
-        }
-        else if(this.owner != player){
-            int playerBalance = player.getBalance();
-            if(playerBalance < value){
-                player.addToBalance(-playerBalance);
-                this.owner.addToBalance(playerBalance);
-            }
-            else{
-                player.addToBalance(-value);
-                owner.addToBalance(value);
-            }
-        }
-    }
 
+    }
+    public void setOwner(Player player){this.owner = player;}
     public Player getOwner(){
         return this.owner;
     }
@@ -43,6 +29,7 @@ public class PropertyField extends Field {
         return this.owner.equals(player);
     }
     public int getPairIndex(){return pairIndex;}
+    public int getValue(){return value;}
 
 
 }

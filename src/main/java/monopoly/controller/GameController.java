@@ -1,8 +1,10 @@
 package monopoly.controller;
 
+import monopoly.controller.fieldControllers.*;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
+import monopoly.model.board.*;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 
@@ -12,18 +14,22 @@ public class GameController {
 
     private ViewController viewController;
     private MonopolyFileReader fileReader;
+    private FieldController fieldCon;
     private Board board ;
     private String languageFilepath;
     private static final String defaultLanguage = "English";
     private int playerAmount = 0;
     private Playerlist players;
     private Die die;
+    FieldController mainCon;
+
 
     public GameController(){
         viewController = new ViewController();
         fileReader = new MonopolyFileReader();
         this.die = new Die();
         setFilepathLanguage(defaultLanguage);
+
     }
 
     public void setupGame(){
@@ -87,7 +93,6 @@ public class GameController {
 
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
-
         //view.makeUserPressButtonHueHue();
         die.roll();
         int value = die.getValue();
@@ -98,10 +103,37 @@ public class GameController {
         int position = currentPlayer.getPosition();
 
         Field currentField = board.getFields()[position];
-        currentField.resolveEffect(currentPlayer);
+        getFieldType(currentField, currentPlayer);
+        //mainCon.resolveEffect(currentPlayer);
+
+        //currentField.resolveEffect(currentPlayer);
         //viewController.landedOnFieldMessage(currentField);
 
         players.changePlayerTurn();
+    }
+
+    private void getFieldType(Field field, Player player){
+
+        if (field instanceof PropertyField){
+            this.mainCon = new PropertyFieldController(board, player);
+        }
+        if (field instanceof StartField){
+            this.mainCon = new StartFieldController();
+        }
+        if (field instanceof JailField){
+            this.mainCon = new JailFieldController();
+        }
+        if (field instanceof GoToJailField){
+            this.mainCon = new GoToJailFieldController();
+        }
+        if (field instanceof ParkingField){
+            this.mainCon = new ParkingFieldController();
+        }
+        if (field instanceof ChanceField){
+            this.mainCon = new ChanceFieldController();
+        }
+        mainCon.resolveEffect(player);
+        mainCon = null;
     }
 
 }
