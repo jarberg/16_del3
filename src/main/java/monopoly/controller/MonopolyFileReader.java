@@ -8,16 +8,16 @@ import java.util.Scanner;
 
 public class MonopolyFileReader {
 
-    private static MonopolyFileReader fileReader;
+    private static MonopolyFileReader singleInstance = null;
 
     private MonopolyFileReader(){
     }
 
-    public MonopolyFileReader getInstance(){
-        if(fileReader==null){
-            fileReader = new MonopolyFileReader();
+    public static MonopolyFileReader getInstance(){
+        if(singleInstance==null){
+            singleInstance = new MonopolyFileReader();
         }
-        return fileReader;
+        return singleInstance;
     }
 
     //reads from given filepath

@@ -1,16 +1,7 @@
 package monopoly.controller;
 
-import monopoly.controller.field.*;
-import monopoly.controller.field.implementation.ChanceFieldController;
-import monopoly.controller.field.implementation.GoToJailFieldController;
-import monopoly.controller.field.implementation.JailFieldController;
-import monopoly.controller.field.implementation.ParkingFieldController;
-import monopoly.controller.field.implementation.PropertyFieldController;
-import monopoly.controller.field.implementation.StartFieldController;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
-import monopoly.model.board.Field;
-import monopoly.model.board.*;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 
@@ -20,20 +11,17 @@ public class GameController {
 
     private ViewController viewController;
     private MonopolyFileReader fileReader;
-    private FieldController fieldCon;
-    private Board board ;
+    private Playerlist players;
+    private Board board;
+    private Die die;
+    private int playerAmount = 0;
     private String languageFilepath;
     private static final String defaultLanguage = "English";
-    private int playerAmount = 0;
-    private Playerlist players;
-    private Die die;
-    FieldController mainCon;
     private static GameController singleInstance = null;
 
     private GameController(){
         viewController = ViewController.getInstance();
-        fileReader = new MonopolyFileReader();
-        this.die = new Die();
+        fileReader = MonopolyFileReader.getInstance();
         setFilepathLanguage(defaultLanguage);
     }
 
@@ -45,6 +33,7 @@ public class GameController {
     }
 
     public void setupGame(){
+        this.die = new Die();
         setupLanguage();
         createGameBoard();
         playerAmount = getPlayerAmount();
@@ -59,9 +48,21 @@ public class GameController {
         setFilepathLanguage(userLanguage);
     }
 
+    private void setFilepathLanguage(String language){
+        languageFilepath = "TextFiles/" + language;
+        viewController.setFilepath(languageFilepath);
+    }
+
     private void createGameBoard(){
         this.board = new Board();
         this.board.setupBoard(fileReader.getFieldsText(languageFilepath),fileReader.getFieldDescriptions(languageFilepath),fileReader.getFieldMessages(languageFilepath));
+    }
+
+    private int getPlayerAmount(){
+        if(playerAmount == 0){
+            playerAmount = viewController.getPlayerAmount();
+        }
+        return playerAmount;
     }
 
     private void createPlayers(){
@@ -75,26 +76,14 @@ public class GameController {
         this.players = players;
     }
 
-    private void addPlayersToGUI(){
-        for(Player player : players.getPlayerDeque()){
-            viewController.addPlayer(player);
-        }
-    }
-
-    private int getPlayerAmount(){
-        if(playerAmount == 0){
-            playerAmount = viewController.getPlayerAmount();
-        }
-        return playerAmount;
-    }
-
     private void showGameBoard(){
         viewController.showGameGUI(board.getFields());
     }
 
-    private void setFilepathLanguage(String language){
-        languageFilepath = "TextFiles/" + language;
-        viewController.setFilepath(languageFilepath);
+    private void addPlayersToGUI(){
+        for(Player player : players.getPlayerDeque()){
+            viewController.addPlayer(player);
+        }
     }
 
     public void playGame(){

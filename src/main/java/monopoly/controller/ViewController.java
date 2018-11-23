@@ -17,7 +17,7 @@ public class ViewController {
     private static ViewController singleInstance = null;
 
     private ViewController(){
-        this.fileReader = new MonopolyFileReader();
+        this.fileReader = MonopolyFileReader.getInstance();
         this.view = new MonopolyView();
     }
 
