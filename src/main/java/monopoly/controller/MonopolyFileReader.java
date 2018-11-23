@@ -1,4 +1,5 @@
 package monopoly.controller;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,7 +53,7 @@ public class MonopolyFileReader {
         return finalFields;
     }
 
-    // each method uses either 1d or 2d StringBuilder to return a specific files content in an array
+    // each method uses either 1d or 2d StringBuilder to return a specific file's content in an array
     public String[][] getFieldsText(String filePath){ return twoDStringArray(filePath,"/Fields.txt"); }
 
     public String[][] getChanceCards(String filePath){ return twoDStringArray(filePath,"/ChanceCards.txt"); }
@@ -65,7 +66,7 @@ public class MonopolyFileReader {
 
     public String[] getDirectoriesStringArray(){ return fileReader("TextFiles/"); }
 
-    public String getMenuMessage(String filePath, String messageKey){
+    public String getMenuMessageBeMessageKey(String filePath, String messageKey){
         Map<String, String> messageMap = new HashMap<>();
         try(InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath+"/Menu.txt")){
             try(Scanner scanner = new Scanner(resourceAsStream)){

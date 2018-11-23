@@ -23,7 +23,7 @@ public class TranslatorController {
     }
 
     private String getMenuStringByKey(String key){
-        return fileReader.getMenuMessage(filePath, key);
+        return fileReader.getMenuMessageBeMessageKey(filePath, key);
     }
 
 
