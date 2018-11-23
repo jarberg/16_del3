@@ -15,7 +15,7 @@ public class GoToJailField extends Field {
 
     @Override
     public void resolveEffect(Player player) {
-        player.setPosition(JAIL_POSITION);
+        //player.setPosition(JAIL_POSITION);
     }
 
     public int getBribeCharge(){

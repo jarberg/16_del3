@@ -55,5 +55,21 @@ public class ViewController {
 
     public void addPlayer(Player player){
         view.addPlayer(player.getName(), player.getColor());
+        view.spawnPlayer(player.getName());
+    }
+
+    public void showDie(int value) {
+        view.showDie(value);
+    }
+
+    public void movePlayer(Player currentPlayer, int value) {
+        String playerName = currentPlayer.getName();
+        int playerPosition = currentPlayer.getPosition();
+        view.movePlayer(playerName, playerPosition, value);
+    }
+
+    public void landedOnFieldMessage(Field currentField) {
+        String fieldMessage = currentField.getMessage();
+        view.showMessage(fieldMessage);
     }
 }

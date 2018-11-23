@@ -56,8 +56,9 @@ public class MonopolyView {
     
     public void showGameGUI(GUI_Street[] board){
         //This should need a dependency to board or field with a method making gui board.
+        this.guiBoard = board;
         this.gui.close();
-        this.gui = new GUI(board, Color.green);
+        this.gui = new GUI(guiBoard, Color.green);
     }
 
     public void addPlayer(String name, Color color){
@@ -73,14 +74,18 @@ public class MonopolyView {
         showPlayer(player,0);
     }
 
-    public void movePlayer(String name, int position, int movement) throws InterruptedException {
+    public void movePlayer(String name, int position, int movement){
         GUI_Player player = getGUIplayerByName(name);
         for (int i = 0; i < movement ; i++) {
             removePlayer(player, position);
             position++;
             position = position % guiBoard.length;
             showPlayer(player, position);
-            Thread.sleep(150);
+            try {
+                Thread.sleep(150);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -136,5 +141,11 @@ public class MonopolyView {
         new WinAnimation(gui, player);
     }
 
+    public void showDie(int value) {
+        gui.setDie(value);
+    }
 
+    public void showMessage(String fieldMessage) {
+        gui.showMessage(fieldMessage);
+    }
 }

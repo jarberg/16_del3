@@ -1,4 +1,8 @@
-package monopoly.controller.fieldcontrollers;
+package monopoly.controller.fieldControllers;
 
-public class PropertyFieldController {
+public class PropertyFieldController extends FieldController{
+    @Override
+    public void resolveEffect() {
+
+    }
 }

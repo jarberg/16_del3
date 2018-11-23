@@ -88,15 +88,16 @@ public class GameController {
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
 
+        //view.makeUserPressButtonHueHue();
         die.roll();
         int value = die.getValue();
-        //view.showDie(value);
+        viewController.showDie(value);
 
+        viewController.movePlayer(currentPlayer, value);
         currentPlayer.movePosition(value, board.getFields().length);
-        //viewController.movePlayer(currentPlayer);
         int position = currentPlayer.getPosition();
 
-        Field currentField = board.getFields()[position-1];
+        Field currentField = board.getFields()[position];
         currentField.resolveEffect(currentPlayer);
         //viewController.landedOnFieldMessage(currentField);
 
