@@ -1,13 +1,13 @@
 package monopoly.model.board;
 
+import monopoly.controller.field.implementation.GoToJailFieldController;
 import monopoly.model.player.Player;
 
 import java.awt.*;
 
 public class GoToJailField extends Field {
 
-    private static final int JAIL_POSITION = 6;
-    private int bribeCharge = 2;
+    private static final int bribeCharge = 2;
 
     public GoToJailField(String title, String subtitle, String description, String message, Color color) {
         super(title, subtitle, description, message, color);
@@ -15,11 +15,12 @@ public class GoToJailField extends Field {
 
     @Override
     public void resolveEffect(Player player) {
-        //player.setPosition(JAIL_POSITION);
+        GoToJailFieldController goToJailFieldController = new GoToJailFieldController();
+        goToJailFieldController.resolveEffect(player, this);
     }
 
     public int getBribeCharge(){
-        return this.bribeCharge;
+        return bribeCharge;
     }
 
 }
