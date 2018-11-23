@@ -2,6 +2,7 @@ package monopoly.controller.chanceCardControllers;
 
 import monopoly.controller.GameController;
 import monopoly.controller.ViewController;
+import monopoly.model.player.Player;
 
 public abstract class ChanceCardController {
 
@@ -13,6 +14,6 @@ public abstract class ChanceCardController {
         this.viewController = ViewController.getInstance();
     }
 
-    public abstract void resolveEffect();
+    public abstract void resolveEffect(Player player);
 
 }
