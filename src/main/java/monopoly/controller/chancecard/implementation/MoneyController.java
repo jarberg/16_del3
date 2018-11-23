@@ -1,5 +1,6 @@
-package monopoly.controller.chanceCardControllers;
+package monopoly.controller.chancecard.implementation;
 
+import monopoly.controller.chancecard.ChanceCardController;
 import monopoly.model.player.Player;
 
 public class MoneyController extends ChanceCardController {

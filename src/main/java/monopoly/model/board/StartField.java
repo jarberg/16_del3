@@ -1,6 +1,6 @@
 package monopoly.model.board;
 
-import monopoly.controller.fieldControllers.StartFieldController;
+import monopoly.controller.field.implementation.StartFieldController;
 import monopoly.model.player.Player;
 
 import java.awt.*;

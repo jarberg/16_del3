@@ -1,7 +1,8 @@
-package monopoly.controller.fieldControllers;
+package monopoly.controller.field.implementation;
 
 import monopoly.controller.GameController;
 import monopoly.controller.ViewController;
+import monopoly.controller.field.FieldController;
 import monopoly.model.board.Field;
 import monopoly.model.board.JailField;
 import monopoly.model.player.Player;

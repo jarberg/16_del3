@@ -1,4 +1,4 @@
-package monopoly.controller.chanceCardControllers;
+package monopoly.controller.chancecard;
 
 import monopoly.controller.GameController;
 import monopoly.controller.ViewController;

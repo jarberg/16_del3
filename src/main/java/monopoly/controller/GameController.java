@@ -1,15 +1,19 @@
 package monopoly.controller;
 
-import monopoly.controller.fieldControllers.*;
+import monopoly.controller.field.*;
+import monopoly.controller.field.implementation.ChanceFieldController;
+import monopoly.controller.field.implementation.GoToJailFieldController;
+import monopoly.controller.field.implementation.JailFieldController;
+import monopoly.controller.field.implementation.ParkingFieldController;
+import monopoly.controller.field.implementation.PropertyFieldController;
+import monopoly.controller.field.implementation.StartFieldController;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
 import monopoly.model.board.*;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
-import monopoly.view.MonopolyView;
 
-import javax.swing.text.View;
 import java.awt.*;
 
 public class GameController {
