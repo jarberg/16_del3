@@ -17,7 +17,7 @@ public class GoToJailFieldController extends FieldController {
     }
 
     @Override
-    public void resolveEffect(Player player) {
+    public void resolveEffect(Player player, Field field) {
         movePlayerToClosestJail(player);
     }
 

@@ -18,7 +18,7 @@ public class PropertyFieldController extends FieldController{
     }
 
     @Override
-    public void resolveEffect(Player player) {
+    public void resolveEffect(Player player, Field field) {
         checkifProp();
         int pos = player.getPosition();
         Player owner = getOwner();
