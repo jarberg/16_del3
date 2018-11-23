@@ -76,7 +76,7 @@ public class MonopolyFileReader {
                     messageMap.put(splitLine[0], splitLine[1]);
                 }
             } catch (Exception e){
-
+                e.printStackTrace();
             }
         } catch (IOException e) {
             e.printStackTrace();

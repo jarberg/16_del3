@@ -9,11 +9,9 @@ import monopoly.model.board.Board;
 
 public class ViewController {
 
+    private TranslatorController translator;
     private MonopolyFileReader fileReader;
     private MonopolyView view;
-    private String filepath;
-    private TranslatorController translator;
-    private Board board;
     private static ViewController singleInstance = null;
 
     private ViewController(){
@@ -27,17 +25,16 @@ public class ViewController {
         return singleInstance;
     }
 
+    public void showEmptyGUI(){
+        view.showEmptyGUI();
+    }
+
     public String getUserLanguage(){
         String[] languageChoices = fileReader.getDirectoriesStringArray();
         return view.getUserLanguage(languageChoices);
     }
 
-    public void showEmptyGUI(){
-        view.showEmptyGUI();
-    }
-
     public void setFilepath(String filepath){
-        this.filepath = filepath;
         this.translator = new TranslatorController(filepath);
     }
 
@@ -45,10 +42,6 @@ public class ViewController {
         String[] playerOptions = {"2", "3", "4"};
         String message = translator.getPlayerAmountChoiceMessage();
         return view.getPlayerAmount(message, playerOptions);
-    }
-    public void showGameGUI(Field[] FieldToGUIField){
-        //This should need a dependency to board or field with a method making gui board.
-        view.showGameGUI(view.FieldToGUIField(FieldToGUIField));
     }
 
     public String getPlayerName() {
@@ -59,6 +52,11 @@ public class ViewController {
     public int getPlayerAge() {
         String message = translator.getPlayerAgeMessage();
         return view.getUserAge(message);
+    }
+
+    public void showGameGUI(Field[] FieldToGUIField){
+        //This should need a dependency to board or field with a method making gui board.
+        view.showGameGUI(view.FieldToGUIField(FieldToGUIField));
     }
 
     public void addPlayer(Player player){

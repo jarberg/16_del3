@@ -6,7 +6,7 @@ public class TranslatorController {
     private String filePath;
 
     public TranslatorController(String filePath){
-        this.fileReader = new MonopolyFileReader();
+        this.fileReader = MonopolyFileReader.getInstance();
         this.filePath = filePath;
     }
 

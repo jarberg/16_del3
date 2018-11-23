@@ -56,7 +56,10 @@ public class GameController {
 
     private void createGameBoard(){
         this.board = new Board();
-        this.board.setupBoard(fileReader.getFieldsText(languageFilepath),fileReader.getFieldDescriptions(languageFilepath),fileReader.getFieldMessages(languageFilepath));
+        String[][] fieldTexts = fileReader.getFieldsText(languageFilepath);
+        String[] fieldDescriptions = fileReader.getFieldDescriptions(languageFilepath);
+        String[] fieldMessages = fileReader.getFieldMessages(languageFilepath);
+        this.board.setupBoard(fieldTexts, fieldDescriptions, fieldMessages);
     }
 
     private int getPlayerAmount(){
