@@ -9,8 +9,8 @@ public abstract class ChanceCardController {
     private ViewController viewController;
 
     public ChanceCardController(){
-        //this.gameController = GameController.getInstance();
-        //this.viewController = ViewController.getInstance();
+        this.gameController = GameController.getInstance();
+        this.viewController = ViewController.getInstance();
     }
 
     public abstract void resolveEffect();
