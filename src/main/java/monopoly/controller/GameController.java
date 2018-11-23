@@ -100,8 +100,7 @@ public class GameController {
         currentField.resolveEffect(currentPlayer);
         //viewController.landedOnFieldMessage(currentField);
 
-
-
+        players.changePlayerTurn();
     }
 
 }
