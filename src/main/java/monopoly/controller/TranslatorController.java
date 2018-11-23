@@ -22,6 +22,10 @@ public class TranslatorController {
         return getMenuStringByKey("ASK_PLAYER_AGE");
     }
 
+    public String getPlayerTurnMessage(){
+        return getMenuStringByKey("PLAYER_TURN");
+    }
+
     private String getMenuStringByKey(String key){
         return fileReader.getMenuMessageBeMessageKey(filePath, key);
     }

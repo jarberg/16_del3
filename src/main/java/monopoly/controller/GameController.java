@@ -98,7 +98,8 @@ public class GameController {
 
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
-        //view.makeUserPressButtonHueHue();
+
+        viewController.showUserTurnMessage(currentPlayer);
         die.roll();
         int value = die.getValue();
         viewController.showDie(value);
@@ -109,9 +110,6 @@ public class GameController {
 
         Field currentField = board.getFields()[position];
         currentField.resolveEffect(currentPlayer);
-
-        //getFieldType(currentField, currentPlayer);
-        //mainCon.resolveEffect(currentPlayer);
 
         viewController.setGUIPlayerBalance(currentPlayer, currentPlayer.getBalance());
         viewController.landedOnFieldMessage(currentField);

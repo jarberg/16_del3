@@ -64,6 +64,10 @@ public class ViewController {
         view.spawnPlayer(player.getName());
     }
 
+    public void showUserTurnMessage(Player player) {
+        view.showMessage(translator.getPlayerTurnMessage() + player.getName());
+    }
+
     public void showDie(int value) {
         view.showDie(value);
     }
@@ -74,11 +78,14 @@ public class ViewController {
         view.movePlayer(playerName, playerPosition, value);
     }
 
+    public void setGUIPlayerBalance(Player player,int amount){
+        view.setPlayerBalance(player, amount);
+    }
+
     public void landedOnFieldMessage(Field currentField) {
         String fieldMessage = currentField.getMessage();
         view.showMessage(fieldMessage);
     }
-    public void setGUIPlayerBalance(Player player,int amount){
-        view.setPlayerBalance(player, amount);
-    }
+
+
 }
