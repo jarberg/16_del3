@@ -1,6 +1,8 @@
 package monopoly.controller;
 
+import monopoly.model.Die;
 import monopoly.model.board.Board;
+import monopoly.model.board.Field;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 
@@ -15,10 +17,12 @@ public class GameController {
     private static final String defaultLanguage = "English";
     private int playerAmount = 0;
     private Playerlist players;
+    private Die die;
 
     public GameController(){
         viewController = new ViewController();
         fileReader = new MonopolyFileReader();
+        this.die = new Die();
         setFilepathLanguage(defaultLanguage);
     }
 
@@ -77,8 +81,27 @@ public class GameController {
 
     public void playGame(){
         while(players.noWinnerYet()){
-
+            playTurn();
         }
+    }
+
+    private void playTurn() {
+        Player currentPlayer = players.getNextPlayer();
+
+        die.roll();
+        int value = die.getValue();
+        //view.showDie(value);
+
+        currentPlayer.movePosition(value, board.getFields().length);
+        //viewController.movePlayer(currentPlayer);
+        int position = currentPlayer.getPosition();
+
+        Field currentField = board.getFields()[position-1];
+        currentField.resolveEffect(currentPlayer);
+        //viewController.landedOnFieldMessage(currentField);
+
+
+
     }
 
 }

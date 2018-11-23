@@ -69,5 +69,10 @@ public class Player {
     public void setGetOutOfJail(boolean hasCard){
         this.hasGetOutOfJail=hasCard;
     }
+
+    public void movePosition(int number, int boardSize){
+        this.position = position + number;
+        this.position = position % boardSize;
+    }
 }
 
