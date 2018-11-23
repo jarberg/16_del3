@@ -47,7 +47,7 @@ public class MonopolyView {
             gui_field[i].setTitle(fieldTitel);
             gui_field[i].setSubText(fieldSub);
             gui_field[i].setDescription(fieldDescrip);
-            gui_field[i].setForeGroundColor(fieldColor);
+            gui_field[i].setForeGroundColor(Color.BLACK);
             gui_field[i].setBackGroundColor(fieldColor);
         }
         

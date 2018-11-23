@@ -1,21 +1,24 @@
-ï»¿START:modtager sin SU. nasserÃ¸v!
-CHANCE:trak et chancekort kort
-FÃ†NGSEL:besÃ¸ger en ven der er frihedsbesvÃ¦ret
-GÃ… I FÃ†NGSEL:glemte at indfÃ¸re komplekse tal i din selvangivelse. GÃ¥ i fÃ¦ngsel
-GRATIS PARKERING: er en meget trÃ¦t bil.
-BURGERBAREN:spiser en burger. 
-PIZZARIAET:spiser en pizza.
-SLIKBUTIKKEN:mÃ¦sker sig i slik
-KIOSKEN:skal lige ha 2 pakker smÃ¸ger, mÃ¦lk og kondomer.
-MUSEET:kigger lidt pÃ¥ en dinosaurbil.
-BILIOTEKET:gik pÃ¥ bibloteket for at se om dinosaurbiller faktiks er en ting.
-SKATERPARKEN:vÃ¦ltede pÃ¥ sit board og slog sin aksel.
-SVÃ˜MMEBASINET:kiggede forvirret pÃ¥ vandet.. biler kan jo ikke svÃ¸mme???!!
-SPILLEHALLEN:spillede et racer spil. lol nej matadorspillet ofc.
-BIOGRAFEN:kÃ¸bte popcorn og sÃ¥ MATADORSPIL THE MOVIE. 5 stjerner.
-LEGETÃ˜JSBUTIKKEN:kÃ¸bte en analog udgave af MatadorSpillet the movie the game
-DYREHANDLEN:ville gerne have en tiger men mÃ¥tte nÃ¸jes med en hamster.
-BOWLINGHALLEN:prÃ¸vede men var dÃ¥rlig til bowling
-ZOOLOGISK HAVE:kiggede pÃ¥ tigerne
-VANDLANDET:er lige sÃ¥ forvirret over vandlandet som svÃ¸mmebasinet
-STRANDPROMENADEN:er stadig forvirret, men ku godt li sandet.
+modtager sin SU. nasserøv!
+spiser en burger.
+spiser en pizza.
+trak et chancekort kort
+mæsker sig i slik
+skal lige ha 2 pakker smøger, mælk og kondomer.
+besøger en ven der er frihedsbesværet
+kigger lidt på en dinosaurbil.
+gik p? bibloteket for at se om dinosaurbiller faktisk er en ting.
+trak et chancekort kort
+væltede på sit board og slog sin aksel.
+kiggede forvirret på vandet.. biler kan jo ikke svømme???!!
+er en meget træt bil.
+spillede et racer spil. lol nej matadorspillet ofc.
+købte popcorn og så MATADORSPIL THE MOVIE. 5 stjerner.
+trak et chancekort kort
+købte en analog udgave af MatadorSpillet the movie the game
+ville gerne have en tiger men måtte nøjes med en hamster.
+glemte at indføre komplekse tal i din selvangivelse. Gå i fængsel
+pr?vede men var d?rlig til bowling
+kiggede på tigerne
+trak et chancekort kort
+er lige så forvirret over vandlandet som svømmebasinet
+er stadig forvirret, men ku godt li sandet.

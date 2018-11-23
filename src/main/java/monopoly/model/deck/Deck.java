@@ -23,8 +23,7 @@ public class Deck {
         Collections.shuffle(Arrays.asList(cardArray));
     }
     public void putTopCardtoBack(){
-        ChanceCard tempCardArray;
-        tempCardArray = cardArray[0];
+        ChanceCard tempCardArray = cardArray[0];
 
         for (int i = 0; i < cardArray.length-1 ; i++) {
             cardArray[i]=cardArray[i+1];
@@ -37,4 +36,5 @@ public class Deck {
     }
     public ChanceCard getTopCard(){return cardArray[0]; }
     public int getCardEffektID(int ID) { return cardArray[ID].getEffectID(); }
+
 }
