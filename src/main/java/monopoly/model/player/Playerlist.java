@@ -38,6 +38,15 @@ public class Playerlist {
         playerList.addLast(playerList.pollFirst());
     }
 
+    public boolean noWinnerYet() {
+        boolean noWinnerYet = true;
+        for(Player player : playerList){
+            if(player.isWinner())
+                noWinnerYet = false;
+        }
+        return noWinnerYet;
+    }
+
     //Sort by age method?
 
 }
