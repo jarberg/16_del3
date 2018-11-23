@@ -42,10 +42,10 @@ public class Board {
                     Fields[i] = new JailField(fields[i][0], fields[i][2], descrip[i], mess[i], Color.white);
                     break;
                 case 4:
-                    Fields[i] = new ParkingField(fields[i][0], fields[i][2], descrip[i], mess[i], Color.white);
+                    Fields[i] = new GoToJailField(fields[i][0], fields[i][2], descrip[i], mess[i], Color.white);
                     break;
                 case 5:
-                    Fields[i] = new GoToJailField(fields[i][0], fields[i][2], descrip[i], mess[i], Color.white);
+                    Fields[i] = new ParkingField(fields[i][0], fields[i][2], descrip[i], mess[i], Color.white);
                     break;
                 case 6:
                     Fields[i] = new PropertyField(fields[i][0], fields[i][2],descrip[i], mess[i], color, null, Integer.valueOf(fields[i][1]), Integer.valueOf(fields[i][4]));
