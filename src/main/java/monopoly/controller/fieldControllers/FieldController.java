@@ -2,6 +2,7 @@ package monopoly.controller.fieldControllers;
 
 import monopoly.controller.GameController;
 import monopoly.controller.ViewController;
+import monopoly.model.player.Player;
 
 public abstract class FieldController {
 
@@ -13,6 +14,6 @@ public abstract class FieldController {
         //viewController = viewController.getInstance();
     }
 
-    public abstract void resolveEffect();
+    public abstract void resolveEffect(Player player);
 
 }
