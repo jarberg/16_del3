@@ -28,21 +28,40 @@ public class PropertyFieldController extends FieldController{
         }
 
         else if(owner!=player){
-            Field[] fields = getFieldsOwnedByPlayer(player);
             if(checkIfPair()){
-                if(player.getBalance()<2*p.getValue()){
+                if(player.getBalance()>2*p.getValue()){
                     player.addToBalance(-2*(p.getValue()));
                     p.getOwner().addToBalance(2*p.getValue());
                 }
                 else{
+                    Field[] fields = getFieldsOwnedByPlayer(player);
                     for (int i = 0; i <fields.length ; i++) {
-                        if(player.getBalance()>p.getValue()){
+                        if(player.getBalance()<2*p.getValue()){
                             sellField(player, fields);
+                        }
+                        else{
+                            break;
                         }
                     }
 
                 }
-
+            }
+            else{
+                if(player.getBalance()>p.getValue()){
+                    player.addToBalance(-(p.getValue()));
+                    p.getOwner().addToBalance(p.getValue());
+                }
+                else{
+                    Field[] fields = getFieldsOwnedByPlayer(player);
+                    for (int i = 0; i <fields.length ; i++) {
+                        if(player.getBalance()<p.getValue()){
+                            sellField(player, fields);
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                }
             }
         }
     }

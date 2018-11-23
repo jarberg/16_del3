@@ -104,7 +104,7 @@ public class GameController {
 
         Field currentField = board.getFields()[position];
         getFieldType(currentField, currentPlayer);
-        //mainCon.resolveEffect(currentPlayer);
+        mainCon.resolveEffect(currentPlayer);
 
         //currentField.resolveEffect(currentPlayer);
         //viewController.landedOnFieldMessage(currentField);
@@ -133,7 +133,7 @@ public class GameController {
             this.mainCon = new ChanceFieldController();
         }
         mainCon.resolveEffect(player);
-        mainCon = null;
+
     }
 
 }
