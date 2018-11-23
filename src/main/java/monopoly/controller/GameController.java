@@ -2,6 +2,7 @@ package monopoly.controller;
 
 import monopoly.model.Die;
 import monopoly.model.board.Board;
+import monopoly.model.board.Field;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 
@@ -104,10 +105,12 @@ public class GameController {
         int position = currentPlayer.getPosition();
 
         Field currentField = board.getFields()[position];
-        getFieldType(currentField, currentPlayer);
-        mainCon.resolveEffect(currentPlayer);
+        currentField.resolveEffect(currentPlayer);
+
+        //getFieldType(currentField, currentPlayer);
+        //mainCon.resolveEffect(currentPlayer);
+
         viewController.setGUIPlayerBalance(currentPlayer, currentPlayer.getBalance());
-        //currentField.resolveEffect(currentPlayer);
         viewController.landedOnFieldMessage(currentField);
 
         players.changePlayerTurn();
@@ -117,29 +120,7 @@ public class GameController {
         return board.getFields();
     }
 
-    private void getFieldType(Field field, Player player){
-
-        if (field instanceof PropertyField){
-            this.mainCon = new PropertyFieldController(board, player);
-        }
-        if (field instanceof StartField){
-            this.mainCon = new StartFieldController();
-        }
-        if (field instanceof JailField){
-            this.mainCon = new JailFieldController();
-        }
-        if (field instanceof GoToJailField){
-            this.mainCon = new GoToJailFieldController();
-        }
-        if (field instanceof ParkingField){
-            this.mainCon = new ParkingFieldController();
-        }
-        if (field instanceof ChanceField){
-            this.mainCon = new ChanceFieldController();
-        }
-    }
-
     public void endGame() {
-
+        //Not implemented yet, feel free!
     }
 }
