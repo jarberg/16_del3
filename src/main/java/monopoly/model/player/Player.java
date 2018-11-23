@@ -7,13 +7,15 @@ public class Player {
     private String name;
     private Color color;
     private Account account;
+    private int age;
     private int position;
     private boolean isWinner;
     private boolean hasGetOutOfJail;
     private static final int startPosition = 0;
 
-    public Player(String name, Color color){
+    public Player(String name, int age, Color color){
         this.name = name;
+        this.age = age;
         this.color = color;
         this.account = new Account();
         this.position = startPosition;

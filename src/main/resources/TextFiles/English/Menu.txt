@@ -1,0 +1,3 @@
+PLAYER_AMOUNT:::Gimme the number.
+ASK_PLAYER_NAME:::Oi what's your name?
+ASK_PLAYER_AGE:::How old're'ye mate?

@@ -1,7 +1,9 @@
 package monopoly.controller;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MonopolyFileReader {
@@ -50,5 +52,23 @@ public class MonopolyFileReader {
     public String[] getFieldDescriptions(String filePath){ return oneDStringArray(filePath, "/FieldDescriptions.txt"); }
 
     public String[] getDirectoriesStringArray(){ return fileReader("TextFiles/"); }
+
+    public String getMenuMessage(String filePath, String messageKey){
+        Map<String, String> messageMap = new HashMap<>();
+        try(InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath+"/Menu.txt")){
+            try(Scanner scanner = new Scanner(resourceAsStream)){
+                while(scanner.hasNext()){
+                    String line = scanner.nextLine();
+                    String[] splitLine = line.split(":::");
+                    messageMap.put(splitLine[0], splitLine[1]);
+                }
+            } catch (Exception e){
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return messageMap.get(messageKey);
+    }
 
 }

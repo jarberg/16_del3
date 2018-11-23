@@ -1,35 +1,80 @@
 package monopoly.controller;
 
 import monopoly.model.board.Board;
-import monopoly.view.MonopolyView;
+import monopoly.model.player.Player;
+import monopoly.model.player.Playerlist;
+
+import java.awt.*;
 
 public class GameController {
 
-    private MonopolyView view;
+    private ViewController viewController;
     private MonopolyFileReader fileReader;
     private Board board ;
-    private String filepath = "TextFiles/";
+    private String languageFilepath;
     private static final String defaultLanguage = "English";
+    private int playerAmount = 0;
+    private Playerlist players;
 
     public GameController(){
+        viewController = new ViewController();
+        fileReader = new MonopolyFileReader();
         setFilepathLanguage(defaultLanguage);
-        view = new MonopolyView();
-
     }
 
     public void setupGame(){
         setupLanguage();
+        createGameBoard();
+        playerAmount = getPlayerAmount();
+        createPlayers();
+        showGameBoard();
+        addPlayersToGUI();
     }
 
     private void setupLanguage(){
-        view.showEmptyGUI();
-        String[] languageChoices = fileReader.getDirectoriesStringArray();
-        String userLanguage = view.getUserLanguage(languageChoices);
+        viewController.showEmptyGUI();
+        String userLanguage = viewController.getUserLanguage();
         setFilepathLanguage(userLanguage);
     }
 
+
+    private void createGameBoard(){
+        this.board = new Board();
+        this.board.setupBoard(fileReader.getFieldsText(languageFilepath),fileReader.getFieldDescriptions(languageFilepath),fileReader.getFieldMessages(languageFilepath));
+    }
+
+    private void createPlayers(){
+        Playerlist players = new Playerlist();
+        for (int i = 0; i < getPlayerAmount(); i++) {
+            String name = viewController.getPlayerName();
+            int age = viewController.getPlayerAge();
+            Color color = Color.red;
+            players.addPlayer(new Player(name, age, color));
+        }
+        this.players = players;
+    }
+
+    private void addPlayersToGUI(){
+        for(Player player : players.getPlayerDeque()){
+            viewController.addPlayer(player);
+        }
+    }
+
+    private int getPlayerAmount(){
+        if(playerAmount == 0){
+            playerAmount = viewController.getPlayerAmount();
+        }
+        return playerAmount;
+    }
+
+    private void showGameBoard(){
+        viewController.showGameGUI(board.getBoard());
+    }
+
+
     private void setFilepathLanguage(String language){
-        filepath = "TextFiles/" + language;
+        languageFilepath = "TextFiles/" + language;
+        viewController.setFilepath(languageFilepath);
     }
 
 
