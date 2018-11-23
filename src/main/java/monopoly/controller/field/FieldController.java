@@ -17,7 +17,4 @@ public abstract class FieldController {
 
     public abstract void resolveEffect(Player player, Field field);
 
-
-
-
 }
