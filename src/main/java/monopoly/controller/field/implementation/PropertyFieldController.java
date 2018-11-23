@@ -1,147 +1,147 @@
 package monopoly.controller.field.implementation;
 
+import monopoly.controller.GameController;
+import monopoly.controller.ViewController;
 import monopoly.controller.field.FieldController;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
 import monopoly.model.board.PropertyField;
 import monopoly.model.player.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PropertyFieldController extends FieldController {
 
-    Board board;
-    Player player;
-    PropertyField p;
+    private GameController gameController;
+    private ViewController viewController;
+    private Player player;
+    private PropertyField field;
+    private static final int PROPERTY_MULTIPLIER = 2;
 
-    public PropertyFieldController(Board board,Player player) {
-        this.board = board;
-        this.player = player;
-        checkifProp();
+    public PropertyFieldController() {
+        this.gameController = GameController.getInstance();
+        this.viewController = ViewController.getInstance();
     }
 
     @Override
     public void resolveEffect(Player player, Field field) {
-        checkifProp();
-        int pos = player.getPosition();
-        Player owner = getOwner();
+        this.player = player;
+        this.field = (PropertyField) field;
+        Player owner = this.field.getOwner();
 
-        if(owner == null){
-            buyField(player);
+        boolean fieldHasNoOwner = (owner == null);
+        //boolean playerIsOwner = (owner != null && owner.equals(player));
+        boolean otherPlayerIsOwner = (owner != null && !owner.equals(player));
+        boolean pairPropertyOwned = checkIfPair(this.field, owner);
+
+        if(fieldHasNoOwner){
+            int cost = this.field.getValue();
+            attemptToBuyPropertyFromBank(player, cost);
         }
-        else if(owner!=player&& owner!=null){
-            if(checkIfPair()&& owner!=null){
-                if(player.getBalance()>2*p.getValue()){
-                    player.addToBalance(-2*(p.getValue()));
-                    p.getOwner().addToBalance(2*p.getValue());
-                }
-                else{
-                    Field[] fields = getFieldsOwnedByPlayer(player);
-                    for (int i = 0; i <fields.length ; i++) {
-                        if(player.getBalance()<2*p.getValue()){
-                            sellField(player, fields);
-                        }
-                        else{
-                            break;
-                        }
-                        player.addToBalance(-2*(p.getValue()));
-                        p.getOwner().addToBalance(2*p.getValue());
-                    }
-                }
+        else if(otherPlayerIsOwner){
+            if(pairPropertyOwned){
+                int cost = this.field.getValue()*PROPERTY_MULTIPLIER;
+                attemptToBuyProperty(player, owner, cost);
             }
             else{
-                if(player.getBalance()>p.getValue()){
-                    player.addToBalance(-(p.getValue()));
-                    p.getOwner().addToBalance(p.getValue());
-                }
-                else{
-                    Field[] fields = getFieldsOwnedByPlayer(player);
-                    for (int i = 0; i <fields.length ; i++) {
-                        if(player.getBalance()<p.getValue()){
-                            sellField(player, fields);
-                        }
-                        else{
-                            break;
-                        }
-                    }
-                    player.addToBalance(-(p.getValue()));
-                    p.getOwner().addToBalance(p.getValue());
-                }
+                int cost = this.field.getValue();
+                attemptToBuyProperty(player, owner, cost);
             }
         }
     }
 
-    public Player getOwner(){
-        return p.getOwner();
-    }
-
-    public int getPos(){ return player.getPosition(); }
-
-    public void checkifProp(){
-        Field field = board.getFields()[getPos()];
-        if (field instanceof PropertyField){
-            this.p = (PropertyField) field;
+    private void attemptToBuyPropertyFromBank(Player player, int cost) {
+        if(playerHasMoney(this.player, cost)){
+            player.addToBalance(-cost);
         }
-    }
-
-    public boolean checkIfPair(){
-        boolean isOwner=false;
-        Player fOwner = p.getOwner();
-        PropertyField pp= null;
-        Field field = board.getFields()[p.getPairIndex()];
-        if (field instanceof PropertyField){
-             pp = (PropertyField) field;
-
-            if(fOwner == pp.getOwner() ){
-                if(fOwner==null){
-                 isOwner=false;
-                }
-                else {
-                    isOwner = true;
+        else{
+            PropertyField[] fields = getFieldsOwnedByPlayer(player);
+            for (PropertyField f : fields) {
+                if (!playerHasMoney(this.player, cost)) {
+                    sellField(player, f);
                 }
             }
-            else{
-                isOwner = false;
+            if(!playerHasMoney(this.player, cost)){
+                gameController.endGame();
             }
-        }
-        return isOwner;
-    }
-
-    public void buyField(Player player){
-        if(player.getBalance()>p.getValue()){
-            player.addToBalance(-(p.getValue()));
+            player.addToBalance(-cost);
         }
     }
 
-    public void sellField(Player player, Field[] fields){
-        if(fields.length >0){
-            player.addToBalance(p.getValue());
-            p.setOwner(null);
+    private void attemptToBuyProperty(Player player, Player owner, int cost) {
+        if(playerHasMoney(this.player, cost)){
+            player.addToBalance(-cost);
+            owner.addToBalance(cost);
+        }
+        else{
+            PropertyField[] fields = getFieldsOwnedByPlayer(player);
+            for (PropertyField f : fields) {
+                if (!playerHasMoney(this.player, cost)) {
+                    sellField(player, f);
+                }
+            }
+            if(!playerHasMoney(this.player, cost)){
+                gameController.endGame();
+            }
+            player.addToBalance(-cost);
+            owner.addToBalance(cost);
         }
     }
 
-    public Field[] getFieldsOwnedByPlayer(Player player){
+    private boolean playerHasMoney(Player player, int amount){
+        return player.getBalance() >= amount;
+    }
 
-        Field[] unknownFields = board.getFields();
-        Field[] tempPlayerOwnedArray = new Field[unknownFields.length];
+    public boolean checkIfPair(Field field, Player player){
+        PropertyField f = (PropertyField) field;
+        boolean ownsBothProperties = false;
+        if(((PropertyField)gameController.getFields()[f.getPairIndex()]).getOwner() == player)
+            ownsBothProperties = true;
+        return ownsBothProperties;
+    }
 
-        for (int i = 0; i <unknownFields.length ; i++) {
-            checkifProp();
-            if(p.getOwner()==player){
-                tempPlayerOwnedArray[i]= p;
+    private void sellField(Player player, PropertyField field){
+        player.addToBalance(field.getValue());
+        field.setOwner(null);
+    }
+
+    private PropertyField[] getFieldsOwnedByPlayer(Player player){
+        Field[] allFields = gameController.getFields();
+        List<PropertyField> ownedFields = new ArrayList<>();
+        for(Field f : allFields){
+            if(f instanceof PropertyField && ((PropertyField) f).getOwner() == player)
+                ownedFields.add((PropertyField)f);
+        }
+        return ownedFields.toArray(new PropertyField[0]);
+
+        /*
+        Field[] tempPlayerOwnedArray = new Field[allFields.length];
+
+        for (int i = 0; i < allFields.length ; i++) {
+            if(allFields[i] instanceof PropertyField){
+                if(field.getOwner()==player){
+                    tempPlayerOwnedArray[i]= field;
+                }
             }
         }
-        int counter=0;
-        for (int i = 0; i <tempPlayerOwnedArray.length ; i++) {
-            if(tempPlayerOwnedArray[i]==null){
-                break;
-            }
-            else{
-             counter++;
+
+        int counter = 0;
+        for (Field field : tempPlayerOwnedArray) {
+            if (field != null) {
+                counter++;
             }
         }
+
         Field[] playerOwnedArray = new Field[counter];
-        for (int i = 0; i <playerOwnedArray.length ; i++) {
-            playerOwnedArray[i]= tempPlayerOwnedArray[i];
+        int counterTwo = 0;
+        for (int i = 0; i < allFields.length ; i++) {
+            if(tempPlayerOwnedArray[i] != null){
+                playerOwnedArray[counterTwo] = tempPlayerOwnedArray[i];
+                counterTwo++;
+            }
         }
         return playerOwnedArray;
+        */
     }
 }
