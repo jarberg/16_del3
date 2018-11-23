@@ -36,23 +36,24 @@ public class PropertyFieldController extends FieldController {
 
         if(fieldHasNoOwner){
             int cost = this.field.getValue();
-            attemptToBuyPropertyFromBank(player, cost);
+            attemptToBuyFromBank(player, cost);
         }
         else if(otherPlayerIsOwner){
             if(pairPropertyOwned){
                 int cost = this.field.getValue()*PROPERTY_MULTIPLIER;
-                attemptToBuyProperty(player, owner, cost);
+                payRentToProperty(player, owner, cost);
             }
             else{
                 int cost = this.field.getValue();
-                attemptToBuyProperty(player, owner, cost);
+                payRentToProperty(player, owner, cost);
             }
         }
     }
 
-    private void attemptToBuyPropertyFromBank(Player player, int cost) {
+    private void attemptToBuyFromBank(Player player, int cost) {
         if(playerHasMoney(this.player, cost)){
             player.addToBalance(-cost);
+            this.field.setOwner(player);
         }
         else{
             PropertyField[] fields = getFieldsOwnedByPlayer(player);
@@ -65,10 +66,11 @@ public class PropertyFieldController extends FieldController {
                 gameController.endGame();
             }
             player.addToBalance(-cost);
+            this.field.setOwner(player);
         }
     }
 
-    private void attemptToBuyProperty(Player player, Player owner, int cost) {
+    private void payRentToProperty(Player player, Player owner, int cost) {
         if(playerHasMoney(this.player, cost)){
             player.addToBalance(-cost);
             owner.addToBalance(cost);

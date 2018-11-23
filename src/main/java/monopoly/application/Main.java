@@ -1,7 +1,6 @@
 package monopoly.application;
 
 import monopoly.controller.GameController;
-import monopoly.controller.ViewController;
 
 public class Main {
 

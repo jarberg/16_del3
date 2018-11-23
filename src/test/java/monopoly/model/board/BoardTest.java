@@ -17,7 +17,7 @@ private String filePath = "TextFiles/Dansk";
     @Before
     public void setup(){
         board = new Board();
-        monoReader = new MonopolyFileReader();
+        monoReader = MonopolyFileReader.getInstance();
     }
 
     @After
