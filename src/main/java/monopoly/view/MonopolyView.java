@@ -33,6 +33,7 @@ public class MonopolyView {
         GUI_Field[] emptyFieldArray = new GUI_Field[0];
         this.gui = new GUI(emptyFieldArray);
     }
+
     public GUI_Street[] FieldToGUIField(Field[] field){
         GUI_Street[] gui_field = new GUI_Street[field.length];
 

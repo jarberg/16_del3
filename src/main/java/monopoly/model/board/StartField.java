@@ -1,5 +1,6 @@
 package monopoly.model.board;
 
+import monopoly.controller.fieldControllers.StartFieldController;
 import monopoly.model.player.Player;
 
 import java.awt.*;
@@ -12,5 +13,7 @@ public class StartField extends Field{
 
     @Override
     public void resolveEffect(Player player) {
+        StartFieldController startFieldController = new StartFieldController();
+        startFieldController.resolveEffect(player);
     }
 }
