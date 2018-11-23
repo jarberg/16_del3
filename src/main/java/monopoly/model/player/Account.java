@@ -5,7 +5,7 @@ public class Account {
     private int balance;
 
     public Account(){
-        this.balance = 0;
+        this.balance = 90;
     }
 
     public int getBalance(){

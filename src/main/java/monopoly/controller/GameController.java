@@ -7,6 +7,7 @@ import monopoly.model.board.Field;
 import monopoly.model.board.*;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
+import monopoly.view.MonopolyView;
 
 import java.awt.*;
 
@@ -105,9 +106,9 @@ public class GameController {
         Field currentField = board.getFields()[position];
         getFieldType(currentField, currentPlayer);
         mainCon.resolveEffect(currentPlayer);
-
+        viewController.setGUIPlayerBalance(currentPlayer, currentPlayer.getBalance());
         //currentField.resolveEffect(currentPlayer);
-        //viewController.landedOnFieldMessage(currentField);
+        viewController.landedOnFieldMessage(currentField);
 
         players.changePlayerTurn();
     }
@@ -132,8 +133,6 @@ public class GameController {
         if (field instanceof ChanceField){
             this.mainCon = new ChanceFieldController();
         }
-        mainCon.resolveEffect(player);
-
     }
 
 }

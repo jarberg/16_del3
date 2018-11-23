@@ -5,6 +5,7 @@ import gui_fields.GUI_Player;
 import gui_fields.GUI_Street;
 import gui_main.GUI;
 import monopoly.model.board.Field;
+import monopoly.model.player.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -148,5 +149,8 @@ public class MonopolyView {
 
     public void showMessage(String fieldMessage) {
         gui.showMessage(fieldMessage);
+    }
+    public void setPlayerBalance(Player player, int amount){
+        getGUIplayerByName(player.getName()).setBalance(amount);
     }
 }

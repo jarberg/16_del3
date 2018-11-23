@@ -1,5 +1,6 @@
 package monopoly.controller;
 
+import gui_fields.GUI_Player;
 import monopoly.model.player.Player;
 
 import monopoly.model.board.Field;
@@ -71,5 +72,8 @@ public class ViewController {
     public void landedOnFieldMessage(Field currentField) {
         String fieldMessage = currentField.getMessage();
         view.showMessage(fieldMessage);
+    }
+    public void setGUIPlayerBalance(Player player,int amount){
+        view.setPlayerBalance(player, amount);
     }
 }

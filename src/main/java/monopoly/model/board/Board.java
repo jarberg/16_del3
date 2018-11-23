@@ -50,12 +50,11 @@ public class Board {
                     Fields[i] = new ParkingField(fields[i][0], fields[i][2], descrip[i], mess[i], color);
                     break;
                 case 6:
-                    Fields[i] = new PropertyField(fields[i][0], fields[i][2],descrip[i], mess[i], color, null, Integer.valueOf(fields[i][1]), Integer.valueOf(fields[i][4]));
+                    Fields[i] = new PropertyField(fields[i][0], fields[i][2],descrip[i], mess[i], color, null, Integer.valueOf(fields[i][2]), Integer.valueOf(fields[i][4]));
                     break;
             }
         }
     }
     public Field[] getFields(){return Fields;}
-
 
 }

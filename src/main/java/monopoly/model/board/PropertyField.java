@@ -25,11 +25,9 @@ public class PropertyField extends Field {
     public Player getOwner(){
         return this.owner;
     }
-    public boolean isOwner(Player player){
-        return this.owner.equals(player);
-    }
     public int getPairIndex(){return pairIndex;}
     public int getValue(){return value;}
+
 
 
 }
