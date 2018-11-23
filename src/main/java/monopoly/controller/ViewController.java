@@ -14,10 +14,17 @@ public class ViewController {
     private String filepath;
     private TranslatorController translator;
     private Board board;
+    private static ViewController singleInstance = null;
 
-    public ViewController(){
+    private ViewController(){
         this.fileReader = new MonopolyFileReader();
         this.view = new MonopolyView();
+    }
+
+    public static ViewController getInstance(){
+        if(singleInstance == null)
+            singleInstance = new ViewController();
+        return singleInstance;
     }
 
     public String getUserLanguage(){

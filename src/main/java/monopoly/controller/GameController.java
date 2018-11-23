@@ -9,6 +9,7 @@ import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 import monopoly.view.MonopolyView;
 
+import javax.swing.text.View;
 import java.awt.*;
 
 public class GameController {
@@ -23,14 +24,20 @@ public class GameController {
     private Playerlist players;
     private Die die;
     FieldController mainCon;
+    private static GameController singleInstance = null;
 
-
-    public GameController(){
-        viewController = new ViewController();
+    private GameController(){
+        viewController = ViewController.getInstance();
         fileReader = new MonopolyFileReader();
         this.die = new Die();
         setFilepathLanguage(defaultLanguage);
+    }
 
+    public static GameController getInstance(){
+        if(singleInstance == null)
+            singleInstance = new GameController();
+
+        return singleInstance;
     }
 
     public void setupGame(){
@@ -111,6 +118,10 @@ public class GameController {
         viewController.landedOnFieldMessage(currentField);
 
         players.changePlayerTurn();
+    }
+
+    public Field[] getFields(){
+        return board.getFields();
     }
 
     private void getFieldType(Field field, Player player){
