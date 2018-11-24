@@ -47,6 +47,14 @@ public class Playerlist {
         return noWinnerYet;
     }
 
+    public boolean hasPlayerWithName(String name) {
+        for(Player player : playerList){
+            if (player.getName().equals(name))
+                return true;
+        }
+        return false;
+    }
+
     //Sort by age method?
 
 }

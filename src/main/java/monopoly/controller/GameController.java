@@ -75,6 +75,12 @@ public class GameController {
             String name = viewController.getPlayerName();
             int age = viewController.getPlayerAge();
             Color color = Color.red;
+            int playerIdentifier = 2;
+            String playerName = name;
+            while(players.hasPlayerWithName(playerName)){
+                playerName = name + playerIdentifier;
+                playerIdentifier++;
+            }
             players.addPlayer(new Player(name, age, color));
         }
         this.players = players;
