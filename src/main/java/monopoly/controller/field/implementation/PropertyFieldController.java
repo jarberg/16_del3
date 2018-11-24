@@ -40,6 +40,7 @@ public class PropertyFieldController extends FieldController {
         }
         else if(otherPlayerIsOwner){
             if(pairPropertyOwned){
+                viewController.pairPropertyMessage(owner.getName());
                 int cost = this.field.getValue()*PROPERTY_MULTIPLIER;
                 payRentToProperty(player, owner, cost);
                 viewController.setGUIPlayerBalance(owner, owner.getBalance());
@@ -61,20 +62,14 @@ public class PropertyFieldController extends FieldController {
         }
         else{
             PropertyField[] fields = getFieldsOwnedByPlayer(player);
-            for (PropertyField f : fields) {
-                if (!playerHasMoney(this.player, cost)) {
-                    viewController.notEnoughMoneyMessage(player.getName());
-                    sellField(player, f);
-                    viewController.soldPropertyMessage(player.getName(), f.getTitle(), player.getBalance());
-                }
-            }
+            sellFieldsUntilRichEnough(player, cost, fields);
             if(!playerHasMoney(this.player, cost)){
                 viewController.notEnoughMoneyMessage(player.getName());
                 gameController.endGame();
             }
             player.addToBalance(-cost);
             this.field.setOwner(player);
-            viewController.boughtFromBankMessage(player.getName(), this.field);
+            viewController.boughtFromBankMessage(player.getName(), this.field, cost);
         }
     }
 
@@ -82,19 +77,28 @@ public class PropertyFieldController extends FieldController {
         if(playerHasMoney(this.player, cost)){
             player.addToBalance(-cost);
             owner.addToBalance(cost);
+            viewController.paidRentMessage(player.getName(), owner.getName(), cost);
         }
         else{
             PropertyField[] fields = getFieldsOwnedByPlayer(player);
-            for (PropertyField f : fields) {
-                if (!playerHasMoney(this.player, cost)) {
-                    sellField(player, f);
-                }
-            }
+            sellFieldsUntilRichEnough(player, cost, fields);
             if(!playerHasMoney(this.player, cost)){
+                viewController.notEnoughMoneyMessage(player.getName());
                 gameController.endGame();
             }
             player.addToBalance(-cost);
             owner.addToBalance(cost);
+            viewController.paidRentMessage(player.getName(), owner.getName(), cost);
+        }
+    }
+
+    private void sellFieldsUntilRichEnough(Player player, int cost, PropertyField[] fields) {
+        for (PropertyField f : fields) {
+            if (!playerHasMoney(this.player, cost)) {
+                viewController.notEnoughMoneyMessage(player.getName());
+                sellField(player, f);
+                viewController.soldPropertyMessage(player.getName(), f.getTitle(), player.getBalance());
+            }
         }
     }
 

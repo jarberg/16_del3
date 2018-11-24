@@ -148,4 +148,12 @@ public class ViewController {
         view.showMessage(name + translator.getSoldPropertyMessage());
         view.showMessage(name + translator.getBalanceMessage() + balance);
     }
+
+    public void paidRentMessage(String name, String ownerName, int cost) {
+        view.showMessage(name + translator.getPaidRentMessage() + ownerName + translator.getPriceMessage() + cost);
+    }
+
+    public void pairPropertyMessage(String name) {
+        view.showMessage(translator.getPairPropertyMessage() + name);
+    }
 }

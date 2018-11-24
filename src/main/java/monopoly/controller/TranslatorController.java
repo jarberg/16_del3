@@ -66,6 +66,14 @@ public class TranslatorController {
         return getMenuStringByKey("GET_BALANCE");
     }
 
+    public String getPaidRentMessage() {
+        return getMenuStringByKey("PAID_RENT");
+    }
+
+    public String getPairPropertyMessage() {
+        return getMenuStringByKey("PAIR_PROPERTY");
+    }
+
     private String getMenuStringByKey(String key){
         return fileReader.getMenuMessageBeMessageKey(filePath, key);
     }
