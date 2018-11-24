@@ -132,8 +132,8 @@ public class ViewController {
         return view.getMaxAge();
     }
 
-    public void showFieldMessage(String fieldMessage){
-        view.showMessage(fieldMessage);
+    public void showFieldMessage(String name, String fieldMessage){
+        view.showMessage(name + " " + fieldMessage);
     }
 
     public void boughtFromBankMessage(String name, Field field, int cost) {

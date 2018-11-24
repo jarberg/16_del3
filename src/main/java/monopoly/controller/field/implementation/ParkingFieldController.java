@@ -11,6 +11,6 @@ public class ParkingFieldController extends FieldController {
 
     @Override
     public void resolveEffect(Player player, Field field) {
-        viewController.showFieldMessage(field.getMessage());
+        viewController.showFieldMessage(player.getName(), field.getMessage());
     }
 }
