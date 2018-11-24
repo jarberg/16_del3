@@ -116,7 +116,7 @@ public class GameController {
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
 
-        viewController.showUserTurnMessage(currentPlayer);
+        //viewController.showUserTurnMessage(currentPlayer);
         die.roll();
         int value = die.getValue();
         viewController.showDie(value);
@@ -128,7 +128,7 @@ public class GameController {
         Field currentField = board.getFields()[position];
         currentField.resolveEffect(currentPlayer);
 
-        viewController.landedOnFieldMessage(currentField);
+        //viewController.landedOnFieldMessage(currentField);
 
         players.changePlayerTurn();
     }
@@ -139,5 +139,6 @@ public class GameController {
 
     public void endGame() {
         //Not implemented yet, feel free!
+        System.out.println("Game ended!");
     }
 }
