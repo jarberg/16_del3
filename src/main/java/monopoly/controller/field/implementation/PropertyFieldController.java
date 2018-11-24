@@ -42,12 +42,15 @@ public class PropertyFieldController extends FieldController {
             if(pairPropertyOwned){
                 int cost = this.field.getValue()*PROPERTY_MULTIPLIER;
                 payRentToProperty(player, owner, cost);
+                viewController.setGUIPlayerBalance(owner, owner.getBalance());
             }
             else{
                 int cost = this.field.getValue();
                 payRentToProperty(player, owner, cost);
+                viewController.setGUIPlayerBalance(owner, owner.getBalance());
             }
         }
+        viewController.setGUIPlayerBalance(player, player.getBalance());
     }
 
     private void attemptToBuyFromBank(Player player, int cost) {

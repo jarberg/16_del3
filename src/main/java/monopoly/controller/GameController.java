@@ -111,7 +111,6 @@ public class GameController {
         Field currentField = board.getFields()[position];
         currentField.resolveEffect(currentPlayer);
 
-        viewController.setGUIPlayerBalance(currentPlayer, currentPlayer.getBalance());
         viewController.landedOnFieldMessage(currentField);
 
         players.changePlayerTurn();
