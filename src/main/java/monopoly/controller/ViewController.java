@@ -1,11 +1,11 @@
 package monopoly.controller;
 
-import gui_fields.GUI_Player;
 import monopoly.model.player.Player;
 
 import monopoly.model.board.Field;
 import monopoly.view.MonopolyView;
-import monopoly.model.board.Board;
+
+import java.awt.*;
 
 public class ViewController {
 
@@ -88,4 +88,45 @@ public class ViewController {
     }
 
 
+    public Color getUserColor(String name) {
+        String message = translator.getPlayerColorMessage();
+        String[] colorChoices = new String[view.getColors().size()];
+        String blue = translator.getBlueColorDescription();
+        String red = translator.getRedColorDescription();
+        String orange = translator.getOrangeColorDescription();
+        String green = translator.getGreenColorDescription();
+
+        for (int i = 0; i < view.getColors().size(); i++) {
+            String colorMessage = null;
+            Color color = view.getColors().get(i);
+            if(color == Color.blue)
+                colorMessage = blue;
+            if(color == Color.red)
+                colorMessage = red;
+            if(color == Color.orange)
+                colorMessage = orange;
+            if(color == Color.green)
+                colorMessage = green;
+            colorChoices[i] = colorMessage;
+        }
+
+        String colorString = view.getUserColorString(message, colorChoices, name);
+        Color colorChosen = null;
+        if(colorString.equals(blue))
+            colorChosen = Color.blue;
+        if(colorString.equals(red))
+            colorChosen = Color.red;
+        if(colorString.equals(orange))
+            colorChosen = Color.orange;
+        if(colorString.equals(green))
+            colorChosen = Color.green;
+        view.getColors().remove(colorChosen);
+        if(colorChosen == null)
+            colorChosen = Color.black;
+        return colorChosen;
+    }
+
+    public int getMaxAge() {
+        return view.getMaxAge();
+    }
 }

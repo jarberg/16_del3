@@ -11,14 +11,23 @@ public class Player {
     private int position;
     private boolean isWinner;
     private boolean hasGetOutOfJail;
-    private static final int startPosition = 0;
+    private static final int START_POSITION = 0;
+    private static final Color DEFAULT_COLOR = Color.black;
+
+    public Player(String name, int age){
+        this.name = name;
+        this.age = age;
+        this.color = DEFAULT_COLOR;
+        this.account = new Account();
+        this.position = START_POSITION;
+    }
 
     public Player(String name, int age, Color color){
         this.name = name;
         this.age = age;
         this.color = color;
         this.account = new Account();
-        this.position = startPosition;
+        this.position = START_POSITION;
     }
 
     public boolean equals(String otherPlayerName) {
@@ -32,6 +41,14 @@ public class Player {
 
     public String getName(){
         return this.name;
+    }
+
+    public int getAge(){
+        return this.age;
+    }
+
+    public void setColor(Color color){
+        this.color = color;
     }
 
     public void addToBalance(int amount){

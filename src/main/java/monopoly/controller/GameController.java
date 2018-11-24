@@ -7,6 +7,8 @@ import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 
 import java.awt.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class GameController {
 
@@ -39,6 +41,7 @@ public class GameController {
         createGameBoard();
         playerAmount = getPlayerAmount();
         createPlayers();
+        makePlayersChooseColor();
         showGameBoard();
         addPlayersToGUI();
     }
@@ -74,7 +77,6 @@ public class GameController {
         for (int i = 0; i < getPlayerAmount(); i++) {
             String name = viewController.getPlayerName();
             int age = viewController.getPlayerAge();
-            Color color = Color.red;
             int playerIdentifier = 2;
             //Name insurance here because GUI doesn't allow two players with the same name.
             String playerName = name;
@@ -82,9 +84,24 @@ public class GameController {
                 playerName = name + "#" + playerIdentifier;
                 playerIdentifier++;
             }
-            players.addPlayer(new Player(playerName, age, color));
+            players.addPlayer(new Player(playerName, age));
         }
         this.players = players;
+    }
+
+    private void makePlayersChooseColor() {
+        for(int j = 0; j < players.getPlayerDeque().size(); j++){
+            Player playerChoosingColor = players.getNextPlayer();
+            for(Player player : players.getPlayerDeque()){
+                if(playerChoosingColor.getColor() != Color.black)
+                    playerChoosingColor = player;
+                if(player.getAge() < playerChoosingColor.getAge() && player.getColor() == Color.black){
+                    playerChoosingColor = player;
+                }
+            }
+            playerChoosingColor.setColor(viewController.getUserColor(playerChoosingColor.getName()));
+            players.changePlayerTurn();
+        }
     }
 
     private void showGameBoard(){

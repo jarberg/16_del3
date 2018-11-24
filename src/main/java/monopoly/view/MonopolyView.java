@@ -1,5 +1,6 @@
 package monopoly.view;
 
+import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_fields.GUI_Street;
@@ -26,8 +27,8 @@ public class MonopolyView {
         //Consider de-hardcoding colors.
         this.colors.add(Color.BLUE);
         this.colors.add(Color.ORANGE);
-        this.colors.add(Color.WHITE);
-        this.colors.add(Color.BLACK);
+        this.colors.add(Color.RED);
+        this.colors.add(Color.GREEN);
     }
 
     public void showEmptyGUI(){
@@ -65,7 +66,17 @@ public class MonopolyView {
 
     public void addPlayer(String name, Color color){
         //The uniqueness of names should be controlled in controller (player object names also need uniqueness)
-        GUI_Player player = new GUI_Player(name);
+        GUI_Car playerCar = new GUI_Car();
+        if(color == Color.blue)
+            playerCar = new GUI_Car(color, color, GUI_Car.Type.UFO, GUI_Car.Pattern.FILL);
+        if(color == Color.orange)
+            playerCar = new GUI_Car(color, color, GUI_Car.Type.TRACTOR, GUI_Car.Pattern.FILL);
+        if(color == Color.red)
+            playerCar = new GUI_Car(color, color, GUI_Car.Type.RACECAR, GUI_Car.Pattern.FILL);
+        if(color == Color.green)
+            playerCar = new GUI_Car(color, color, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
+
+        GUI_Player player = new GUI_Player(name, 0, playerCar);
         player.getCar().setPrimaryColor(color);
         this.guiPlayers.add(player);
         this.gui.addPlayer(player);
@@ -110,11 +121,6 @@ public class MonopolyView {
         targetField.setCar(player,false);
     }
 
-    public Color getUserColor(String message){
-        ColorHandler colorHandler = new ColorHandler(gui, colors);
-        return colorHandler.getUserColor(message);
-    }
-
     public int getPlayerAmount(String message, String[] playerAmounts){
         String playerAmountString = getUserChoice(message, playerAmounts);
         return Integer.parseInt(playerAmountString);
@@ -127,6 +133,14 @@ public class MonopolyView {
 
     private String getUserChoice(String message, String... options){
         return gui.getUserSelection(message, options);
+    }
+
+    public ArrayList<Color> getColors(){
+        return this.colors;
+    }
+
+    public String getUserColorString(String message, String[] options, String name) {
+        return getUserChoice(message + " " + name, options);
     }
 
     public String getPlayerName(String message){
@@ -153,4 +167,10 @@ public class MonopolyView {
     public void setPlayerBalance(Player player, int amount){
         getGUIplayerByName(player.getName()).setBalance(amount);
     }
+
+    public int getMaxAge(){
+        return MAX_AGE;
+    }
+
+
 }

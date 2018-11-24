@@ -55,6 +55,13 @@ public class Playerlist {
         return false;
     }
 
-    //Sort by age method?
+    public Player getYoungest(){
+        Player player = getNextPlayer();
+        for(Player p : playerList){
+            if(p.getAge() < player.getAge())
+                player = p;
+        }
+        return player;
+    }
 
 }

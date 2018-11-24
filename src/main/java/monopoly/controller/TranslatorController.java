@@ -26,6 +26,26 @@ public class TranslatorController {
         return getMenuStringByKey("PLAYER_TURN");
     }
 
+    public String getPlayerColorMessage() {
+        return getMenuStringByKey("COLOR_CHOICE");
+    }
+
+    public String getBlueColorDescription() {
+        return getMenuStringByKey("BLUE_COLOR");
+    }
+
+    public String getRedColorDescription() {
+        return getMenuStringByKey("RED_COLOR");
+    }
+
+    public String getGreenColorDescription() {
+        return getMenuStringByKey("GREEN_COLOR");
+    }
+
+    public String getOrangeColorDescription(){
+        return getMenuStringByKey("ORANGE_COLOR");
+    }
+
     private String getMenuStringByKey(String key){
         return fileReader.getMenuMessageBeMessageKey(filePath, key);
     }

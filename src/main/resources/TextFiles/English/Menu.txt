@@ -2,3 +2,8 @@ PLAYER_AMOUNT:::Hvor mange spillere er i?
 ASK_PLAYER_NAME:::Hvem er du?
 ASK_PLAYER_AGE:::Hvor gammel er du?
 PLAYER_TURN:::Now it's time to roll the dice. It's your turn,
+COLOR_CHOICE:::Which color would you like?
+BLUE_COLOR:::The blue UFO
+RED_COLOR:::The red race car
+ORANGE_COLOR:::The orange tractor
+GREEN_COLOR:::The green car
