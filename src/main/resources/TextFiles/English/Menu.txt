@@ -7,3 +7,8 @@ BLUE_COLOR:::The blue UFO
 RED_COLOR:::The red race car
 ORANGE_COLOR:::The orange tractor
 GREEN_COLOR:::The green car
+BOUGHT_FROM_BANK::: has bought
+PRICE_MESSAGE:::, it cost
+NOT_ENOUGH_MONEY::: does not have enough money
+SOLD_PROPERTY::: has sold
+GET_BALANCE::: now has $

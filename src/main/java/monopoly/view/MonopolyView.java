@@ -161,8 +161,8 @@ public class MonopolyView {
         gui.setDie(value);
     }
 
-    public void showMessage(String fieldMessage) {
-        gui.showMessage(fieldMessage);
+    public void showMessage(String message) {
+        gui.showMessage(message);
     }
     public void setPlayerBalance(Player player, int amount){
         getGUIplayerByName(player.getName()).setBalance(amount);

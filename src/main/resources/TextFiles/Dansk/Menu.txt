@@ -7,3 +7,8 @@ BLUE_COLOR:::Den blå UFO
 RED_COLOR:::Den røde racerbil
 ORANGE_COLOR:::Den orange traktor
 GREEN_COLOR:::Den grønne bil
+BOUGHT_FROM_BANK::: har købt
+PRICE_MESSAGE:::, det kostede
+NOT_ENOUGH_MONEY::: har ikke nok penge
+SOLD_PROPERTY::: har solgt
+GET_BALANCE::: har nu en konto på

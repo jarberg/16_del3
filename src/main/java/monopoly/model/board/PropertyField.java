@@ -24,7 +24,9 @@ public class PropertyField extends Field {
         propertyFieldController.resolveEffect(player, this);
     }
 
-    public void setOwner(Player player){this.owner = player;}
+    public void setOwner(Player player){
+        this.owner = player;
+    }
     public Player getOwner(){
         return this.owner;
     }

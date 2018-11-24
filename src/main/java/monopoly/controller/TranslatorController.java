@@ -46,6 +46,26 @@ public class TranslatorController {
         return getMenuStringByKey("ORANGE_COLOR");
     }
 
+    public String getBoughtFromBankMessage() {
+        return getMenuStringByKey("BOUGHT_FROM_BANK");
+    }
+
+    public String getPriceMessage(){
+        return getMenuStringByKey("PRICE_MESSAGE");
+    }
+
+    public String getNotEnoughMoneyMessage() {
+        return getMenuStringByKey("NOT_ENOUGH_MONEY");
+    }
+
+    public String getSoldPropertyMessage() {
+        return getMenuStringByKey("SOLD_PROPERTY");
+    }
+
+    public String getBalanceMessage() {
+        return getMenuStringByKey("GET_BALANCE");
+    }
+
     private String getMenuStringByKey(String key){
         return fileReader.getMenuMessageBeMessageKey(filePath, key);
     }

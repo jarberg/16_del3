@@ -57,19 +57,24 @@ public class PropertyFieldController extends FieldController {
         if(playerHasMoney(this.player, cost)){
             player.addToBalance(-cost);
             this.field.setOwner(player);
+            viewController.boughtFromBankMessage(player.getName(), this.field, cost);
         }
         else{
             PropertyField[] fields = getFieldsOwnedByPlayer(player);
             for (PropertyField f : fields) {
                 if (!playerHasMoney(this.player, cost)) {
+                    viewController.notEnoughMoneyMessage(player.getName());
                     sellField(player, f);
+                    viewController.soldPropertyMessage(player.getName(), f.getTitle(), player.getBalance());
                 }
             }
             if(!playerHasMoney(this.player, cost)){
+                viewController.notEnoughMoneyMessage(player.getName());
                 gameController.endGame();
             }
             player.addToBalance(-cost);
             this.field.setOwner(player);
+            viewController.boughtFromBankMessage(player.getName(), this.field);
         }
     }
 

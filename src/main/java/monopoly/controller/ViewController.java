@@ -1,5 +1,7 @@
 package monopoly.controller;
 
+import monopoly.controller.field.implementation.PropertyFieldController;
+import monopoly.model.board.PropertyField;
 import monopoly.model.player.Player;
 
 import monopoly.model.board.Field;
@@ -128,5 +130,22 @@ public class ViewController {
 
     public int getMaxAge() {
         return view.getMaxAge();
+    }
+
+    public void boughtFromBankMessage(String name, Field field, int cost) {
+        view.showMessage(name + " " + translator.getBoughtFromBankMessage() + field.getTitle() + translator.getPriceMessage() + cost);
+    }
+
+    public void boughtFromBankMessage(String name, PropertyField field) {
+        view.showMessage(name + " " + translator.getBoughtFromBankMessage() + field.getTitle());
+    }
+
+    public void notEnoughMoneyMessage(String name) {
+        view.showMessage(name + translator.getNotEnoughMoneyMessage());
+    }
+
+    public void soldPropertyMessage(String name, String title, int balance) {
+        view.showMessage(name + translator.getSoldPropertyMessage());
+        view.showMessage(name + translator.getBalanceMessage() + balance);
     }
 }
