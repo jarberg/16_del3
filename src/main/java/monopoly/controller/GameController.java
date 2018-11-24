@@ -76,12 +76,13 @@ public class GameController {
             int age = viewController.getPlayerAge();
             Color color = Color.red;
             int playerIdentifier = 2;
+            //Name insurance here because GUI doesn't allow two players with the same name.
             String playerName = name;
             while(players.hasPlayerWithName(playerName)){
-                playerName = name + playerIdentifier;
+                playerName = name + "#" + playerIdentifier;
                 playerIdentifier++;
             }
-            players.addPlayer(new Player(name, age, color));
+            players.addPlayer(new Player(playerName, age, color));
         }
         this.players = players;
     }

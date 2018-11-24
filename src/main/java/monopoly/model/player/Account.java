@@ -3,9 +3,10 @@ package monopoly.model.player;
 public class Account {
 
     private int balance;
+    private static final int START_AMOUNT = 0;
 
     public Account(){
-        this.balance = 90;
+        this.balance = START_AMOUNT;
     }
 
     public int getBalance(){
