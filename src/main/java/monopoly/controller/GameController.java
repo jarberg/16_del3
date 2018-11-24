@@ -85,8 +85,18 @@ public class GameController {
     }
 
     private void addPlayersToGUI(){
+        int startAmount = 0;
+        if(playerAmount == 2)
+            startAmount = 20;
+        if(playerAmount == 3)
+            startAmount = 18;
+        if(playerAmount == 4)
+            startAmount = 16;
+
         for(Player player : players.getPlayerDeque()){
+            player.addToBalance(startAmount);
             viewController.addPlayer(player);
+            viewController.setGUIPlayerBalance(player, player.getBalance());
         }
     }
 
