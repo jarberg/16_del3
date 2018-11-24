@@ -30,6 +30,8 @@ public class GoToJailFieldController extends FieldController {
             position++;
             position = position % fields.length;
             currentField = fields[position];
+            viewController.movePlayer(player, 1);
+            player.setPosition(position);
         }
 
     }
