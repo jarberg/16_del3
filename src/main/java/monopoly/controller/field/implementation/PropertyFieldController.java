@@ -25,6 +25,7 @@ public class PropertyFieldController extends FieldController {
 
     @Override
     public void resolveEffect(Player player, Field field) {
+        viewController.showFieldMessage(field.getMessage());
         this.player = player;
         this.field = (PropertyField) field;
         Player owner = this.field.getOwner();

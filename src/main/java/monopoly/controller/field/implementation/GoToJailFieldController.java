@@ -19,6 +19,7 @@ public class GoToJailFieldController extends FieldController {
 
     @Override
     public void resolveEffect(Player player, Field field) {
+        viewController.showFieldMessage(field.getMessage());
         movePlayerToClosestJail(player);
     }
 

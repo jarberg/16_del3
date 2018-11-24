@@ -132,12 +132,16 @@ public class ViewController {
         return view.getMaxAge();
     }
 
+    public void showFieldMessage(String fieldMessage){
+        view.showMessage(fieldMessage);
+    }
+
     public void boughtFromBankMessage(String name, Field field, int cost) {
-        view.showMessage(name + " " + translator.getBoughtFromBankMessage() + field.getTitle() + translator.getPriceMessage() + cost);
+        view.showMessage(name + " " + translator.getBoughtFromBankMessage() + " " + field.getTitle() + translator.getPriceMessage() + cost);
     }
 
     public void boughtFromBankMessage(String name, PropertyField field) {
-        view.showMessage(name + " " + translator.getBoughtFromBankMessage() + field.getTitle());
+        view.showMessage(name + " " + translator.getBoughtFromBankMessage() + " " + field.getTitle());
     }
 
     public void notEnoughMoneyMessage(String name) {
@@ -145,12 +149,12 @@ public class ViewController {
     }
 
     public void soldPropertyMessage(String name, String title, int balance) {
-        view.showMessage(name + translator.getSoldPropertyMessage());
+        view.showMessage(name + translator.getSoldPropertyMessage() + " " + title);
         view.showMessage(name + translator.getBalanceMessage() + balance);
     }
 
     public void paidRentMessage(String name, String ownerName, int cost) {
-        view.showMessage(name + translator.getPaidRentMessage() + ownerName + translator.getPriceMessage() + cost);
+        view.showMessage(name + translator.getPaidRentMessage() + " " + ownerName + translator.getPriceMessage() + cost);
     }
 
     public void pairPropertyMessage(String name) {

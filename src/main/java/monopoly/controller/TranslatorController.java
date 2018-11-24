@@ -74,6 +74,10 @@ public class TranslatorController {
         return getMenuStringByKey("PAIR_PROPERTY");
     }
 
+    public String landedOnFieldMessage() {
+        return getMenuStringByKey("LANDED_ON_FIELD");
+    }
+
     private String getMenuStringByKey(String key){
         return fileReader.getMenuMessageBeMessageKey(filePath, key);
     }
