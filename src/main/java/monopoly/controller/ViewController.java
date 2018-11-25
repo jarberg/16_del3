@@ -165,5 +165,5 @@ public class ViewController {
         view.showWinner(name);
     }
 
-    public void setFieldColor(Color color, Player player){view.setFieldBorderColor(color, player);}
+    public void setFieldColor(Color color, int fieldIndex){view.setFieldColor(color, fieldIndex);}
 }

@@ -115,6 +115,7 @@ public class Player {
     public void sellField(Field index, PropertyField field){
         this.addToBalance(field.getValue());
         this.ownedFields.remove(index);
+
         field.setOwner(null);
     }
 

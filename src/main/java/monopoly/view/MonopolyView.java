@@ -174,10 +174,10 @@ public class MonopolyView {
         return MAX_AGE;
     }
 
-    public void setFieldBorderColor(Color color, Player player){
-        this.guiBoard[player.getPosition()].setBackGroundColor(color.darker());
-        this.guiBoard[player.getPosition()].setForeGroundColor((color.brighter()).brighter().brighter().brighter().brighter().brighter());
-    }
+    public void setFieldColor(Color color, int field){
 
+        this.guiBoard[field].setBackGroundColor(color.darker());
+        this.guiBoard[field].setForeGroundColor(color.brighter());
+    }
 
 }

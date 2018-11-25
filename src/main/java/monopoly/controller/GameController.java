@@ -135,7 +135,9 @@ public class GameController {
         Player currentPlayer = players.getNextPlayer();
 
         //viewController.showUserTurnMessage(currentPlayer);
+
         payBeforeLeaveJail(currentPlayer);
+
         die.roll();
         int value = die.getValue();
         viewController.showDie(value);
@@ -167,23 +169,23 @@ public class GameController {
         System.out.println("Game ended!");
     }
 
+
+    private void checkIfPassedStart(int last, Player player){
+        if(last > player.getPosition()){
+            player.addToBalance(2);
+            viewController.setGUIPlayerBalance(player, player.getBalance());
+        }
+    }
+
     private void payBeforeLeaveJail(Player player){
         if(player.getPayToLeaveJail()==true){
-            if(player.getBalance()>2){
+            if(player.getBalance()>=2){
                 player.addToBalance(-2);
                 viewController.setGUIPlayerBalance(player, player.getBalance());
             }
             else{
                 player.setLoser(true);
             }
-        }
-    }
-
-    private void checkIfPassedStart(int last, Player player){
-        if(last > player.getPosition()){
-            player.addToBalance(2);
-            viewController.setGUIPlayerBalance(player, player.getBalance());
-
         }
     }
 }
