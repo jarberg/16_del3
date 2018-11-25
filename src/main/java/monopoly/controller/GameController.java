@@ -128,21 +128,27 @@ public class GameController {
         while(players.noWinnerYet()){
             playTurn();
         }
+        endGame();
     }
 
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
 
         //viewController.showUserTurnMessage(currentPlayer);
+        payBeforeLeaveJail(currentPlayer);
         die.roll();
         int value = die.getValue();
         viewController.showDie(value);
 
+        int lastField = currentPlayer.getPosition();
         viewController.movePlayer(currentPlayer, value);
         currentPlayer.movePosition(value, board.getFields().length);
         int position = currentPlayer.getPosition();
 
         Field currentField = board.getFields()[position];
+
+        checkIfPassedStart(lastField, currentPlayer);
+
         currentField.resolveEffect(currentPlayer);
 
         //viewController.landedOnFieldMessage(currentField);
@@ -155,7 +161,29 @@ public class GameController {
     }
 
     public void endGame() {
-        //Not implemented yet, feel free!
+       if(!players.noWinnerYet()){
+
+       }
         System.out.println("Game ended!");
+    }
+
+    private void payBeforeLeaveJail(Player player){
+        if(player.getPayToLeaveJail()==true){
+            if(player.getBalance()>2){
+                player.addToBalance(-2);
+                viewController.setGUIPlayerBalance(player, player.getBalance());
+            }
+            else{
+                player.setLoser(true);
+            }
+        }
+    }
+
+    private void checkIfPassedStart(int last, Player player){
+        if(last > player.getPosition()){
+            player.addToBalance(2);
+            viewController.setGUIPlayerBalance(player, player.getBalance());
+
+        }
     }
 }

@@ -41,7 +41,7 @@ public class Playerlist {
     public boolean noWinnerYet() {
         boolean noWinnerYet = true;
         for(Player player : playerList){
-            if(player.isWinner())
+            if(player.isLoser())
                 noWinnerYet = false;
         }
         return noWinnerYet;

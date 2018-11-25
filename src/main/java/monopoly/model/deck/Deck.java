@@ -9,7 +9,7 @@ public class Deck {
 
     public Deck(int length){ cardArray = new ChanceCard[length]; }
 
-    public void makeDeck(String[][] textFileInput){
+    private void makeDeck(String[][] textFileInput){
         for (int i = 0; i < cardArray.length ; i++) {
             String descrip = textFileInput[i][1];
             int effektID = Integer.valueOf(textFileInput[i][0]);

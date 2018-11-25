@@ -1,6 +1,11 @@
 package monopoly.model.player;
 
+import monopoly.model.board.Field;
+import monopoly.model.board.PropertyField;
+
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
 
@@ -9,10 +14,14 @@ public class Player {
     private Account account;
     private int age;
     private int position;
+    private boolean isLoser;
     private boolean isWinner;
     private boolean hasGetOutOfJail;
     private static final int START_POSITION = 0;
     private static final Color DEFAULT_COLOR = Color.black;
+    private boolean payToLeaveJail =false;
+    private List<Field> ownedFields =  new ArrayList<>();
+
 
     public Player(String name, int age){
         this.name = name;
@@ -78,6 +87,13 @@ public class Player {
     public void setWinner(boolean isWinner){
         this.isWinner=isWinner;
     }
+    public boolean isLoser(){
+        return this.isLoser;
+    }
+
+    public void setLoser(boolean isLoser){
+        this.isLoser=isLoser;
+    }
 
     public boolean hasGetOutOfJail(){
         return this.hasGetOutOfJail ;
@@ -91,5 +107,30 @@ public class Player {
         this.position = position + number;
         this.position = position % boardSize;
     }
+    public boolean getPayToLeaveJail(){
+        return this.payToLeaveJail;
+    }
+    public void setPayToLeaveJail(boolean payToLeaveJail1){ this.payToLeaveJail = payToLeaveJail1;}
+
+    public void sellField(Field index, PropertyField field){
+        this.addToBalance(field.getValue());
+        this.ownedFields.remove(index);
+        field.setOwner(null);
+    }
+
+    public List<Field> getOwnedFields(){
+      return ownedFields;
+
+       /* Field[] allFields = board;
+        List<PropertyField> ownedFields = new ArrayList<>();
+        for(Field f : allFields){
+            if(f instanceof PropertyField && ((PropertyField) f).getOwner() == this)
+                ownedFields.add((PropertyField)f);
+        }
+        return ownedFields.toArray(new PropertyField[0]);
+    */
+    }
+
+    public void setOwnedFields(Field index){ownedFields.add(index);}
 }
 
