@@ -128,6 +128,7 @@ public class GameController {
         while(players.noWinnerYet()){
             playTurn();
         }
+        //endGame(players.getWinner());
     }
 
     private void playTurn() {
@@ -154,8 +155,8 @@ public class GameController {
         return board.getFields();
     }
 
-    public void endGame() {
+    public void endGame(Player player) {
         //Not implemented yet, feel free!
-        System.out.println("Game ended!");
+        viewController.showWinAnimation(player.getName());
     }
 }

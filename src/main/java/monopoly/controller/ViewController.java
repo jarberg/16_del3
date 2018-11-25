@@ -160,4 +160,8 @@ public class ViewController {
     public void pairPropertyMessage(String name) {
         view.showMessage(translator.getPairPropertyMessage() + name);
     }
+
+    public void showWinAnimation(String name){
+        view.showWinner(name);
+    }
 }
