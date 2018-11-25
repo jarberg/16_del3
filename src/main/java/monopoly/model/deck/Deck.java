@@ -10,11 +10,11 @@ public class Deck {
     public Deck(int length){ cardArray = new ChanceCard[length];
         }
 
-    public void makeDeck(){
+    public void makeDeck(String[][] textFileInput){
         for (int i = 0; i < cardArray.length ; i++) {
-            String descrip = "whooooo";
-            //int effektID = Integer.valueOf(textFileInput[i][0]);
-            cardArray[i] = new ChanceCard(descrip, (1 + (int)(Math.random() * 2)));
+            String descrip = textFileInput[i][1];
+            int effektID = Integer.valueOf(textFileInput[i][0]);
+            cardArray[i] = new ChanceCard(descrip, (1 + (int)(Math.random() * 10)));
         }
     }
     public void shuffleDeck(){

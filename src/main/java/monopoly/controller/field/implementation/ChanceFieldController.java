@@ -20,9 +20,9 @@ public class ChanceFieldController extends FieldController {
     private static ChanceFieldController singleInstance = null;
     private String filePath;
 
-    public ChanceFieldController(){
-        deck = new Deck(10);
-        deck.makeDeck();
+    private ChanceFieldController(){
+        deck = new Deck(19);
+        deck.makeDeck(MonopolyFileReader.getInstance().getChanceCards(gameController.getLanguageFilepath()));
         deck.shuffleDeck();
     }
 
@@ -39,7 +39,8 @@ public class ChanceFieldController extends FieldController {
         //viewController.showFieldMessage(player.getName(), deck.getTopCard().getDescription());
 
         setID(deck.getTopCard().getEffectID());
-        System.out.println(deck.getTopCard());
+        System.out.println(deck.getTopCard().getDescription());
+        System.out.println(deck.getTopCard().getEffectID());
 
 
         deck.putTopCardtoBack();

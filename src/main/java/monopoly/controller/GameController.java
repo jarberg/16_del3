@@ -166,7 +166,7 @@ public class GameController {
         return board.getFields();
     }
 
-    public void endGame() {
+    private void endGame() {
        if(!players.noWinnerYet()){
 
        }
@@ -192,4 +192,6 @@ public class GameController {
         }
     }
     public Playerlist getPlayers(){return players;}
+
+    public String getLanguageFilepath(){return this.languageFilepath;}
 }
