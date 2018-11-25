@@ -1,5 +1,6 @@
 package monopoly.controller;
 
+import monopoly.controller.field.implementation.ChanceFieldController;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
@@ -42,8 +43,11 @@ public class GameController {
         playerAmount = getPlayerAmount();
         createPlayers();
         makePlayersChooseColor();
+        ChanceFieldController.getInstance().setFilePath(languageFilepath);
         showGameBoard();
         addPlayersToGUI();
+
+
     }
 
     private void setupLanguage(){
@@ -169,7 +173,6 @@ public class GameController {
         System.out.println("Game ended!");
     }
 
-
     private void checkIfPassedStart(int last, Player player){
         if(last > player.getPosition()){
             player.addToBalance(2);
@@ -188,4 +191,5 @@ public class GameController {
             }
         }
     }
+    public Playerlist getPlayers(){return players;}
 }

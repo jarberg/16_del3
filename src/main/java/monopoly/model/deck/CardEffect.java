@@ -1,18 +1,21 @@
 package monopoly.model.deck;
 
+import monopoly.model.player.Player;
+import monopoly.model.player.Playerlist;
+
 public abstract class CardEffect {
 
-    public void resolveEffect(int ID){
-        switch(ID){
-            case 1: ;
-                break;
-            case 2: ;
-                break;
-            case 3: ;
-                break;
-        }
+    private Player player;
+    private Playerlist players;
 
-    }
+    public abstract void resolveEffect(int ID);
 
+
+    public void setPlayer(Player player){this.player = player;}
+
+    public void setPlayers(Playerlist players){this.players = players;}
 
 }
+
+
+
