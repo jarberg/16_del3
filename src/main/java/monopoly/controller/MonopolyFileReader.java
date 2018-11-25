@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class MonopolyFileReader {
 
     private static MonopolyFileReader singleInstance = null;
+    private Map<String, String> messageMap;
 
     private MonopolyFileReader(){
     }
@@ -66,7 +67,7 @@ public class MonopolyFileReader {
 
     public String[] getDirectoriesStringArray(){ return fileReader("TextFiles/"); }
 
-    public String getMenuMessageBeMessageKey(String filePath, String messageKey){
+    public void loadMenuMessages(String filePath){
         Map<String, String> messageMap = new HashMap<>();
         try(InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath+"/Menu.txt")){
             try(Scanner scanner = new Scanner(resourceAsStream)){
@@ -81,6 +82,10 @@ public class MonopolyFileReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.messageMap = messageMap;
+    }
+
+    public String getMenuMessageBeMessageKey(String messageKey){
         return messageMap.get(messageKey);
     }
 

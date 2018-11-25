@@ -8,6 +8,7 @@ public class TranslatorController {
     public TranslatorController(String filePath){
         this.fileReader = MonopolyFileReader.getInstance();
         this.filePath = filePath;
+        fileReader.loadMenuMessages(filePath);
     }
 
     public String getPlayerAmountChoiceMessage(){
@@ -79,7 +80,7 @@ public class TranslatorController {
     }
 
     private String getMenuStringByKey(String key){
-        return fileReader.getMenuMessageBeMessageKey(filePath, key);
+        return fileReader.getMenuMessageBeMessageKey(key);
     }
 
 
