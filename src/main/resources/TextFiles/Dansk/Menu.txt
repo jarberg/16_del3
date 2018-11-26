@@ -14,3 +14,5 @@ SOLD_PROPERTY::: har solgt
 GET_BALANCE::: har nu en konto på $
 PAID_RENT::: har betalt leje til
 PAIR_PROPERTY:::Prisen er fordoblet fordi begge felterne ejes af
+WIN_MESSAGE:::har vundet!
+GAME_OVER:::Spillet er slut!

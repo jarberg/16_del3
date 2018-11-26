@@ -1,13 +1,17 @@
 package monopoly.controller;
 
+import monopoly.controller.field.FieldController;
+import monopoly.controller.field.implementation.PropertyFieldController;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
+import monopoly.model.board.PropertyField;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 
 import java.awt.*;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 
 public class GameController {
@@ -155,8 +159,33 @@ public class GameController {
         return board.getFields();
     }
 
-    public void endGame(Player player) {
-        //Not implemented yet, feel free!
-        viewController.showWinAnimation(player.getName());
+    public void endGame(Player loser) {
+        Deque<Player> playersInGame = players.getPlayerDeque();
+        playersInGame.remove(loser);
+        ArrayList<Player> winnerCandidates = new ArrayList<>();
+        int maxPoints = 0;
+        for(Player player : playersInGame){
+            if(maxPoints < player.getBalance())
+                maxPoints = player.getBalance();
+        }
+        for(Player player : playersInGame){
+            if(player.getBalance() == maxPoints)
+                winnerCandidates.add(player);
+        }
+        for(Player player : winnerCandidates){
+            PropertyFieldController fc = new PropertyFieldController();
+            for(PropertyField field : fc.getFieldsOwnedByPlayer(player)){
+                fc.sellField(player, field);
+            }
+        }
+        Player winner = null;
+        int winningPoints = 0;
+        for(Player player : winnerCandidates){
+            if(winningPoints < player.getBalance()){
+                winningPoints = player.getBalance();
+                winner = player;
+            }
+        }
+        viewController.showWinAnimation(winner.getName());
     }
 }

@@ -64,6 +64,10 @@ public class MonopolyView {
         this.gui = new GUI(guiBoard, Color.green);
     }
 
+    public void close(){
+        this.gui.close();
+    }
+
     public void addPlayer(String name, Color color){
         //The uniqueness of names should be controlled in controller (player object names also need uniqueness)
         GUI_Car playerCar = new GUI_Car();

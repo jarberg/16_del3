@@ -162,6 +162,9 @@ public class ViewController {
     }
 
     public void showWinAnimation(String name){
+        view.showMessage(name + " " + translator.getWinMessage());
         view.showWinner(name);
+        view.showMessage(translator.getGameOverMessage());
+        view.close();
     }
 }

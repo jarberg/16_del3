@@ -14,3 +14,5 @@ SOLD_PROPERTY::: has sold
 GET_BALANCE::: now has $
 PAID_RENT::: has paid rent to
 PAIR_PROPERTY:::The price is double because both fields are owned by
+WIN_MESSAGE:::has won!
+GAME_OVER:::Game over!

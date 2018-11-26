@@ -79,10 +79,16 @@ public class TranslatorController {
         return getMenuStringByKey("LANDED_ON_FIELD");
     }
 
+    public String getWinMessage() {
+        return getMenuStringByKey("WIN_MESSAGE");
+    }
+
+    public String getGameOverMessage() {
+        return getMenuStringByKey("GAME_OVER");
+    }
+
     private String getMenuStringByKey(String key){
         return fileReader.getMenuMessageBeMessageKey(key);
     }
-
-
 
 }

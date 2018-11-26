@@ -66,7 +66,7 @@ public class PropertyFieldController extends FieldController {
             sellFieldsUntilRichEnough(player, cost, fields);
             if(!playerHasMoney(this.player, cost)){
                 viewController.notEnoughMoneyMessage(player.getName());
-                gameController.endGame();
+                gameController.endGame(player);
             }
             player.addToBalance(-cost);
             this.field.setOwner(player);
@@ -85,7 +85,7 @@ public class PropertyFieldController extends FieldController {
             sellFieldsUntilRichEnough(player, cost, fields);
             if(!playerHasMoney(this.player, cost)){
                 viewController.notEnoughMoneyMessage(player.getName());
-                gameController.endGame();
+                gameController.endGame(player);
             }
             player.addToBalance(-cost);
             owner.addToBalance(cost);
@@ -115,12 +115,12 @@ public class PropertyFieldController extends FieldController {
         return ownsBothProperties;
     }
 
-    private void sellField(Player player, PropertyField field){
+    public void sellField(Player player, PropertyField field){
         player.addToBalance(field.getValue());
         field.setOwner(null);
     }
 
-    private PropertyField[] getFieldsOwnedByPlayer(Player player){
+    public PropertyField[] getFieldsOwnedByPlayer(Player player){
         Field[] allFields = gameController.getFields();
         List<PropertyField> ownedFields = new ArrayList<>();
         for(Field f : allFields){
