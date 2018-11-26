@@ -3,6 +3,7 @@ package monopoly.controller;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
+import monopoly.model.board.PropertyField;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 
@@ -135,7 +136,12 @@ public class GameController {
         Player currentPlayer = players.getNextPlayer();
 
         //viewController.showUserTurnMessage(currentPlayer);
-
+        System.out.println(currentPlayer.getName());
+        for (Field f: currentPlayer.getOwnedFields()) {
+            System.out.print(f.getTitle());
+            System.out.print(" ");
+        }
+        System.out.println(" ");
         payBeforeLeaveJail(currentPlayer);
 
         die.roll();
@@ -182,6 +188,7 @@ public class GameController {
             if(player.getBalance()>=2){
                 player.addToBalance(-2);
                 viewController.setGUIPlayerBalance(player, player.getBalance());
+                player.setPayToLeaveJail(false);
             }
             else{
                 player.setLoser(true);

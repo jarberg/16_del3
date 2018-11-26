@@ -65,7 +65,7 @@ public class PropertyFieldController extends FieldController {
             player.addToBalance(-cost);
             this.field.setOwner(player);
             viewController.setFieldColor(player.getColor(),getFieldIndex(boardArray[player.getPosition()]));
-            this.player.setOwnedFields(gameController.getFields()[this.player.getPosition()]);
+            this.player.setOwnedFields((PropertyField) gameController.getFields()[this.player.getPosition()]);
             viewController.boughtFromBankMessage(player.getName(), this.field, cost);
 
         }
@@ -78,7 +78,7 @@ public class PropertyFieldController extends FieldController {
             player.addToBalance(-cost);
             this.field.setOwner(player);
             viewController.setFieldColor(player.getColor(),getFieldIndex(boardArray[player.getPosition()]));
-            this.player.setOwnedFields(gameController.getFields()[this.player.getPosition()]);
+            this.player.setOwnedFields((PropertyField) gameController.getFields()[this.player.getPosition()]);
             viewController.boughtFromBankMessage(player.getName(), this.field, cost);
         }
     }
@@ -97,7 +97,7 @@ public class PropertyFieldController extends FieldController {
             sellFieldsUntilRichEnough(player, cost, fields);
             if(!playerHasMoney(this.player, cost)){
                 viewController.notEnoughMoneyMessage(player.getName());
-                player.setLoser(true);
+                //player.setLoser(true);
             }
             player.addToBalance(-cost);
             owner.addToBalance(cost);
