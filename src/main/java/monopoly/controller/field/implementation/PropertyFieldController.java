@@ -60,6 +60,10 @@ public class PropertyFieldController extends FieldController {
         viewController.setGUIPlayerBalance(player, player.getBalance());
     }
 
+    public void setPlayer(Player player){
+        this.player = player;
+    }
+
     private void attemptToBuyFromBank(Player player, int cost) {
         if(playerHasMoney(this.player, cost)){
             player.addToBalance(-cost);
@@ -130,6 +134,8 @@ public class PropertyFieldController extends FieldController {
     public void sellField(PropertyField field){
         viewController.setFieldColor(Color.white, getFieldIndex(field));
         viewController.setGUIPlayerBalance(player, player.getBalance());
+        if(field == null)
+            return;
         if(field instanceof PropertyField) {
             this.player.sellField(field.getValue());
             field.setOwner(null);

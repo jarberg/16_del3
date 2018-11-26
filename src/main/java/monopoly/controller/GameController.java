@@ -130,7 +130,7 @@ public class GameController {
         while(players.noWinnerYet()){
             playTurn();
         }
-        //endGame();
+        endGame();
     }
 
     private void playTurn() {
@@ -163,9 +163,9 @@ public class GameController {
         return board.getFields();
     }
 
-    public void endGame(Player loser) {
+    public void endGame() {
         Deque<Player> playersInGame = players.getPlayerDeque();
-        playersInGame.remove(loser);
+
         ArrayList<Player> winnerCandidates = new ArrayList<>();
         int maxPoints = 0;
         for(Player player : playersInGame){
@@ -178,8 +178,10 @@ public class GameController {
         }
         for(Player player : winnerCandidates){
             PropertyFieldController fc = new PropertyFieldController();
+            fc.setPlayer(player);
             for(PropertyField field : fc.getFieldsOwnedByPlayer(player)){
-                fc.sellField(player, field);
+                if(field != null)
+                    fc.sellField(field);
             }
         }
         Player winner = null;
