@@ -9,6 +9,8 @@ import monopoly.model.board.PropertyField;
 import monopoly.model.player.Player;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PropertyFieldController extends FieldController {
@@ -65,12 +67,11 @@ public class PropertyFieldController extends FieldController {
             player.addToBalance(-cost);
             this.field.setOwner(player);
             viewController.setFieldColor(player.getColor(),getFieldIndex(boardArray[player.getPosition()]));
-            this.player.setOwnedFields((PropertyField) gameController.getFields()[this.player.getPosition()]);
             viewController.boughtFromBankMessage(player.getName(), this.field, cost);
 
         }
         else{
-            PropertyField[] fields = getOwnedFields().toArray(new PropertyField[0]);
+            PropertyField[] fields = getOwnedFields(player).toArray(new PropertyField[0]);
             sellFieldsUntilRichEnough(player, cost, fields);
             if(!playerHasMoney(this.player, cost)){
                 viewController.notEnoughMoneyMessage(player.getName());
@@ -78,7 +79,6 @@ public class PropertyFieldController extends FieldController {
             player.addToBalance(-cost);
             this.field.setOwner(player);
             viewController.setFieldColor(player.getColor(),getFieldIndex(boardArray[player.getPosition()]));
-            this.player.setOwnedFields((PropertyField) gameController.getFields()[this.player.getPosition()]);
             viewController.boughtFromBankMessage(player.getName(), this.field, cost);
         }
     }
@@ -93,11 +93,11 @@ public class PropertyFieldController extends FieldController {
 
         }
         else{
-            PropertyField[] fields = getOwnedFields().toArray(new PropertyField[0]);
+            PropertyField[] fields = getOwnedFields(player).toArray(new PropertyField[0]);
             sellFieldsUntilRichEnough(player, cost, fields);
             if(!playerHasMoney(this.player, cost)){
                 viewController.notEnoughMoneyMessage(player.getName());
-                //player.setLoser(true);
+                player.setLoser(true);
             }
             player.addToBalance(-cost);
             owner.addToBalance(cost);
@@ -133,12 +133,22 @@ public class PropertyFieldController extends FieldController {
 
         viewController.setFieldColor(Color.white, getFieldIndex(field));
         viewController.setGUIPlayerBalance(player, player.getBalance());
-        this.player.sellField(gameController.getFields()[this.player.getPosition()], field);
-
+        if(field instanceof PropertyField) {
+            this.player.sellField(field.getValue());
+            field.setOwner(null);
+        }
     }
 
-    private List<Field> getOwnedFields() {
-        return player.getOwnedFields();
+    private List<Field> getOwnedFields(Player player) {
+        List<Field> fields = new ArrayList<>();
+        for (Field f: boardArray) {
+           if(f instanceof PropertyField) {
+               if (((PropertyField) f).getOwner()==player) {
+                    fields.add(f);
+               }
+           }
+        }
+        return fields;
     }
 
     public int getFieldIndex(Field field){
@@ -152,33 +162,6 @@ public class PropertyFieldController extends FieldController {
         return fieldIndex;
     }
 
-        /*
-        Field[] tempPlayerOwnedArray = new Field[allFields.length];
 
-        for (int i = 0; i < allFields.length ; i++) {
-            if(allFields[i] instanceof PropertyField){
-                if(field.getOwner()==player){
-                    tempPlayerOwnedArray[i]= field;
-                }
-            }
-        }
-
-        int counter = 0;
-        for (Field field : tempPlayerOwnedArray) {
-            if (field != null) {
-                counter++;
-            }
-        }
-
-        Field[] playerOwnedArray = new Field[counter];
-        int counterTwo = 0;
-        for (int i = 0; i < allFields.length ; i++) {
-            if(tempPlayerOwnedArray[i] != null){
-                playerOwnedArray[counterTwo] = tempPlayerOwnedArray[i];
-                counterTwo++;
-            }
-        }
-        return playerOwnedArray;
-        */
 
 }

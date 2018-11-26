@@ -136,12 +136,6 @@ public class GameController {
         Player currentPlayer = players.getNextPlayer();
 
         //viewController.showUserTurnMessage(currentPlayer);
-        System.out.println(currentPlayer.getName());
-        for (Field f: currentPlayer.getOwnedFields()) {
-            System.out.print(f.getTitle());
-            System.out.print(" ");
-        }
-        System.out.println(" ");
         payBeforeLeaveJail(currentPlayer);
 
         die.roll();

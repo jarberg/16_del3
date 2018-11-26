@@ -20,7 +20,6 @@ public class Player {
     private static final int START_POSITION = 0;
     private static final Color DEFAULT_COLOR = Color.black;
     private boolean payToLeaveJail =false;
-    private List<Field> ownedFields =  new ArrayList<Field>();
 
 
     public Player(String name, int age){
@@ -57,7 +56,6 @@ public class Player {
     public void setGetOutOfJail(boolean hasCard){
         this.hasGetOutOfJail=hasCard;
     }
-    public void setOwnedFields(PropertyField index){ownedFields.add(index);}
     public void setPayToLeaveJail(boolean payToLeaveJail1){ this.payToLeaveJail = payToLeaveJail1;}
     public void setPosition(int position){
         this.position = position;
@@ -70,11 +68,8 @@ public class Player {
         this.position = position + number;
         this.position = position % boardSize;
     }
-    public void sellField(Field index, PropertyField field){
-        this.addToBalance(field.getValue());
-        this.ownedFields.remove(field);
-
-        field.setOwner(null);
+    public void sellField(int value){
+        this.addToBalance(value);
     }
 
     public String getName(){
@@ -95,7 +90,6 @@ public class Player {
     public boolean getPayToLeaveJail(){
         return this.payToLeaveJail;
     }
-    public List<Field> getOwnedFields(){ return ownedFields; }
 
     public boolean hasGetOutOfJail(){
         return this.hasGetOutOfJail ;
