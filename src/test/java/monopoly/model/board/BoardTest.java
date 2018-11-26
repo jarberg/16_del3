@@ -1,5 +1,6 @@
 package monopoly.model.board;
 
+import monopoly.controller.FakeMonopolyFileReader;
 import monopoly.controller.MonopolyFileReader;
 import org.junit.After;
 import org.junit.Before;
@@ -12,18 +13,23 @@ private String filePath = "TextFiles/Dansk";
 
     private Board board;
     private MonopolyFileReader monoReader;
+    private FakeMonopolyFileReader fakeMonoReader;
+
 
 
     @Before
     public void setup(){
         board = new Board();
         monoReader = MonopolyFileReader.getInstance();
+        fakeMonoReader = FakeMonopolyFileReader.getInstance();
+
     }
 
     @After
     public void tearDown(){
         Board board = null;
         MonopolyFileReader monoReader = null;
+        FakeMonopolyFileReader fakeMonoReader = null;
     }
 
 
