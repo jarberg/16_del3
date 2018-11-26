@@ -12,6 +12,10 @@ public class ChanceField extends Field {
         super(title, subtitle, description, message, color);
     }
 
+    public ChanceField() {
+
+    }
+
     @Override
     public void resolveEffect(Player player) {
         ChanceFieldController chanceFieldController = new ChanceFieldController();
