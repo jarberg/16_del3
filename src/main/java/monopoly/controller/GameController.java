@@ -135,7 +135,6 @@ public class GameController {
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
 
-        //viewController.showUserTurnMessage(currentPlayer);
         payBeforeLeaveJail(currentPlayer);
 
         die.roll();
@@ -153,8 +152,6 @@ public class GameController {
 
         currentField.resolveEffect(currentPlayer);
 
-        //viewController.landedOnFieldMessage(currentField);
-
         players.changePlayerTurn();
     }
 
@@ -168,7 +165,6 @@ public class GameController {
        }
         System.out.println("Game ended!");
     }
-
 
     private void checkIfPassedStart(int last, Player player){
         if(last > player.getPosition()){
