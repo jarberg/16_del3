@@ -48,70 +48,28 @@ public class Player {
         return name+";"+color+";"+account.getBalance();
     }
 
-    public String getName(){
-        return this.name;
-    }
-
-    public int getAge(){
-        return this.age;
-    }
-
-    public void setColor(Color color){
-        this.color = color;
-    }
-
-    public void addToBalance(int amount){
-        account.addToBalance(amount);
-    }
-
-    public int getPosition(){
-        return position;
-    }
-
-    public void setPosition(int position){
-        this.position = position;
-    }
-
-    public Color getColor(){
-        return this.color;
-    }
-
-    public int getBalance(){
-        return account.getBalance();
-    }
-
-    public boolean isWinner(){
-        return this.isWinner;
-    }
-
-    public void setWinner(boolean isWinner){
-        this.isWinner=isWinner;
-    }
-    public boolean isLoser(){
-        return this.isLoser;
-    }
-
     public void setLoser(boolean isLoser){
         this.isLoser=isLoser;
     }
-
-    public boolean hasGetOutOfJail(){
-        return this.hasGetOutOfJail ;
+    public void setWinner(boolean isWinner){
+        this.isWinner=isWinner;
     }
-
     public void setGetOutOfJail(boolean hasCard){
         this.hasGetOutOfJail=hasCard;
+    }
+    public void setOwnedFields(PropertyField index){ownedFields.add(index);}
+    public void setPayToLeaveJail(boolean payToLeaveJail1){ this.payToLeaveJail = payToLeaveJail1;}
+    public void setPosition(int position){
+        this.position = position;
+    }
+    public void setColor(Color color){
+        this.color = color;
     }
 
     public void movePosition(int number, int boardSize){
         this.position = position + number;
         this.position = position % boardSize;
     }
-    public boolean getPayToLeaveJail(){
-        return this.payToLeaveJail;
-    }
-    public void setPayToLeaveJail(boolean payToLeaveJail1){ this.payToLeaveJail = payToLeaveJail1;}
-
     public void sellField(Field index, PropertyField field){
         this.addToBalance(field.getValue());
         this.ownedFields.remove(field);
@@ -119,19 +77,39 @@ public class Player {
         field.setOwner(null);
     }
 
-    public List<Field> getOwnedFields(){
-      return ownedFields;
+    public String getName(){
+        return this.name;
+    }
+    public int getAge(){
+        return this.age;
+    }
+    public int getPosition(){
+        return position;
+    }
+    public Color getColor(){
+        return this.color;
+    }
+    public int getBalance(){
+        return account.getBalance();
+    }
+    public boolean getPayToLeaveJail(){
+        return this.payToLeaveJail;
+    }
+    public List<Field> getOwnedFields(){ return ownedFields; }
 
-       /* Field[] allFields = board;
-        List<PropertyField> ownedFields = new ArrayList<>();
-        for(Field f : allFields){
-            if(f instanceof PropertyField && ((PropertyField) f).getOwner() == this)
-                ownedFields.add((PropertyField)f);
-        }
-        return ownedFields.toArray(new PropertyField[0]);
-    */
+    public boolean hasGetOutOfJail(){
+        return this.hasGetOutOfJail ;
+    }
+    public void addToBalance(int amount){
+        account.addToBalance(amount);
     }
 
-    public void setOwnedFields(PropertyField index){ownedFields.add(index);}
+    public boolean isWinner(){
+        return this.isWinner;
+    }
+    public boolean isLoser(){
+        return this.isLoser;
+    }
+
 }
 
