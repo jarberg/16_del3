@@ -7,7 +7,8 @@ public class Deck {
 
     ChanceCard[] cardArray;
 
-    public Deck(int length){ cardArray = new ChanceCard[length]; }
+    public Deck(int length){
+        cardArray = new ChanceCard[length]; }
 
     private void makeDeck(String[][] textFileInput){
         for (int i = 0; i < cardArray.length ; i++) {
