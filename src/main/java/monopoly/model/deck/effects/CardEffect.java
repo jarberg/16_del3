@@ -1,4 +1,4 @@
-package monopoly.model.deck;
+package monopoly.model.deck.effects;
 
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;

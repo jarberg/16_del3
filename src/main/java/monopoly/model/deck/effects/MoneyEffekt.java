@@ -1,6 +1,5 @@
 package monopoly.model.deck.effects;
 
-import monopoly.model.deck.CardEffect;
 import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 

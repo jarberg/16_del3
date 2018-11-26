@@ -17,12 +17,14 @@ public class Deck {
             cardArray[i] = new ChanceCard(descrip, (1 + (int)(Math.random() * 10)));
         }
     }
+
     public void shuffleDeck(){
         Collections.shuffle(Arrays.asList(cardArray));
         Collections.shuffle(Arrays.asList(cardArray));
         Collections.shuffle(Arrays.asList(cardArray));
         Collections.shuffle(Arrays.asList(cardArray));
     }
+
     public void putTopCardtoBack(){
         ChanceCard tempCardArray = cardArray[0];
 
@@ -31,6 +33,7 @@ public class Deck {
         }
         cardArray[cardArray.length-1]= tempCardArray;
     }
+
     public String getCardDescription(int ID) { return cardArray[ID].getDescription(); }
     public ChanceCard[] getDeck(){
         return cardArray;

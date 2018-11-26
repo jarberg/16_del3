@@ -5,9 +5,8 @@ import monopoly.controller.MonopolyFileReader;
 import monopoly.controller.ViewController;
 import monopoly.controller.field.FieldController;
 import monopoly.model.board.Field;
-import monopoly.model.deck.CardEffect;
+import monopoly.model.deck.effects.CardEffect;
 import monopoly.model.deck.Deck;
-import monopoly.model.deck.effects.MoneyEffekt;
 import monopoly.model.player.Player;
 
 public class ChanceFieldController extends FieldController {
@@ -46,9 +45,12 @@ public class ChanceFieldController extends FieldController {
         deck.putTopCardtoBack();
     }
 
-
     private void setID(int ID){this.ID=ID;}
 
     public void setFilePath(String filePath){this.filePath = filePath;}
+
+    private void effectMananger(int ID, Player player){
+
+    }
 
 }
