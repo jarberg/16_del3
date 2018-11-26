@@ -1,6 +1,11 @@
 package monopoly.model.player;
 
+import monopoly.model.board.Field;
+import monopoly.model.board.PropertyField;
+
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
 
@@ -9,10 +14,13 @@ public class Player {
     private Account account;
     private int age;
     private int position;
+    private boolean isLoser;
     private boolean isWinner;
     private boolean hasGetOutOfJail;
     private static final int START_POSITION = 0;
     private static final Color DEFAULT_COLOR = Color.black;
+    private boolean payToLeaveJail =false;
+
 
     public Player(String name, int age){
         this.name = name;
@@ -39,57 +47,63 @@ public class Player {
         return name+";"+color+";"+account.getBalance();
     }
 
-    public String getName(){
-        return this.name;
+    public void setLoser(boolean isLoser){
+        this.isLoser=isLoser;
     }
-
-    public int getAge(){
-        return this.age;
-    }
-
-    public void setColor(Color color){
-        this.color = color;
-    }
-
-    public void addToBalance(int amount){
-        account.addToBalance(amount);
-    }
-
-    public int getPosition(){
-        return position;
-    }
-
-    public void setPosition(int position){
-        this.position = position;
-    }
-
-    public Color getColor(){
-        return this.color;
-    }
-
-    public int getBalance(){
-        return account.getBalance();
-    }
-
-    public boolean isWinner(){
-        return this.isWinner;
-    }
-
     public void setWinner(boolean isWinner){
         this.isWinner=isWinner;
     }
-
-    public boolean hasGetOutOfJail(){
-        return this.hasGetOutOfJail ;
-    }
-
     public void setGetOutOfJail(boolean hasCard){
         this.hasGetOutOfJail=hasCard;
+    }
+    public void setPayToLeaveJail(boolean payToLeaveJail1){ this.payToLeaveJail = payToLeaveJail1;}
+    public void setPosition(int position){
+        this.position = position;
+    }
+    public void setColor(Color color){
+        this.color = color;
     }
 
     public void movePosition(int number, int boardSize){
         this.position = position + number;
         this.position = position % boardSize;
     }
+    public void sellField(int value){
+        this.addToBalance(value);
+    }
+
+    public String getName(){
+        return this.name;
+    }
+    public int getAge(){
+        return this.age;
+    }
+    public int getPosition(){
+        return position;
+    }
+    public Color getColor(){
+        return this.color;
+    }
+    public int getBalance(){
+        return account.getBalance();
+    }
+    public boolean getPayToLeaveJail(){
+        return this.payToLeaveJail;
+    }
+
+    public boolean hasGetOutOfJail(){
+        return this.hasGetOutOfJail ;
+    }
+    public void addToBalance(int amount){
+        account.addToBalance(amount);
+    }
+
+    public boolean isWinner(){
+        return this.isWinner;
+    }
+    public boolean isLoser(){
+        return this.isLoser;
+    }
+
 }
 

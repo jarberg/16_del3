@@ -1,6 +1,5 @@
 package monopoly.controller;
 
-import monopoly.controller.field.FieldController;
 import monopoly.controller.field.implementation.PropertyFieldController;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
@@ -10,7 +9,6 @@ import monopoly.model.player.Player;
 import monopoly.model.player.Playerlist;
 
 import java.awt.*;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 
@@ -132,22 +130,28 @@ public class GameController {
         while(players.noWinnerYet()){
             playTurn();
         }
-        //endGame(players.getWinner());
+        //endGame();
     }
 
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
 
         //viewController.showUserTurnMessage(currentPlayer);
+        payBeforeLeaveJail(currentPlayer);
+
         die.roll();
         int value = die.getValue();
         viewController.showDie(value);
 
+        int lastField = currentPlayer.getPosition();
         viewController.movePlayer(currentPlayer, value);
         currentPlayer.movePosition(value, board.getFields().length);
         int position = currentPlayer.getPosition();
 
         Field currentField = board.getFields()[position];
+
+        checkIfPassedStart(lastField, currentPlayer);
+
         currentField.resolveEffect(currentPlayer);
 
         //viewController.landedOnFieldMessage(currentField);
@@ -187,5 +191,25 @@ public class GameController {
             }
         }
         viewController.showWinAnimation(winner.getName());
+    }
+
+    private void checkIfPassedStart(int last, Player player){
+        if(last > player.getPosition()){
+            player.addToBalance(2);
+            viewController.setGUIPlayerBalance(player, player.getBalance());
+        }
+    }
+
+    private void payBeforeLeaveJail(Player player){
+        if(player.getPayToLeaveJail()==true){
+            if(player.getBalance()>=2){
+                player.addToBalance(-2);
+                viewController.setGUIPlayerBalance(player, player.getBalance());
+                player.setPayToLeaveJail(false);
+            }
+            else{
+                player.setLoser(true);
+            }
+        }
     }
 }

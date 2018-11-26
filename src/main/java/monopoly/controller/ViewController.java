@@ -93,7 +93,7 @@ public class ViewController {
     public Color getUserColor(String name) {
         String message = translator.getPlayerColorMessage();
         String[] colorChoices = new String[view.getColors().size()];
-        String blue = translator.getBlueColorDescription();
+        String cyan = translator.getBlueColorDescription();
         String red = translator.getRedColorDescription();
         String orange = translator.getOrangeColorDescription();
         String green = translator.getGreenColorDescription();
@@ -101,8 +101,8 @@ public class ViewController {
         for (int i = 0; i < view.getColors().size(); i++) {
             String colorMessage = null;
             Color color = view.getColors().get(i);
-            if(color == Color.blue)
-                colorMessage = blue;
+            if(color == Color.cyan)
+                colorMessage = cyan;
             if(color == Color.red)
                 colorMessage = red;
             if(color == Color.orange)
@@ -114,8 +114,8 @@ public class ViewController {
 
         String colorString = view.getUserColorString(message, colorChoices, name);
         Color colorChosen = null;
-        if(colorString.equals(blue))
-            colorChosen = Color.blue;
+        if(colorString.equals(cyan))
+            colorChosen = Color.cyan;
         if(colorString.equals(red))
             colorChosen = Color.red;
         if(colorString.equals(orange))
@@ -167,4 +167,6 @@ public class ViewController {
         view.showMessage(translator.getGameOverMessage());
         view.close();
     }
+
+    public void setFieldColor(Color color, int fieldIndex){view.setFieldColor(color, fieldIndex);}
 }

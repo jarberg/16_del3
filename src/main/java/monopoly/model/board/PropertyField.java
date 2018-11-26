@@ -27,10 +27,13 @@ public class PropertyField extends Field {
     public void setOwner(Player player){
         this.owner = player;
     }
+
     public Player getOwner(){
         return this.owner;
     }
+
     public int getPairIndex(){return pairIndex;}
+
     public int getValue(){return value;}
 
 

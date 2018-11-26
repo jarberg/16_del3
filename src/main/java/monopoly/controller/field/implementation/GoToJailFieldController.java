@@ -34,6 +34,7 @@ public class GoToJailFieldController extends FieldController {
             viewController.movePlayer(player, 1);
             player.setPosition(position);
         }
+        player.setPayToLeaveJail(true);
 
     }
 

@@ -25,7 +25,7 @@ public class MonopolyView {
         this.colors = new ArrayList<>();
         this.guiPlayers = new ArrayList<>();
         //Consider de-hardcoding colors.
-        this.colors.add(Color.BLUE);
+        this.colors.add(Color.CYAN);
         this.colors.add(Color.ORANGE);
         this.colors.add(Color.RED);
         this.colors.add(Color.GREEN);
@@ -71,7 +71,7 @@ public class MonopolyView {
     public void addPlayer(String name, Color color){
         //The uniqueness of names should be controlled in controller (player object names also need uniqueness)
         GUI_Car playerCar = new GUI_Car();
-        if(color == Color.blue)
+        if(color == Color.cyan)
             playerCar = new GUI_Car(color, color, GUI_Car.Type.UFO, GUI_Car.Pattern.FILL);
         if(color == Color.orange)
             playerCar = new GUI_Car(color, color, GUI_Car.Type.TRACTOR, GUI_Car.Pattern.FILL);
@@ -93,11 +93,13 @@ public class MonopolyView {
 
     public void movePlayer(String name, int position, int movement){
         GUI_Player player = getGUIplayerByName(name);
+
         for (int i = 0; i < movement ; i++) {
             removePlayer(player, position);
             position++;
             position = position % guiBoard.length;
             showPlayer(player, position);
+
             try {
                 Thread.sleep(150);
             } catch (InterruptedException e) {
@@ -176,5 +178,10 @@ public class MonopolyView {
         return MAX_AGE;
     }
 
+    public void setFieldColor(Color color, int field){
+
+        this.guiBoard[field].setBackGroundColor(color.darker());
+        this.guiBoard[field].setForeGroundColor(color.brighter());
+    }
 
 }
