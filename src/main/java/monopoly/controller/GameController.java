@@ -166,14 +166,14 @@ public class GameController {
         System.out.println("Game ended!");
     }
 
-    private void checkIfPassedStart(int last, Player player){
+    public void checkIfPassedStart(int last, Player player){
         if(last > player.getPosition()){
             player.addToBalance(2);
             viewController.setGUIPlayerBalance(player, player.getBalance());
         }
     }
 
-    private void payBeforeLeaveJail(Player player){
+    public void payBeforeLeaveJail(Player player){
         if(player.getPayToLeaveJail()==true){
             if(player.getBalance()>=2){
                 player.addToBalance(-2);
