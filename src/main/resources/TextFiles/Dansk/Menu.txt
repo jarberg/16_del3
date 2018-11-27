@@ -3,7 +3,7 @@ ASK_PLAYER_NAME:::Hvem er du?
 ASK_PLAYER_AGE:::Hvor gammel er du?
 PLAYER_TURN:::Så er det tid til at slå med terningerne. Det er din tur,
 COLOR_CHOICE:::Hvilken bil vælger du?
-BLUE_COLOR:::Den blå UFO
+BLUE_COLOR:::Den cyan UFO
 RED_COLOR:::Den røde racerbil
 ORANGE_COLOR:::Den orange traktor
 GREEN_COLOR:::Den grønne bil

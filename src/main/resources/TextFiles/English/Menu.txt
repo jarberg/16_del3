@@ -3,7 +3,7 @@ ASK_PLAYER_NAME:::Hvem er du?
 ASK_PLAYER_AGE:::Hvor gammel er du?
 PLAYER_TURN:::Now it's time to roll the dice. It's your turn,
 COLOR_CHOICE:::Which car would you like?
-BLUE_COLOR:::The blue UFO
+BLUE_COLOR:::The cyan UFO
 RED_COLOR:::The red race car
 ORANGE_COLOR:::The orange tractor
 GREEN_COLOR:::The green car

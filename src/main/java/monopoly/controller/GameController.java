@@ -46,7 +46,7 @@ public class GameController {
         playerAmount = getPlayerAmount();
         createPlayers();
         makePlayersChooseColor();
-        ChanceFieldController.getInstance().setFilePath(languageFilepath);
+        //ChanceFieldController.getInstance().setFilePath(languageFilepath);
         showGameBoard();
         addPlayersToGUI();
 
@@ -221,7 +221,7 @@ public class GameController {
             }
         }
     }
-    public Playerlist getPlayers(){return players;}
+    public PlayerList getPlayers(){return players;}
 
     public String getLanguageFilepath(){return this.languageFilepath;}
 }

@@ -1,15 +1,15 @@
 package monopoly.model.deck.effects;
 
 import monopoly.model.player.Player;
-import monopoly.model.player.Playerlist;
+import monopoly.model.player.PlayerList;
 
 public class MoneyEffekt extends CardEffect {
 
     private Player player;
-    private Playerlist players;
+    private PlayerList players;
 
 
-    public void getMoneyFromOtherAllPlayers(Player player, Playerlist playerList){
+    public void getMoneyFromOtherAllPlayers(Player player, PlayerList playerList){
 
 
         for (Player f : playerList.getPlayerDeque()) {
