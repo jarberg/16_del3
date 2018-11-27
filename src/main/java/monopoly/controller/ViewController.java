@@ -54,6 +54,7 @@ public class ViewController {
     public int getPlayerAge() {
         String message = translator.getPlayerAgeMessage();
         return view.getUserAge(message);
+
     }
 
     public void showGameGUI(Field[] FieldToGUIField){

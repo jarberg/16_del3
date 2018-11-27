@@ -154,7 +154,7 @@ public class MonopolyView {
         return gui.getUserString(message);
     }
 
-    public int getUserAge(String message){
+    public int getUserAge(String message) {
         return gui.getUserInteger(message, MIN_AGE, MAX_AGE);
     }
 

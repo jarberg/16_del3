@@ -127,6 +127,7 @@ public class GameController {
     }
 
     public void playGame(){
+        players.makeYoungestPlayerFirst();
         while(players.noWinnerYet()){
             playTurn();
         }
