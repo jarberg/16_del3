@@ -16,9 +16,5 @@ public class JailField extends Field {
 
     }
 
-    @Override
-    public void resolveEffect(Player player) {
-        JailFieldController jailFieldController = new JailFieldController();
-        jailFieldController.resolveEffect(player, this);
-    }
+
 }

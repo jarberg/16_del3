@@ -15,9 +15,5 @@ public class StartField extends Field{
         super();
     }
 
-    @Override
-    public void resolveEffect(Player player) {
-        StartFieldController startFieldController = new StartFieldController();
-        startFieldController.resolveEffect(player, this);
-    }
+
 }

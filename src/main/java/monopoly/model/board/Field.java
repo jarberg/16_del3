@@ -26,8 +26,6 @@ public abstract class Field {
         this.borderColor = Color.black;
     }
 
-    public abstract void resolveEffect(Player player);
-
     public String getTitle(){return title;}
     public String getSubtitle(){return subtitle;}
     public String getDescription(){return description;}

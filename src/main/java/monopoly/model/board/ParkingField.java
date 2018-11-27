@@ -15,9 +15,5 @@ public class ParkingField extends Field{
 
     }
 
-    @Override
-    public void resolveEffect(Player player) {
-        ParkingFieldController parkingFieldController = new ParkingFieldController();
-        parkingFieldController.resolveEffect(player, this);
-    }
+
 }

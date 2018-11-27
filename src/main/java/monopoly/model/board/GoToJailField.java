@@ -17,12 +17,6 @@ public class GoToJailField extends Field {
 
     }
 
-    @Override
-    public void resolveEffect(Player player) {
-        GoToJailFieldController goToJailFieldController = new GoToJailFieldController();
-        goToJailFieldController.resolveEffect(player, this);
-    }
-
     public int getBribeCharge(){
         return bribeCharge;
     }

@@ -22,12 +22,6 @@ public class PropertyField extends Field {
 
     }
 
-    @Override
-    public void resolveEffect(Player player){
-        PropertyFieldController propertyFieldController = new PropertyFieldController();
-        propertyFieldController.resolveEffect(player, this);
-    }
-
     public void setOwner(Player player){
         this.owner = player;
     }
