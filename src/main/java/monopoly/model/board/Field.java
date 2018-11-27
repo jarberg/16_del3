@@ -4,7 +4,7 @@ import monopoly.model.player.Player;
 
 import java.awt.*;
 
-public abstract class Field {
+public abstract class Field implements Visitable{
 
     private String title;
     private String subtitle;

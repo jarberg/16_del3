@@ -13,7 +13,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FieldVisitor {
+public class FieldVisitor implements Visitor {
 
     private static final int PROPERTY_MULTIPLIER = 2;
     private GameController gameController = GameController.getInstance();
@@ -22,6 +22,37 @@ public class FieldVisitor {
 
     public FieldVisitor(Player player){
         this.player = player;
+    }
+
+
+    public void visit(JailField field){
+        viewController.showFieldMessage(player.getName(), field.getMessage());
+    }
+
+    public void visit(GoToJailField field){
+        movePlayerToClosestJail(player);
+    }
+
+    private void movePlayerToClosestJail(Player player){
+        Field[] fields = gameController.getFields();
+        int position = player.getPosition();
+        Field currentField = fields[position];
+        while(!(currentField instanceof JailField)){
+            position++;
+            position = position % fields.length;
+            currentField = fields[position];
+            viewController.movePlayer(player, 1);
+            player.setPosition(position);
+        }
+        player.setPayToLeaveJail(true);
+    }
+
+    public void visit(ParkingField field){
+        viewController.showFieldMessage(player.getName(), field.getMessage());
+    }
+
+    public void visit(StartField field){
+        viewController.showFieldMessage(player.getName(), field.getMessage());
     }
 
     public void visit(PropertyField field){
@@ -147,25 +178,8 @@ public class FieldVisitor {
         return fieldIndex;
     }
 
-
-    public void visit(JailField field){
-
-    }
-
-    public void visit(GoToJailField field){
-
-    }
-
-    public void visit(ParkingField field){
-
-    }
-
-    public void visit(StartField field){
-
-    }
-
     public void visit(ChanceField field){
-
+        viewController.showFieldMessage(player.getName(), field.getMessage());
     }
 
 

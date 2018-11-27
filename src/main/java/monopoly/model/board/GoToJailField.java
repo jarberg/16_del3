@@ -1,5 +1,7 @@
 package monopoly.model.board;
 
+import monopoly.controller.Visitor;
+
 import java.awt.*;
 
 public class GoToJailField extends Field {
@@ -16,6 +18,11 @@ public class GoToJailField extends Field {
 
     public int getBribeCharge(){
         return bribeCharge;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
 }

@@ -1,6 +1,8 @@
 package monopoly.model.board;
 
 
+import monopoly.controller.Visitor;
+
 import java.awt.*;
 
 public class JailField extends Field {
@@ -13,5 +15,9 @@ public class JailField extends Field {
 
     }
 
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 
 }

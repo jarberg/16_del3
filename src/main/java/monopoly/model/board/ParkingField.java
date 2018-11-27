@@ -1,5 +1,7 @@
 package monopoly.model.board;
 
+import monopoly.controller.Visitor;
+
 import java.awt.*;
 
 public class ParkingField extends Field{
@@ -12,5 +14,9 @@ public class ParkingField extends Field{
 
     }
 
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 
 }

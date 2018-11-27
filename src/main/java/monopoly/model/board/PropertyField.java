@@ -1,5 +1,6 @@
 package monopoly.model.board;
 
+import monopoly.controller.Visitor;
 import monopoly.model.player.Player;
 
 import java.awt.*;
@@ -33,6 +34,9 @@ public class PropertyField extends Field {
 
     public int getValue(){return value;}
 
-
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 
 }

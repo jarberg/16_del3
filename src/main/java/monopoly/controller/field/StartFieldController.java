@@ -11,7 +11,7 @@ public class StartFieldController extends FieldController {
 
     @Override
     public void resolveEffect(Player player, Field field) {
-        viewController.showFieldMessage(player.getName(), field.getMessage());
+
         getStartMoney(player);
     }
     public void getStartMoney(Player player){

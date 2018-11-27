@@ -11,7 +11,7 @@ public class JailFieldController extends FieldController {
 
     @Override
     public void resolveEffect(Player player, Field field) {
-        viewController.showFieldMessage(player.getName(), field.getMessage());
+
     }
 
 }

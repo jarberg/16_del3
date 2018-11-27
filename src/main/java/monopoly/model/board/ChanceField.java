@@ -1,6 +1,8 @@
 package monopoly.model.board;
 
 
+import monopoly.controller.Visitor;
+
 import java.awt.*;
 
 public class ChanceField extends Field {
@@ -13,6 +15,8 @@ public class ChanceField extends Field {
 
     }
 
-
-
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }

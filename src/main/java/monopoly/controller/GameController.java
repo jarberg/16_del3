@@ -157,7 +157,8 @@ public class GameController {
 
         checkIfPassedStart(lastField, currentPlayer);
 
-        currentField.resolveEffect(currentPlayer);
+        FieldVisitor visitor = new FieldVisitor(currentPlayer);
+        currentField.accept(visitor);
 
         //viewController.landedOnFieldMessage(currentField);
 
