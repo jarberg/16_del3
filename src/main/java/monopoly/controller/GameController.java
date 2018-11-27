@@ -1,6 +1,5 @@
 package monopoly.controller;
 
-import monopoly.controller.field.PropertyFieldController;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
@@ -11,6 +10,7 @@ import monopoly.model.player.PlayerList;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 
 public class GameController {
 
@@ -183,11 +183,25 @@ public class GameController {
                 winnerCandidates.add(player);
         }
         for(Player player : winnerCandidates){
-            PropertyFieldController fc = new PropertyFieldController();
-            fc.setPlayer(player);
-            for(PropertyField field : fc.getFieldsOwnedByPlayer(player)){
-                if(field != null)
-                    fc.sellField(field);
+            List<PropertyField> ownedFields = new ArrayList<>();
+            for (Field f : board.getFields()) {
+                if (f instanceof PropertyField && ((PropertyField) f).getOwner() == player)
+                    ownedFields.add((PropertyField) f);
+            }
+            PropertyField[] ownedFieldsArray = ownedFields.toArray(new PropertyField[0]);
+            for(PropertyField field : ownedFieldsArray){
+                if(field != null){
+                    int fieldIndex = 0;
+                    for (int i = 0; i <getFields().length ; i++) {
+                        if(getFields()[i].getTitle().equals(field.getTitle())){
+                            fieldIndex=i;
+                        }
+                    }
+                    viewController.setFieldColor(Color.white, fieldIndex);
+                    viewController.setGUIPlayerBalance(player, player.getBalance());
+                    player.sellField(field.getValue());
+                    field.setOwner(null);
+                }
             }
         }
         Player winner = null;
