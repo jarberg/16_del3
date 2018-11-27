@@ -54,6 +54,7 @@ public class ViewController {
     public int getPlayerAge() {
         String message = translator.getPlayerAgeMessage();
         return view.getUserAge(message);
+
     }
 
     public void showGameGUI(Field[] FieldToGUIField){
@@ -162,7 +163,10 @@ public class ViewController {
     }
 
     public void showWinAnimation(String name){
+        view.showMessage(name + " " + translator.getWinMessage());
         view.showWinner(name);
+        view.showMessage(translator.getGameOverMessage());
+        view.close();
     }
 
     public void setFieldColor(Color color, int fieldIndex){view.setFieldColor(color, fieldIndex);}
