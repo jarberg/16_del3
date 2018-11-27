@@ -24,7 +24,7 @@ public class GameController {
     private static final String defaultLanguage = "English";
     private static GameController singleInstance = null;
 
-    private GameController(){
+    public GameController(){
         viewController = ViewController.getInstance();
         fileReader = MonopolyFileReader.getInstance();
         setFilepathLanguage(defaultLanguage);
@@ -137,7 +137,6 @@ public class GameController {
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
 
-        //viewController.showUserTurnMessage(currentPlayer);
         payBeforeLeaveJail(currentPlayer);
 
         die.roll();
@@ -154,8 +153,6 @@ public class GameController {
         checkIfPassedStart(lastField, currentPlayer);
 
         currentField.resolveEffect(currentPlayer);
-
-        //viewController.landedOnFieldMessage(currentField);
 
         players.changePlayerTurn();
     }

@@ -11,6 +11,10 @@ public class StartField extends Field{
         super(title, subtitle, description, message, color);
     }
 
+    public StartField() {
+        super();
+    }
+
     @Override
     public void resolveEffect(Player player) {
         StartFieldController startFieldController = new StartFieldController();
