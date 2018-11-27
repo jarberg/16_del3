@@ -12,10 +12,10 @@ import static org.junit.Assert.*;
 
 public class PropertyFieldTest {
 
-    PropertyField field;
-    Player player;
-    Player owner;
-    Field[] board;
+    private PropertyField field;
+    private Player player;
+    private Player owner;
+    private Field[] board;
 
     @Before
     public void setup(){
@@ -34,7 +34,7 @@ public class PropertyFieldTest {
     public void playerCantPay(){
 
         player.addToBalance(-100000);
-        assertEquals(false, player.isLoser());
+        assertFalse(player.isLoser());
         ((PropertyField) board[23]).setOwner(owner);
         ((PropertyField) board[24]).setOwner(owner);
         ((PropertyField) board[1]).setOwner(player);
@@ -50,12 +50,12 @@ public class PropertyFieldTest {
 
         ((PropertyField) board[24]).resolveEffect(player);
 
-        assertEquals(null,((PropertyField) board[1]).getOwner());
-        assertEquals(null,((PropertyField) board[2]).getOwner());
-        assertEquals(null,((PropertyField) board[4]).getOwner());
-        assertEquals(null,((PropertyField) board[5]).getOwner());
+        assertNull(((PropertyField) board[1]).getOwner());
+        assertNull(((PropertyField) board[2]).getOwner());
+        assertNull(((PropertyField) board[4]).getOwner());
+        assertNull(((PropertyField) board[5]).getOwner());
 
-        assertEquals(true, player.isLoser());
+        assertTrue(player.isLoser());
 
 
 
