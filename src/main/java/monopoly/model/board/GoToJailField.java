@@ -13,6 +13,10 @@ public class GoToJailField extends Field {
         super(title, subtitle, description, message, color);
     }
 
+    public GoToJailField() {
+
+    }
+
     @Override
     public void resolveEffect(Player player) {
         GoToJailFieldController goToJailFieldController = new GoToJailFieldController();

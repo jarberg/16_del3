@@ -12,6 +12,10 @@ public class JailField extends Field {
         super(title, subtitle, description, message, color);
     }
 
+    public JailField() {
+
+    }
+
     @Override
     public void resolveEffect(Player player) {
         JailFieldController jailFieldController = new JailFieldController();

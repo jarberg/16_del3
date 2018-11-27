@@ -13,6 +13,10 @@ public abstract class Field {
     private Color color;
     private Color borderColor;
 
+    public Field(){
+
+    }
+
     public Field(String title, String subtitle, String description, String message, Color color){
         this.title = title;
         this.subtitle = subtitle;

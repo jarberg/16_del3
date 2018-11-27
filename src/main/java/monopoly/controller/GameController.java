@@ -23,7 +23,7 @@ public class GameController {
     private static final String defaultLanguage = "English";
     private static GameController singleInstance = null;
 
-    private GameController(){
+    public GameController(){
         viewController = ViewController.getInstance();
         fileReader = MonopolyFileReader.getInstance();
         setFilepathLanguage(defaultLanguage);

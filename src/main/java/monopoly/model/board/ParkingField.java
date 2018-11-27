@@ -11,6 +11,10 @@ public class ParkingField extends Field{
         super(title, subtitle, description, message, color);
     }
 
+    public ParkingField() {
+
+    }
+
     @Override
     public void resolveEffect(Player player) {
         ParkingFieldController parkingFieldController = new ParkingFieldController();

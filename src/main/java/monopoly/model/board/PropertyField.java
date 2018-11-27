@@ -18,6 +18,10 @@ public class PropertyField extends Field {
         this.pairIndex = pairIndex;
     }
 
+    public PropertyField() {
+
+    }
+
     @Override
     public void resolveEffect(Player player){
         PropertyFieldController propertyFieldController = new PropertyFieldController();
