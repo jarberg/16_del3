@@ -1,6 +1,7 @@
 package monopoly.controller;
 
 import monopoly.controller.field.implementation.PropertyFieldController;
+import monopoly.controller.field.implementation.ChanceFieldController;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
@@ -10,6 +11,7 @@ import monopoly.model.player.PlayerList;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class GameController {
@@ -24,7 +26,7 @@ public class GameController {
     private static final String defaultLanguage = "English";
     private static GameController singleInstance = null;
 
-    public GameController(){
+    private GameController(){
         viewController = ViewController.getInstance();
         fileReader = MonopolyFileReader.getInstance();
         setFilepathLanguage(defaultLanguage);
@@ -44,8 +46,11 @@ public class GameController {
         playerAmount = getPlayerAmount();
         createPlayers();
         makePlayersChooseColor();
+        ChanceFieldController.getInstance().setFilePath(languageFilepath);
         showGameBoard();
         addPlayersToGUI();
+
+
     }
 
     private void setupLanguage(){
@@ -137,6 +142,8 @@ public class GameController {
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
 
+        //viewController.showUserTurnMessage(currentPlayer);
+
         payBeforeLeaveJail(currentPlayer);
 
         die.roll();
@@ -153,6 +160,8 @@ public class GameController {
         checkIfPassedStart(lastField, currentPlayer);
 
         currentField.resolveEffect(currentPlayer);
+
+        //viewController.landedOnFieldMessage(currentField);
 
         players.changePlayerTurn();
     }
@@ -212,4 +221,7 @@ public class GameController {
             }
         }
     }
+    public Playerlist getPlayers(){return players;}
+
+    public String getLanguageFilepath(){return this.languageFilepath;}
 }
