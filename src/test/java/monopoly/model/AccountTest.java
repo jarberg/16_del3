@@ -21,7 +21,7 @@ public class AccountTest {
     }
 
     @Test
-    public void ShouldHaveZeroBalanceWhenCreated(){
+    public void shouldHaveZeroBalanceWhenCreated(){
         assertEquals(0,account.getBalance());
     }
 
