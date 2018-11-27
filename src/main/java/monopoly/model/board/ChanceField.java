@@ -18,8 +18,10 @@ public class ChanceField extends Field {
 
     @Override
     public void resolveEffect(Player player) {
-        ChanceFieldController chanceFieldController = new ChanceFieldController();
-        chanceFieldController.resolveEffect(player, this);
+        //ChanceFieldController chanceFieldController = ChanceFieldController.getInstance();
+        //
+        //
+        // chanceFieldController.resolveEffect(player, this);
     }
 
 }

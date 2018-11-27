@@ -7,22 +7,24 @@ public class Deck {
 
     ChanceCard[] cardArray;
 
-    public Deck(int length){
-        cardArray = new ChanceCard[length]; }
+    public Deck(int length){ cardArray = new ChanceCard[length];
+        }
 
-    private void makeDeck(String[][] textFileInput){
+    public void makeDeck(String[][] textFileInput){
         for (int i = 0; i < cardArray.length ; i++) {
             String descrip = textFileInput[i][1];
             int effektID = Integer.valueOf(textFileInput[i][0]);
-            cardArray[i] = new ChanceCard(descrip, effektID);
+            cardArray[i] = new ChanceCard(descrip, (1 + (int)(Math.random() * 10)));
         }
     }
+
     public void shuffleDeck(){
         Collections.shuffle(Arrays.asList(cardArray));
         Collections.shuffle(Arrays.asList(cardArray));
         Collections.shuffle(Arrays.asList(cardArray));
         Collections.shuffle(Arrays.asList(cardArray));
     }
+
     public void putTopCardtoBack(){
         ChanceCard tempCardArray = cardArray[0];
 
@@ -31,6 +33,7 @@ public class Deck {
         }
         cardArray[cardArray.length-1]= tempCardArray;
     }
+
     public String getCardDescription(int ID) { return cardArray[ID].getDescription(); }
     public ChanceCard[] getDeck(){
         return cardArray;

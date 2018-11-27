@@ -19,7 +19,6 @@ public class PropertyFieldController extends FieldController {
     private ViewController viewController;
     private Player player;
     private PropertyField field;
-    private Board board;
     private Field[] boardArray;
     private static final int PROPERTY_MULTIPLIER = 2;
 
@@ -27,7 +26,6 @@ public class PropertyFieldController extends FieldController {
         this.gameController = GameController.getInstance();
         this.viewController = ViewController.getInstance();
         boardArray=this.gameController.getFields();
-        board = new Board();
     }
 
     @Override
@@ -62,6 +60,10 @@ public class PropertyFieldController extends FieldController {
         viewController.setGUIPlayerBalance(player, player.getBalance());
     }
 
+    public void setPlayer(Player player){
+        this.player = player;
+    }
+
     private void attemptToBuyFromBank(Player player, int cost) {
         if(playerHasMoney(this.player, cost)){
             player.addToBalance(-cost);
@@ -71,10 +73,11 @@ public class PropertyFieldController extends FieldController {
 
         }
         else{
-            PropertyField[] fields = getOwnedFields(player).toArray(new PropertyField[0]);
+            PropertyField[] fields = getFieldsOwnedByPlayer(player);
             sellFieldsUntilRichEnough(player, cost, fields);
             if(!playerHasMoney(this.player, cost)){
                 viewController.notEnoughMoneyMessage(player.getName());
+                this.player.setLoser(true);
             }
             player.addToBalance(-cost);
             this.field.setOwner(player);
@@ -90,10 +93,9 @@ public class PropertyFieldController extends FieldController {
             viewController.paidRentMessage(player.getName(), owner.getName(), cost);
             viewController.setGUIPlayerBalance(player, player.getBalance());
             viewController.setGUIPlayerBalance(owner, owner.getBalance());
-
         }
         else{
-            PropertyField[] fields = getOwnedFields(player).toArray(new PropertyField[0]);
+            PropertyField[] fields = getFieldsOwnedByPlayer(player);
             sellFieldsUntilRichEnough(player, cost, fields);
             if(!playerHasMoney(this.player, cost)){
                 viewController.notEnoughMoneyMessage(player.getName());
@@ -129,6 +131,40 @@ public class PropertyFieldController extends FieldController {
         return ownsBothProperties;
     }
 
+    public void sellField(PropertyField field){
+        viewController.setFieldColor(Color.white, getFieldIndex(field));
+        viewController.setGUIPlayerBalance(player, player.getBalance());
+        if(field == null)
+            return;
+        if(field instanceof PropertyField) {
+            this.player.sellField(field.getValue());
+            field.setOwner(null);
+        }
+    }
+
+    private List<Field> getOwnedFieldsList(Player player) {
+        List<Field> fields = new ArrayList<>();
+        for (Field f: boardArray) {
+            if(f instanceof PropertyField) {
+                if (((PropertyField) f).getOwner()==player) {
+                    fields.add(f);
+                }
+            }
+        }
+        return fields;
+    }
+
+    public PropertyField[] getFieldsOwnedByPlayer(Player player){
+        Field[] allFields = gameController.getFields();
+        List<PropertyField> ownedFields = new ArrayList<>();
+        for(Field f : allFields){
+            if(f instanceof PropertyField && ((PropertyField) f).getOwner() == player)
+                ownedFields.add((PropertyField)f);
+        }
+        return ownedFields.toArray(new PropertyField[0]);
+
+        /*
+        Field[] tempPlayerOwnedArray = new Field[allFields.length];
     private void sellField(PropertyField field){
 
         viewController.setFieldColor(Color.white, getFieldIndex(field));
@@ -139,16 +175,14 @@ public class PropertyFieldController extends FieldController {
         }
     }
 
-    private List<Field> getOwnedFields(Player player) {
-        List<Field> fields = new ArrayList<>();
-        for (Field f: boardArray) {
-           if(f instanceof PropertyField) {
-               if (((PropertyField) f).getOwner()==player) {
-                    fields.add(f);
-               }
-           }
+        for (int i = 0; i < allFields.length ; i++) {
+            if(allFields[i] instanceof PropertyField){
+                if(field.getOwner()==player){
+                    tempPlayerOwnedArray[i]= field;
+                }
+            }
         }
-        return fields;
+        return fields; */
     }
 
     public int getFieldIndex(Field field){
@@ -161,7 +195,6 @@ public class PropertyFieldController extends FieldController {
         }
         return fieldIndex;
     }
-
 
 
 }
