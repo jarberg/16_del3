@@ -12,10 +12,12 @@ import static org.junit.Assert.*;
 public class PlayerTest {
 
     private Player player;
+    private static final String name = "Bo";
+    private static final int age = 18;
 
     @Before
     public void setUp(){
-        player = new Player("bo", 0, Color.blue);
+        player = new Player(name, age, Color.blue);
     }
 
     @After
@@ -25,12 +27,12 @@ public class PlayerTest {
 
     @Test
     public void shouldReturnName(){
-        assertEquals("bo",player.getName());
+        assertEquals(name, player.getName());
     }
 
     @Test
-    public void shouldReturnZeroBalance(){
-        assertEquals(player.getBalance(),0);
+    public void shouldStartWithZeroBalance(){
+        assertEquals(0, player.getBalance());
     }
 
     @Test
@@ -102,7 +104,7 @@ public class PlayerTest {
 
     @Test
     public void shouldEqualSamePlayerName(){
-        String samePlayerName = "bo";
+        String samePlayerName = name;
         assertTrue(player.equals(samePlayerName));
     }
 
