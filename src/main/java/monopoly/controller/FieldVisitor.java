@@ -1,5 +1,6 @@
 package monopoly.controller;
 
+import monopoly.model.Visitor;
 import monopoly.model.board.ChanceField;
 import monopoly.model.board.Field;
 import monopoly.model.board.GoToJailField;

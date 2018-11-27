@@ -1,4 +1,4 @@
-package monopoly.controller;
+package monopoly.model;
 
 import monopoly.model.board.ChanceField;
 import monopoly.model.board.GoToJailField;
@@ -15,6 +15,6 @@ public interface Visitor {
     public void visit(JailField field);
     public void visit(StartField field);
     public void visit(PropertyField field);
-    
+
 
 }

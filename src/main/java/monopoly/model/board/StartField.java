@@ -1,6 +1,6 @@
 package monopoly.model.board;
 
-import monopoly.controller.Visitor;
+import monopoly.model.Visitor;
 
 import java.awt.*;
 
