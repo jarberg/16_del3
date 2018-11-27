@@ -6,7 +6,7 @@ import monopoly.model.board.Board;
 import monopoly.model.board.Field;
 import monopoly.model.board.PropertyField;
 import monopoly.model.player.Player;
-import monopoly.model.player.Playerlist;
+import monopoly.model.player.PlayerList;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class GameController {
 
     private ViewController viewController;
     private MonopolyFileReader fileReader;
-    private Playerlist players;
+    private PlayerList players;
     private Board board;
     private Die die;
     private int playerAmount = 0;
@@ -75,7 +75,7 @@ public class GameController {
     }
 
     private void createPlayers(){
-        Playerlist players = new Playerlist();
+        PlayerList players = new PlayerList();
         for (int i = 0; i < getPlayerAmount(); i++) {
             String name = viewController.getPlayerName();
             int age = viewController.getPlayerAge();

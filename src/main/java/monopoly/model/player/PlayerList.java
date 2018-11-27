@@ -3,15 +3,15 @@ package monopoly.model.player;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class Playerlist {
+public class PlayerList {
 
     private Deque<Player> playerList;
 
-    public Playerlist(){
+    public PlayerList(){
         playerList = new ArrayDeque<>();
     }
 
-    public Playerlist(Player... players){
+    public PlayerList(Player... players){
         playerList = new ArrayDeque<>();
         addPlayers(players);
     }
@@ -89,7 +89,6 @@ public class Playerlist {
         playerList = tempArrayDeque;
 
     }
-
 
 
 }
