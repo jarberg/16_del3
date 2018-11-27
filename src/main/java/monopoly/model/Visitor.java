@@ -9,12 +9,12 @@ import monopoly.model.board.StartField;
 
 public interface Visitor {
 
-    public void visit(ChanceField field);
-    public void visit(ParkingField field);
-    public void visit(GoToJailField field);
-    public void visit(JailField field);
-    public void visit(StartField field);
-    public void visit(PropertyField field);
+    void visit(ChanceField field);
+    void visit(ParkingField field);
+    void visit(GoToJailField field);
+    void visit(JailField field);
+    void visit(StartField field);
+    void visit(PropertyField field);
 
 
 }
