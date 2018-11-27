@@ -1,9 +1,6 @@
 package monopoly.model.board;
 
 
-import monopoly.controller.field.implementation.ChanceFieldController;
-import monopoly.model.player.Player;
-
 import java.awt.*;
 
 public class ChanceField extends Field {

@@ -1,6 +1,5 @@
 package monopoly.controller;
 
-import monopoly.controller.field.implementation.PropertyFieldController;
 import monopoly.model.board.PropertyField;
 import monopoly.model.player.Player;
 

@@ -1,7 +1,6 @@
 package monopoly.controller;
 
-import monopoly.controller.field.implementation.PropertyFieldController;
-import monopoly.controller.field.implementation.ChanceFieldController;
+import monopoly.controller.field.PropertyFieldController;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
@@ -11,7 +10,6 @@ import monopoly.model.player.PlayerList;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class GameController {

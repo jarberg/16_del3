@@ -1,8 +1,5 @@
 package monopoly.model.board;
 
-import monopoly.controller.field.implementation.StartFieldController;
-import monopoly.model.player.Player;
-
 import java.awt.*;
 
 public class StartField extends Field{

@@ -1,9 +1,8 @@
-package monopoly.controller.field.implementation;
+package monopoly.controller.field;
 
 import monopoly.controller.GameController;
 import monopoly.controller.MonopolyFileReader;
 import monopoly.controller.ViewController;
-import monopoly.controller.field.FieldController;
 import monopoly.model.board.Field;
 import monopoly.model.deck.effects.CardEffect;
 import monopoly.model.deck.Deck;
