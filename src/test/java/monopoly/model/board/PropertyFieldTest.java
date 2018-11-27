@@ -34,6 +34,7 @@ public class PropertyFieldTest {
     public void playerCantPay(){
 
         player.addToBalance(-100000);
+        assertEquals(false, player.isLoser());
         ((PropertyField) board[23]).setOwner(owner);
         ((PropertyField) board[24]).setOwner(owner);
         ((PropertyField) board[1]).setOwner(player);
@@ -53,6 +54,8 @@ public class PropertyFieldTest {
         assertEquals(null,((PropertyField) board[2]).getOwner());
         assertEquals(null,((PropertyField) board[4]).getOwner());
         assertEquals(null,((PropertyField) board[5]).getOwner());
+
+        assertEquals(true, player.isLoser());
 
 
 
