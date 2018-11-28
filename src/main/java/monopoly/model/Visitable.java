@@ -1,6 +1,4 @@
-package monopoly.model.board;
-
-import monopoly.model.Visitor;
+package monopoly.model;
 
 public interface Visitable {
     void accept(Visitor visitor);

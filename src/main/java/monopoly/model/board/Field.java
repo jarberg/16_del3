@@ -1,10 +1,10 @@
 package monopoly.model.board;
 
-import monopoly.model.player.Player;
+import monopoly.model.Visitable;
 
 import java.awt.*;
 
-public abstract class Field implements Visitable{
+public abstract class Field implements Visitable {
 
     private String title;
     private String subtitle;
