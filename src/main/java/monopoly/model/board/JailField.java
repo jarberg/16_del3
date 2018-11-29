@@ -1,8 +1,7 @@
 package monopoly.model.board;
 
 
-import monopoly.controller.field.implementation.JailFieldController;
-import monopoly.model.player.Player;
+import monopoly.model.Visitor;
 
 import java.awt.*;
 
@@ -17,8 +16,8 @@ public class JailField extends Field {
     }
 
     @Override
-    public void resolveEffect(Player player) {
-        JailFieldController jailFieldController = new JailFieldController();
-        jailFieldController.resolveEffect(player, this);
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
+
 }

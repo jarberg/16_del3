@@ -1,7 +1,6 @@
 package monopoly.model.board;
 
-import monopoly.controller.field.implementation.GoToJailFieldController;
-import monopoly.model.player.Player;
+import monopoly.model.Visitor;
 
 import java.awt.*;
 
@@ -17,14 +16,13 @@ public class GoToJailField extends Field {
 
     }
 
-    @Override
-    public void resolveEffect(Player player) {
-        GoToJailFieldController goToJailFieldController = new GoToJailFieldController();
-        goToJailFieldController.resolveEffect(player, this);
-    }
-
     public int getBribeCharge(){
         return bribeCharge;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
 }

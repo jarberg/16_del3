@@ -1,10 +1,10 @@
 package monopoly.model.board;
 
-import monopoly.model.player.Player;
+import monopoly.model.Visitable;
 
 import java.awt.*;
 
-public abstract class Field {
+public abstract class Field implements Visitable {
 
     private String title;
     private String subtitle;
@@ -25,8 +25,6 @@ public abstract class Field {
         this.description = description;
         this.borderColor = Color.black;
     }
-
-    public abstract void resolveEffect(Player player);
 
     public String getTitle(){return title;}
     public String getSubtitle(){return subtitle;}

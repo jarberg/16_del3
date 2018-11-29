@@ -1,7 +1,5 @@
 package monopoly.controller;
 
-import monopoly.controller.field.implementation.PropertyFieldController;
-import monopoly.controller.field.implementation.ChanceFieldController;
 import monopoly.model.Die;
 import monopoly.model.board.Board;
 import monopoly.model.board.Field;
@@ -11,8 +9,8 @@ import monopoly.model.player.PlayerList;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.List;
 
 public class GameController {
 
@@ -24,7 +22,7 @@ public class GameController {
     private int playerAmount = 0;
     private String languageFilepath;
     private static final String defaultLanguage = "English";
-    private static GameController singleInstance = null;
+    private static GameController singletonInstance = null;
 
     private GameController(){
         viewController = ViewController.getInstance();
@@ -33,10 +31,10 @@ public class GameController {
     }
 
     public static GameController getInstance(){
-        if(singleInstance == null)
-            singleInstance = new GameController();
+        if(singletonInstance == null)
+            singletonInstance = new GameController();
 
-        return singleInstance;
+        return singletonInstance;
     }
 
     public void setupGame(){
@@ -160,7 +158,8 @@ public class GameController {
 
         checkIfPassedStart(lastField, currentPlayer);
 
-        currentField.resolveEffect(currentPlayer);
+        FieldVisitor visitor = new FieldVisitor(currentPlayer);
+        currentField.accept(visitor);
 
         //viewController.landedOnFieldMessage(currentField);
 
@@ -185,11 +184,25 @@ public class GameController {
                 winnerCandidates.add(player);
         }
         for(Player player : winnerCandidates){
-            PropertyFieldController fc = new PropertyFieldController();
-            fc.setPlayer(player);
-            for(PropertyField field : fc.getFieldsOwnedByPlayer(player)){
-                if(field != null)
-                    fc.sellField(field);
+            List<PropertyField> ownedFields = new ArrayList<>();
+            for (Field f : board.getFields()) {
+                if (f instanceof PropertyField && ((PropertyField) f).getOwner() == player)
+                    ownedFields.add((PropertyField) f);
+            }
+            PropertyField[] ownedFieldsArray = ownedFields.toArray(new PropertyField[0]);
+            for(PropertyField field : ownedFieldsArray){
+                if(field != null){
+                    int fieldIndex = 0;
+                    for (int i = 0; i <getFields().length ; i++) {
+                        if(getFields()[i].getTitle().equals(field.getTitle())){
+                            fieldIndex=i;
+                        }
+                    }
+                    viewController.setFieldColor(Color.white, fieldIndex);
+                    viewController.setGUIPlayerBalance(player, player.getBalance());
+                    player.sellField(field.getValue());
+                    field.setOwner(null);
+                }
             }
         }
         Player winner = null;

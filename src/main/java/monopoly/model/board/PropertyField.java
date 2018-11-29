@@ -1,6 +1,6 @@
 package monopoly.model.board;
 
-import monopoly.controller.field.implementation.PropertyFieldController;
+import monopoly.model.Visitor;
 import monopoly.model.player.Player;
 
 import java.awt.*;
@@ -22,12 +22,6 @@ public class PropertyField extends Field {
 
     }
 
-    @Override
-    public void resolveEffect(Player player){
-        PropertyFieldController propertyFieldController = new PropertyFieldController();
-        propertyFieldController.resolveEffect(player, this);
-    }
-
     public void setOwner(Player player){
         this.owner = player;
     }
@@ -40,6 +34,9 @@ public class PropertyField extends Field {
 
     public int getValue(){return value;}
 
-
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 
 }

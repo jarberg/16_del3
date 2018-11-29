@@ -1,8 +1,7 @@
 package monopoly.model.board;
 
 
-import monopoly.controller.field.implementation.ChanceFieldController;
-import monopoly.model.player.Player;
+import monopoly.model.Visitor;
 
 import java.awt.*;
 
@@ -17,11 +16,7 @@ public class ChanceField extends Field {
     }
 
     @Override
-    public void resolveEffect(Player player) {
-        //ChanceFieldController chanceFieldController = ChanceFieldController.getInstance();
-        //
-        //
-        // chanceFieldController.resolveEffect(player, this);
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
-
 }

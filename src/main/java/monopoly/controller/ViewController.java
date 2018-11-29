@@ -1,6 +1,5 @@
 package monopoly.controller;
 
-import monopoly.controller.field.implementation.PropertyFieldController;
 import monopoly.model.board.PropertyField;
 import monopoly.model.player.Player;
 
@@ -14,7 +13,7 @@ public class ViewController {
     private TranslatorController translator;
     private MonopolyFileReader fileReader;
     private MonopolyView view;
-    private static ViewController singleInstance = null;
+    private static ViewController singletonInstance = null;
 
     private ViewController(){
         this.fileReader = MonopolyFileReader.getInstance();
@@ -22,9 +21,9 @@ public class ViewController {
     }
 
     public static ViewController getInstance(){
-        if(singleInstance == null)
-            singleInstance = new ViewController();
-        return singleInstance;
+        if(singletonInstance == null)
+            singletonInstance = new ViewController();
+        return singletonInstance;
     }
 
     public void showEmptyGUI(){
@@ -57,9 +56,20 @@ public class ViewController {
 
     }
 
-    public void showGameGUI(Field[] FieldToGUIField){
+    public void showGameGUI(Field[] fieldsToGUIFields){
+        int length = fieldsToGUIFields.length;
+        String[][] fieldInformation = new String[length][4];
+        Color[] colors = new Color[length];
+
+        for (int i = 0; i < length; i++) {
+            fieldInformation[i][0] = fieldsToGUIFields[i].getTitle();
+            fieldInformation[i][1] = fieldsToGUIFields[i].getMessage();
+            fieldInformation[i][2] = fieldsToGUIFields[i].getDescription();
+            fieldInformation[i][3] = fieldsToGUIFields[i].getSubtitle();
+            colors[i] = fieldsToGUIFields[i].getColor();
+        }
         //This should need a dependency to board or field with a method making gui board.
-        view.showGameGUI(view.FieldToGUIField(FieldToGUIField));
+        view.showGameGUI(view.fieldToGUIField(fieldInformation, colors, length));
     }
 
     public void addPlayer(Player player){
@@ -82,7 +92,7 @@ public class ViewController {
     }
 
     public void setGUIPlayerBalance(Player player,int amount){
-        view.setPlayerBalance(player, amount);
+        view.showPlayerBalance(player.getName(), amount);
     }
 
     public void landedOnFieldMessage(Field currentField) {
