@@ -36,22 +36,16 @@ public class MonopolyView {
         this.gui = new GUI(emptyFieldArray);
     }
 
-    public GUI_Street[] FieldToGUIField(Field[] field){
-        GUI_Street[] gui_field = new GUI_Street[field.length];
+    public GUI_Street[] fieldToGUIField(String[][] fieldInfo, Color[] colors, int length){
+        GUI_Street[] gui_field = new GUI_Street[length];
 
-        for (int i = 0; i < field.length; i++) {
-            String fieldTitel= field[i].getTitle();
-            Color fieldColor= field[i].getColor();
-            String fieldDescrip = field[i].getDescription();
-            String fieldmess = field[i].getMessage();
-            String fieldSub = field[i].getSubtitle();
-
+        for (int i = 0; i < length; i++) {
             gui_field[i] = new GUI_Street();
-            gui_field[i].setTitle(fieldTitel);
-            gui_field[i].setSubText(fieldSub);
-            gui_field[i].setDescription(fieldDescrip);
+            gui_field[i].setTitle(fieldInfo[i][0]);
+            gui_field[i].setDescription(fieldInfo[i][2]);
+            gui_field[i].setSubText(fieldInfo[i][3]);
             gui_field[i].setForeGroundColor(Color.BLACK);
-            gui_field[i].setBackGroundColor(fieldColor);
+            gui_field[i].setBackGroundColor(colors[i]);
         }
         
         return gui_field;

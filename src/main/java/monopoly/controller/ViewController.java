@@ -57,8 +57,19 @@ public class ViewController {
     }
 
     public void showGameGUI(Field[] fieldsToGUIFields){
+        int length = fieldsToGUIFields.length;
+        String[][] fieldInformation = new String[length][4];
+        Color[] colors = new Color[length];
+
+        for (int i = 0; i < length; i++) {
+            fieldInformation[i][0] = fieldsToGUIFields[i].getTitle();
+            fieldInformation[i][1] = fieldsToGUIFields[i].getMessage();
+            fieldInformation[i][2] = fieldsToGUIFields[i].getDescription();
+            fieldInformation[i][3] = fieldsToGUIFields[i].getSubtitle();
+            colors[i] = fieldsToGUIFields[i].getColor();
+        }
         //This should need a dependency to board or field with a method making gui board.
-        view.showGameGUI(view.FieldToGUIField(fieldsToGUIFields));
+        view.showGameGUI(view.fieldToGUIField(fieldInformation, colors, length));
     }
 
     public void addPlayer(Player player){
