@@ -64,7 +64,7 @@ public class GameController {
         viewController.setFilepath(languageFilepath);
     }
 
-    private void createGameBoard(){
+    public void createGameBoard(){
         this.board = new Board();
         String[][] fieldTexts = fileReader.getFieldsText(languageFilepath);
         String[] fieldDescriptions = fileReader.getFieldDescriptions(languageFilepath);
@@ -224,4 +224,8 @@ public class GameController {
     public PlayerList getPlayers(){return players;}
 
     public String getLanguageFilepath(){return this.languageFilepath;}
+
+    public void setPlayers(PlayerList players){
+        this.players = players;
+    }
 }
