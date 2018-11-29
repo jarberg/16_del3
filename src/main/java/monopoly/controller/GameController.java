@@ -22,7 +22,7 @@ public class GameController {
     private int playerAmount = 0;
     private String languageFilepath;
     private static final String defaultLanguage = "English";
-    private static GameController singleInstance = null;
+    private static GameController singletonInstance = null;
 
     private GameController(){
         viewController = ViewController.getInstance();
@@ -31,10 +31,10 @@ public class GameController {
     }
 
     public static GameController getInstance(){
-        if(singleInstance == null)
-            singleInstance = new GameController();
+        if(singletonInstance == null)
+            singletonInstance = new GameController();
 
-        return singleInstance;
+        return singletonInstance;
     }
 
     public void setupGame(){

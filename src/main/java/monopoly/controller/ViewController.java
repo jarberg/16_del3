@@ -13,7 +13,7 @@ public class ViewController {
     private TranslatorController translator;
     private MonopolyFileReader fileReader;
     private MonopolyView view;
-    private static ViewController singleInstance = null;
+    private static ViewController singletonInstance = null;
 
     private ViewController(){
         this.fileReader = MonopolyFileReader.getInstance();
@@ -21,9 +21,9 @@ public class ViewController {
     }
 
     public static ViewController getInstance(){
-        if(singleInstance == null)
-            singleInstance = new ViewController();
-        return singleInstance;
+        if(singletonInstance == null)
+            singletonInstance = new ViewController();
+        return singletonInstance;
     }
 
     public void showEmptyGUI(){
