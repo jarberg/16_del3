@@ -133,6 +133,7 @@ public class GameController {
 
     public void playGame(){
         players.makeYoungestPlayerFirst();
+        viewController.showFieldMessage(players.getYoungest().getName(), " starter");
         while(players.noWinnerYet()){
             playTurn();
         }

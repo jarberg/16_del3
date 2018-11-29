@@ -145,7 +145,7 @@ public class ViewController {
         view.showMessage(name + " " + translator.getBoughtFromBankMessage() + " " + field.getTitle());
     }
 
-    public void notEnoughMoneyMessage(String name) {
+    public void notEnoughMoneyMessage(String name)  {
         view.showMessage(name + translator.getNotEnoughMoneyMessage());
     }
 
