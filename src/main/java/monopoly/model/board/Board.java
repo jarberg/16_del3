@@ -3,7 +3,8 @@ import monopoly.model.player.Player;
 
 import java.awt.Color;
 public class Board {
-    Field[] Fields= new Field[24];
+
+    private Field[] Fields= new Field[24];
 
     public void setupBoard(String[][] fields, String[] descrip, String[] mess){
         for (int i = 0; i <Fields.length ; i++) {
