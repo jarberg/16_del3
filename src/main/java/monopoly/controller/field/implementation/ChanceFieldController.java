@@ -5,7 +5,6 @@ import monopoly.controller.MonopolyFileReader;
 import monopoly.controller.ViewController;
 import monopoly.controller.field.FieldController;
 import monopoly.model.board.Field;
-import monopoly.model.deck.effects.CardEffect;
 import monopoly.model.deck.Deck;
 import monopoly.model.player.Player;
 
@@ -13,7 +12,6 @@ public class ChanceFieldController extends FieldController {
 
     private ViewController viewController = ViewController.getInstance();
     private Deck deck;
-    private CardEffect effect;
     private int ID;
     private GameController gameController = GameController.getInstance();
     private static ChanceFieldController singleInstance = null;
