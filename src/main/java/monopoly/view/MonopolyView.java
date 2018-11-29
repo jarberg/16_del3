@@ -170,8 +170,8 @@ public class MonopolyView {
     public void showMessage(String message) {
         gui.showMessage(message);
     }
-    public void setPlayerBalance(Player player, int amount){
-        getGUIplayerByName(player.getName()).setBalance(amount);
+    public void showPlayerBalance(String name, int amount){
+        getGUIplayerByName(name).setBalance(amount);
     }
 
     public int getMaxAge(){

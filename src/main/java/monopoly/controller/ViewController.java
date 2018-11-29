@@ -56,9 +56,9 @@ public class ViewController {
 
     }
 
-    public void showGameGUI(Field[] FieldToGUIField){
+    public void showGameGUI(Field[] fieldsToGUIFields){
         //This should need a dependency to board or field with a method making gui board.
-        view.showGameGUI(view.FieldToGUIField(FieldToGUIField));
+        view.showGameGUI(view.FieldToGUIField(fieldsToGUIFields));
     }
 
     public void addPlayer(Player player){
@@ -81,7 +81,7 @@ public class ViewController {
     }
 
     public void setGUIPlayerBalance(Player player,int amount){
-        view.setPlayerBalance(player, amount);
+        view.showPlayerBalance(player.getName(), amount);
     }
 
     public void landedOnFieldMessage(Field currentField) {
