@@ -40,12 +40,12 @@ private String filePath = "TextFiles/Dansk";
 
         assertEquals("START",board.getFields()[0].getTitle());
         assertEquals("MODTAG $2 NÅR DU PASSERER", board.getFields()[0].getDescription());
-        assertEquals("modtager sin SU. nasserøv!", board.getFields()[0].getMessage());
+        assertEquals("Hey! Du landede på \"START\"- Du modtager SU! Din nasserøv", board.getFields()[0].getMessage());
         assertEquals("1", board.getFields()[0].getSubtitle());
 
         assertEquals("SKATER-PARKEN",board.getFields()[10].getTitle());
         assertEquals("HER KOMMER MAN TIL SKADE", board.getFields()[10].getDescription());
-        assertEquals("væltede på sit board og slog sin aksel.", board.getFields()[10].getMessage());
+        assertEquals("Du landede på \"SKATERPARKEN\" - Åh nej! Du faldt og slog din ankel.", board.getFields()[10].getMessage());
         assertEquals("2", board.getFields()[10].getSubtitle());
     }
     @Test
