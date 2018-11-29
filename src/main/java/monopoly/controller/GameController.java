@@ -242,4 +242,5 @@ public class GameController {
     public void setPlayers(PlayerList players){
         this.players = players;
     }
+
 }

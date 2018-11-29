@@ -1,27 +1,21 @@
 package monopoly.controller;
 
 import monopoly.model.Visitor;
-import monopoly.model.board.ChanceField;
-import monopoly.model.board.Field;
-import monopoly.model.board.GoToJailField;
-import monopoly.model.board.JailField;
-import monopoly.model.board.ParkingField;
-import monopoly.model.board.PropertyField;
-import monopoly.model.board.StartField;
+import monopoly.model.board.*;
 import monopoly.model.player.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FieldVisitor implements Visitor {
+public class FakeFieldVisitor implements Visitor {
 
     private static final int PROPERTY_MULTIPLIER = 2;
     private GameController gameController = GameController.getInstance();
-    private ViewController viewController = ViewController.getInstance();
+    private FakeViewController viewController = FakeViewController.getInstance();
     private Player player;
 
-    public FieldVisitor(Player player){
+    public FakeFieldVisitor(Player player){
         this.player = player;
     }
 
@@ -40,7 +34,7 @@ public class FieldVisitor implements Visitor {
     public void visit(StartField field){
         viewController.showFieldMessage(player.getName(), field.getMessage());
     }
-
+    @Override
     public void visit(PropertyField field){
         viewController.showFieldMessage(player.getName(), field.getMessage());
         Player owner = field.getOwner();
