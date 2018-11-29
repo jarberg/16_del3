@@ -2,9 +2,12 @@ package monopoly.model.board;
 
 import monopoly.controller.FakeMonopolyFileReader;
 import monopoly.controller.MonopolyFileReader;
+import monopoly.model.player.Player;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.awt.*;
 
 import static org.junit.Assert.*;
 
@@ -12,15 +15,17 @@ public class BoardTest {
 private String filePath = "TextFiles/Dansk";
 
     private Board board;
-    private MonopolyFileReader monoReader;
     private FakeMonopolyFileReader fakeMonoReader;
+    MonopolyFileReader fileReader = new MonopolyFileReader();
+    Field[] fields;
 
 
 
     @Before
     public void setup(){
         board = new Board();
-        monoReader = MonopolyFileReader.getInstance();
+        board.setupBoard(fileReader.getFieldsText(filePath),fileReader.getFieldDescriptions(filePath) ,fileReader.getFieldMessages(filePath) );
+        fields = board.getFields();
         fakeMonoReader = FakeMonopolyFileReader.getInstance();
 
     }
@@ -33,9 +38,10 @@ private String filePath = "TextFiles/Dansk";
     }
 
 
+
     @Test
     public void getBoard() {
-        board.setupBoard(monoReader.getFieldsText(filePath), monoReader.getFieldDescriptions(filePath), monoReader.getFieldMessages(filePath));
+        board.setupBoard(fileReader.getFieldsText(filePath),fileReader.getFieldDescriptions(filePath) ,fileReader.getFieldMessages(filePath));
         assertEquals(24,board.getFields().length);
 
         assertEquals("START",board.getFields()[0].getTitle());
@@ -48,9 +54,10 @@ private String filePath = "TextFiles/Dansk";
         assertEquals("Du landede på \"SKATERPARKEN\" - Åh nej! Du faldt og slog din ankel.", board.getFields()[10].getMessage());
         assertEquals("2", board.getFields()[10].getSubtitle());
     }
+
     @Test
     public void setupBoard(){
-
+/*
         for (int i = 0; i <board.getFields().length ; i++) {
             if(board.getFields()[i]instanceof StartField){
                 assertEquals(new StartField(), board.getFields()[i].getClass());
@@ -71,5 +78,43 @@ private String filePath = "TextFiles/Dansk";
                 assertEquals(new PropertyField(), board.getFields()[i].getClass());
             }
         }
+        */
     }
+
+    @Test
+    public void TestCase01(){
+        allPropertyFieldsStartWithoutOwner();
+        playerBuysField();
+    }
+
+    @Test
+    public void allPropertyFieldsStartWithoutOwner(){
+        Field[] fields = board.getFields();
+        for (Field f:fields) {
+            if(f instanceof PropertyField){
+                assertEquals(null, ((PropertyField) f).getOwner());
+                assertNotEquals("", ((PropertyField) f).getOwner());
+            }
+        }
+    }
+
+    @Test
+    public void playerBuysField() {
+
+        Player player = new Player("bob", 1, Color.red);
+        assertEquals("START", fields[player.getPosition()].getTitle());
+        player.setPosition(1);
+        assertEquals("BURGER- BAREN", fields[player.getPosition()].getTitle());
+
+        if (fields[player.getPosition()] instanceof PropertyField){
+            //fields[player.getPosition()].
+            assertEquals(null, ((PropertyField) fields[player.getPosition()]).getOwner());
+            ((PropertyField) fields[player.getPosition()]).setOwner(player);
+
+            assertEquals(player, ((PropertyField) fields[player.getPosition()]).getOwner());
+        }
+
+
+    }
+
 }

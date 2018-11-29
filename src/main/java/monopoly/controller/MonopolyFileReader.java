@@ -12,7 +12,7 @@ public class MonopolyFileReader {
     private static MonopolyFileReader singleInstance = null;
     private Map<String, String> messageMap;
 
-    private MonopolyFileReader(){
+    public MonopolyFileReader(){
     }
 
     public static MonopolyFileReader getInstance(){

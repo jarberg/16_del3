@@ -27,19 +27,8 @@ public class MonopolyFileReaderTest {
 
         assertEquals("TextFiles/Dansk/Fields.txt/works", fakeMonoReader.getFieldsText("TextFiles/Dansk") );
         assertNotEquals(null, fakeMonoReader.getFieldsText("TextFiles/Dansk") );
-
-        assertEquals("TextFiles/Dansk/ChanceCards.txt/works", fakeMonoReader.getChanceCards("TextFiles/Dansk") );
-        assertNotEquals(null, fakeMonoReader.getChanceCards("TextFiles/Dansk") );
-
-        assertEquals("TextFiles/Dansk/FieldMessages.txt/works", fakeMonoReader.getFieldMessages("TextFiles/Dansk") );
-        assertNotEquals(null, fakeMonoReader.getFieldMessages("TextFiles/Dansk") );
-
-        assertEquals("TextFiles/Dansk/Menu.txt/works", fakeMonoReader.getMenuText("TextFiles/Dansk") );
-        assertNotEquals(null, fakeMonoReader.getMenuText("TextFiles/Dansk") );
-
-        assertEquals("TextFiles//", fakeMonoReader.getDirectoriesStringArray() );
-        assertNotEquals(null, fakeMonoReader.getDirectoriesStringArray() );
     }
+
     @Test
     public void stubGetChanceCardText() {
         assertEquals("TextFiles/Dansk/ChanceCards.txt/works", fakeMonoReader.getChanceCards("TextFiles/Dansk") );

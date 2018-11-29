@@ -31,32 +31,7 @@ public class PropertyFieldController extends FieldController {
     @Override
     public void resolveEffect(Player player, Field field) {
         viewController.showFieldMessage(player.getName(), field.getMessage());
-        this.player = player;
-        this.field = (PropertyField) field;
-        Player owner = this.field.getOwner();
-
-        boolean fieldHasNoOwner = (owner == null);
-        //boolean playerIsOwner = (owner != null && owner.equals(player));
-        boolean otherPlayerIsOwner = (owner != null && !owner.equals(player));
-        boolean pairPropertyOwned = checkIfPair(this.field, owner);
-
-        if(fieldHasNoOwner){
-            int cost = this.field.getValue();
-            attemptToBuyFromBank(player, cost);
-        }
-        else if(otherPlayerIsOwner){
-            if(pairPropertyOwned){
-                viewController.pairPropertyMessage(owner.getName());
-                int cost = this.field.getValue()*PROPERTY_MULTIPLIER;
-                payRentToProperty(player, owner, cost);
-                viewController.setGUIPlayerBalance(owner, owner.getBalance());
-            }
-            else{
-                int cost = this.field.getValue();
-                payRentToProperty(player, owner, cost);
-                viewController.setGUIPlayerBalance(owner, owner.getBalance());
-            }
-        }
+        effect(player,field);
         viewController.setGUIPlayerBalance(player, player.getBalance());
     }
 
@@ -163,26 +138,6 @@ public class PropertyFieldController extends FieldController {
         }
         return ownedFields.toArray(new PropertyField[0]);
 
-        /*
-        Field[] tempPlayerOwnedArray = new Field[allFields.length];
-    private void sellField(PropertyField field){
-
-        viewController.setFieldColor(Color.white, getFieldIndex(field));
-        viewController.setGUIPlayerBalance(player, player.getBalance());
-        if(field instanceof PropertyField) {
-            this.player.sellField(field.getValue());
-            field.setOwner(null);
-        }
-    }
-
-        for (int i = 0; i < allFields.length ; i++) {
-            if(allFields[i] instanceof PropertyField){
-                if(field.getOwner()==player){
-                    tempPlayerOwnedArray[i]= field;
-                }
-            }
-        }
-        return fields; */
     }
 
     public int getFieldIndex(Field field){
@@ -196,5 +151,79 @@ public class PropertyFieldController extends FieldController {
         return fieldIndex;
     }
 
+    public void effect(Player player, Field field){
+        this.player = player;
+        this.field = (PropertyField) field;
+        Player owner = this.field.getOwner();
+
+        boolean fieldHasNoOwner = (owner == null);
+        //boolean playerIsOwner = (owner != null && owner.equals(player));
+        boolean otherPlayerIsOwner = (owner != null && !owner.equals(player));
+        boolean pairPropertyOwned = checkIfPair(this.field, owner);
+
+        if(fieldHasNoOwner){
+            int cost = this.field.getValue();
+            attemptToBuyFromBank(player, cost);
+        }
+        else if(otherPlayerIsOwner){
+            if(pairPropertyOwned){
+                viewController.pairPropertyMessage(owner.getName());
+                int cost = this.field.getValue()*PROPERTY_MULTIPLIER;
+                payRentToProperty(player, owner, cost);
+                viewController.setGUIPlayerBalance(owner, owner.getBalance());
+            }
+            else{
+                int cost = this.field.getValue();
+                payRentToProperty(player, owner, cost);
+                viewController.setGUIPlayerBalance(owner, owner.getBalance());
+            }
+        }
+    }
+    public void effectNoGUI(Player player, Field field){
+        this.player = player;
+        this.field = (PropertyField) field;
+        Player owner = this.field.getOwner();
+
+        boolean fieldHasNoOwner = (owner == null);
+
+        boolean otherPlayerIsOwner = (owner != null && !owner.equals(player));
+        boolean pairPropertyOwned = checkIfPair(this.field, owner);
+
+        if(fieldHasNoOwner){
+            int cost = this.field.getValue();
+            attemptToBuyFromBank(player, cost);
+        }
+        else if(otherPlayerIsOwner){
+            if(pairPropertyOwned){
+
+                int cost = this.field.getValue()*PROPERTY_MULTIPLIER;
+                payRentToPropertynoGUI(player, owner, cost);
+
+            }
+            else{
+                int cost = this.field.getValue();
+                payRentToPropertynoGUI(player, owner, cost);
+
+            }
+        }
+    }
+    private void payRentToPropertynoGUI(Player player, Player owner, int cost) {
+        if(playerHasMoney(this.player, cost)){
+            player.addToBalance(-cost);
+            owner.addToBalance(cost);
+
+        }
+        else{
+            PropertyField[] fields = getFieldsOwnedByPlayer(player);
+            sellFieldsUntilRichEnough(player, cost, fields);
+            if(!playerHasMoney(this.player, cost)){
+
+                player.setLoser(true);
+            }
+            player.addToBalance(-cost);
+            owner.addToBalance(cost);
+
+        }
+    }
 
 }

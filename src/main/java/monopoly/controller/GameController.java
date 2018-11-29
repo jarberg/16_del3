@@ -64,7 +64,7 @@ public class GameController {
         viewController.setFilepath(languageFilepath);
     }
 
-    private void createGameBoard(){
+    public void createGameBoard(){
         this.board = new Board();
         String[][] fieldTexts = fileReader.getFieldsText(languageFilepath);
         String[] fieldDescriptions = fileReader.getFieldDescriptions(languageFilepath);
@@ -133,6 +133,7 @@ public class GameController {
 
     public void playGame(){
         players.makeYoungestPlayerFirst();
+        viewController.showFieldMessage(players.getYoungest().getName(), " starter");
         while(players.noWinnerYet()){
             playTurn();
         }
@@ -202,14 +203,14 @@ public class GameController {
         viewController.showWinAnimation(winner.getName());
     }
 
-    private void checkIfPassedStart(int last, Player player){
+    public void checkIfPassedStart(int last, Player player){
         if(last > player.getPosition()){
             player.addToBalance(2);
             viewController.setGUIPlayerBalance(player, player.getBalance());
         }
     }
 
-    private void payBeforeLeaveJail(Player player){
+    public void payBeforeLeaveJail(Player player){
         if(player.getPayToLeaveJail()==true){
             if(player.getBalance()>=2){
                 player.addToBalance(-2);
@@ -224,4 +225,8 @@ public class GameController {
     public PlayerList getPlayers(){return players;}
 
     public String getLanguageFilepath(){return this.languageFilepath;}
+
+    public void setPlayers(PlayerList players){
+        this.players = players;
+    }
 }
