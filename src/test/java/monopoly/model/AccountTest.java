@@ -26,18 +26,20 @@ public class AccountTest {
     }
 
     @Test
-    public void shouldReturnBalance(){
-        assertTrue(account.getBalance()==0);
-
-    }
-
-    @Test
     public void shouldAddToBalance(){
         int accountBalance = account.getBalance();
         int addAmount = 7;
         account.addToBalance(addAmount);
-        assertTrue(account.getBalance()==accountBalance+addAmount);
+        assertEquals(accountBalance + addAmount, account.getBalance());
+    }
 
+    @Test
+    public void shouldSubtractFromBalance(){
+        account.addToBalance(100);
+        int accountBalance = account.getBalance();
+        int subtractAmount = -72;
+        account.addToBalance(subtractAmount);
+        assertEquals(accountBalance + subtractAmount, account.getBalance());
     }
 
     @Test
