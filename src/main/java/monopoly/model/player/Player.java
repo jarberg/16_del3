@@ -38,8 +38,8 @@ public class Player {
         this.position = START_POSITION;
     }
 
-    public boolean equals(String otherPlayerName) {
-        return this.name.equals(otherPlayerName);
+    public boolean equals(Player otherPlayer) {
+        return this.name.equals(otherPlayer.getName());
     }
 
     @Override

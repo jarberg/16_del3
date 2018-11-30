@@ -21,25 +21,25 @@ public class AccountTest {
     }
 
     @Test
-    public void shouldHaveZeroBalanceWhenCreated(){
+    public void ShouldHaveZeroBalanceWhenCreated(){
         assertEquals(0,account.getBalance());
     }
 
     @Test
     public void shouldAddToBalance(){
-        int balance = account.getBalance();
-        int amount = 7;
-        account.addToBalance(amount);
-        assertEquals(balance + amount, account.getBalance());
+        int accountBalance = account.getBalance();
+        int addAmount = 7;
+        account.addToBalance(addAmount);
+        assertEquals(accountBalance + addAmount, account.getBalance());
     }
 
     @Test
     public void shouldSubtractFromBalance(){
-        account.addToBalance(20);
-        int balance = account.getBalance();
-        int amount = -9;
-        account.addToBalance(amount);
-        assertEquals(balance + amount, account.getBalance());
+        account.addToBalance(100);
+        int accountBalance = account.getBalance();
+        int subtractAmount = -72;
+        account.addToBalance(subtractAmount);
+        assertEquals(accountBalance + subtractAmount, account.getBalance());
     }
 
     @Test
