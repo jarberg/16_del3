@@ -1,16 +1,18 @@
-PLAYER_AMOUNT:::Hvor mange spillere er i?
-ASK_PLAYER_NAME:::Hvem er du?
-ASK_PLAYER_AGE:::Hvor gammel er du?
-PLAYER_TURN:::Så er det tid til at slå med terningerne. Det er din tur,
-COLOR_CHOICE:::Hvilken bil vælger du?
-BLUE_COLOR:::Den blå UFO
-RED_COLOR:::Den røde racerbil
-ORANGE_COLOR:::Den orange traktor
-GREEN_COLOR:::Den grønne bil
-BOUGHT_FROM_BANK::: har købt
-PRICE_MESSAGE:::, det kostede $
-NOT_ENOUGH_MONEY::: har ikke nok penge
-SOLD_PROPERTY::: har solgt
-GET_BALANCE::: har nu en konto på $
-PAID_RENT::: har betalt leje til
-PAIR_PROPERTY:::Prisen er fordoblet fordi begge felterne ejes af
+PLAYER_AMOUNT:::How many players are you?
+ASK_PLAYER_NAME:::Who are you?
+ASK_PLAYER_AGE:::How old are you?
+PLAYER_TURN:::Now it's time to roll the dice. It's your turn,
+COLOR_CHOICE:::Which car would you like?
+BLUE_COLOR:::The cyan UFO
+RED_COLOR:::The red race car
+ORANGE_COLOR:::The orange tractor
+GREEN_COLOR:::The green car
+BOUGHT_FROM_BANK::: has bought
+PRICE_MESSAGE:::, it cost $
+NOT_ENOUGH_MONEY::: does not have enough money
+SOLD_PROPERTY::: has sold
+GET_BALANCE::: now has $
+PAID_RENT::: has paid rent to
+PAIR_PROPERTY:::The price is double because both fields are owned by
+WIN_MESSAGE:::has won!
+GAME_OVER:::Game over!!!

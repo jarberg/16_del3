@@ -5,35 +5,36 @@ import monopoly.model.board.Board;
 import monopoly.model.board.Field;
 import monopoly.model.board.PropertyField;
 import monopoly.model.player.Player;
-import monopoly.model.player.Playerlist;
+import monopoly.model.player.PlayerList;
 
 import java.awt.*;
-import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 
 public class GameController {
 
     private ViewController viewController;
     private MonopolyFileReader fileReader;
-    private Playerlist players;
+    private PlayerList players;
     private Board board;
     private Die die;
     private int playerAmount = 0;
     private String languageFilepath;
     private static final String defaultLanguage = "English";
-    private static GameController singleInstance = null;
+    private static GameController singletonInstance = null;
 
-    public GameController(){
+    private GameController(){
         viewController = ViewController.getInstance();
         fileReader = MonopolyFileReader.getInstance();
         setFilepathLanguage(defaultLanguage);
     }
 
     public static GameController getInstance(){
-        if(singleInstance == null)
-            singleInstance = new GameController();
+        if(singletonInstance == null)
+            singletonInstance = new GameController();
 
-        return singleInstance;
+        return singletonInstance;
     }
 
     public void setupGame(){
@@ -43,8 +44,11 @@ public class GameController {
         playerAmount = getPlayerAmount();
         createPlayers();
         makePlayersChooseColor();
+        //ChanceFieldController.getInstance().setFilePath(languageFilepath);
         showGameBoard();
         addPlayersToGUI();
+
+
     }
 
     private void setupLanguage(){
@@ -58,7 +62,7 @@ public class GameController {
         viewController.setFilepath(languageFilepath);
     }
 
-    private void createGameBoard(){
+    public void createGameBoard(){
         this.board = new Board();
         String[][] fieldTexts = fileReader.getFieldsText(languageFilepath);
         String[] fieldDescriptions = fileReader.getFieldDescriptions(languageFilepath);
@@ -74,7 +78,7 @@ public class GameController {
     }
 
     private void createPlayers(){
-        Playerlist players = new Playerlist();
+        PlayerList players = new PlayerList();
         for (int i = 0; i < getPlayerAmount(); i++) {
             String name = viewController.getPlayerName();
             int age = viewController.getPlayerAge();
@@ -126,6 +130,8 @@ public class GameController {
     }
 
     public void playGame(){
+        players.makeYoungestPlayerFirst();
+        viewController.showFieldMessage(players.getYoungest().getName(), " starter");
         while(players.noWinnerYet()){
             playTurn();
         }
@@ -134,6 +140,8 @@ public class GameController {
 
     private void playTurn() {
         Player currentPlayer = players.getNextPlayer();
+
+        //viewController.showUserTurnMessage(currentPlayer);
 
         payBeforeLeaveJail(currentPlayer);
 
@@ -150,7 +158,10 @@ public class GameController {
 
         checkIfPassedStart(lastField, currentPlayer);
 
-        currentField.resolveEffect(currentPlayer);
+        FieldVisitor visitor = new FieldVisitor(currentPlayer);
+        currentField.accept(visitor);
+
+        //viewController.landedOnFieldMessage(currentField);
 
         players.changePlayerTurn();
     }
@@ -160,20 +171,59 @@ public class GameController {
     }
 
     public void endGame() {
-       if(!players.noWinnerYet()){
+        Deque<Player> playersInGame = players.getPlayerDeque();
 
-       }
-        System.out.println("Game ended!");
+        ArrayList<Player> winnerCandidates = new ArrayList<>();
+        int maxPoints = 0;
+        for(Player player : playersInGame){
+            if(maxPoints < player.getBalance())
+                maxPoints = player.getBalance();
+        }
+        for(Player player : playersInGame){
+            if(player.getBalance() == maxPoints)
+                winnerCandidates.add(player);
+        }
+        for(Player player : winnerCandidates){
+            List<PropertyField> ownedFields = new ArrayList<>();
+            for (Field f : board.getFields()) {
+                if (f instanceof PropertyField && ((PropertyField) f).getOwner() == player)
+                    ownedFields.add((PropertyField) f);
+            }
+            PropertyField[] ownedFieldsArray = ownedFields.toArray(new PropertyField[0]);
+            for(PropertyField field : ownedFieldsArray){
+                if(field != null){
+                    int fieldIndex = 0;
+                    for (int i = 0; i <getFields().length ; i++) {
+                        if(getFields()[i].getTitle().equals(field.getTitle())){
+                            fieldIndex=i;
+                        }
+                    }
+                    viewController.setFieldColor(Color.white, fieldIndex);
+                    viewController.setGUIPlayerBalance(player, player.getBalance());
+                    player.sellField(field.getValue());
+                    field.setOwner(null);
+                }
+            }
+        }
+        Player winner = null;
+        int winningPoints = 0;
+        for(Player player : winnerCandidates){
+            if(winningPoints < player.getBalance()){
+                winningPoints = player.getBalance();
+                winner = player;
+            }
+        }
+        viewController.showWinAnimation(winner.getName());
     }
 
-    private void checkIfPassedStart(int last, Player player){
+    public void checkIfPassedStart(int last, Player player){
         if(last > player.getPosition()){
             player.addToBalance(2);
             viewController.setGUIPlayerBalance(player, player.getBalance());
         }
     }
 
-    private void payBeforeLeaveJail(Player player){
+    public void payBeforeLeaveJail(Player player){
         if(player.getPayToLeaveJail()==true){
             if(player.getBalance()>=2){
                 player.addToBalance(-2);
@@ -185,4 +235,12 @@ public class GameController {
             }
         }
     }
+    public PlayerList getPlayers(){return players;}
+
+    public String getLanguageFilepath(){return this.languageFilepath;}
+
+    public void setPlayers(PlayerList players){
+        this.players = players;
+    }
+
 }

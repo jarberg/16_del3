@@ -9,17 +9,17 @@ import java.util.Scanner;
 
 public class MonopolyFileReader {
 
-    private static MonopolyFileReader singleInstance = null;
+    private static MonopolyFileReader singletonInstance = null;
     private Map<String, String> messageMap;
 
-    private MonopolyFileReader(){
+    public MonopolyFileReader(){
     }
 
     public static MonopolyFileReader getInstance(){
-        if(singleInstance==null){
-            singleInstance = new MonopolyFileReader();
+        if(singletonInstance ==null){
+            singletonInstance = new MonopolyFileReader();
         }
-        return singleInstance;
+        return singletonInstance;
     }
 
     //reads from given filepath

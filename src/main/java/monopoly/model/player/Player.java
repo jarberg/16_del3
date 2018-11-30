@@ -64,8 +64,8 @@ public class Player {
         this.color = color;
     }
 
-    public void movePosition(int number, int boardSize){
-        this.position = position + number;
+    public void movePosition(int amount, int boardSize){
+        this.position = position + amount;
         this.position = position % boardSize;
     }
     public void sellField(int value){

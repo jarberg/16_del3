@@ -1,13 +1,13 @@
-4:Giv dette kort til INDSÆTSPILLER!!!!, og tag et chancekort mere. \\n INDSÆTTSPILLER!!!!; På din næste tur skal du drøne frem til et hvilket som helst ledigt felt og købe det. Hvis der ikek er nogen ledige felter, skal du købe et fra en anden spiller!
-1:Ryk frem til START. \\n \\n Modtag $2.
-1:Ryk op til 5 felter frem.
-3:GRATIS FELT! ryk frem til et farve felt. \\n Hvis det er ledigt, får du det GRATIS! \\n Ellers skal du BETALE leje til ejeren.
-4:GRATIS FELT! ryk frem til et orange/grønt felt. \\n Hvis det er ledigt, får du det GRATIS! \\n Ellers skal du BETALE leje til ejeren.
-1:Ryk 1 felt frem, ELLER tag et chancekort mere.
-1:Du har spist for meget slik. BETAL $2 til banken.
-1:Du har lavet dine lektier! MODTAG $2 fra banken.
-1:Det er din fødselsdag! \\n alle giver $1. \\n tillykke med fødselsdagen.
-1:Ryk frem til FELT.
-1:GRATIS FELT!. Ryk frem til Skaterparken for at lave det perfekte grind! \\n Hvis ingen ejer den, får du den GRATIS! \\n Ellers skal du betale leje til ejeren.
+4:Give this card to INDSÆTSPILLER!!!!, and take one more chancecard. \\n INDSÆTTSPILLER!!!!;  On you're next turn you have to go to the next avaliable field and buy it. If there isn't any avaliable fields, you have to buy one from another player!
+1:Move to START. \\n \\n Recieve $2.
+1:Move up to 5 fields forward..
+3:FREE FIELD! Move forward to a coloured field. \\n If it's avaliable, you get it for FREE! \\n If it's occupied, you have to PAY rent to the owner.
+4:FREE FIELD! Move forward to a orange/green field. \\n If it's avaliable, you get it for FREE! \\n If it's occupied, you have to PAY rent to the owner.
+1:Move a field forward OR draw another chancecard.
+1:You've eaten too much candy. PAY $2 to the bank.
+1:You've made your homework! Receive $2 from the bank.
+1:Its your birthday!\\n Everybody gives a $1. \\n Happy birthday!
+1:Move forward to FIELD.
+1:FREE FIELD! Move forward to the skaterpark to make the perfect grind! \\n If it's avaliable, you get it for FREE! \\n If it's occupied, you have to PAY rent to the owner.
 
 
