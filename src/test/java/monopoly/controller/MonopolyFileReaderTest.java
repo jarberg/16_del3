@@ -20,6 +20,7 @@ public class MonopolyFileReaderTest {
     @After
     public void tearDown() throws Exception {
          monoReader = null;
+         fakeMonoReader = null;
     }
 
     @Test
@@ -68,14 +69,12 @@ public class MonopolyFileReaderTest {
 
     @Test
     public void getFieldsText() {
-        assertEquals("START", monoReader.getFieldsText("TextFiles/Dansk")[0][0] );
-        assertNotEquals(null, monoReader.getFieldsText("TextFiles/Dansk")[0][0] );
-        assertEquals("STRAND- PROMENADEN", monoReader.getFieldsText("TextFiles/Dansk")[monoReader.getFieldsText("TextFiles/Dansk").length-1][0] );
-        assertNotEquals(null, monoReader.getFieldsText("TextFiles/Dansk")[monoReader.getFieldsText("TextFiles/Dansk").length-1][0]);
 
-        //normal
+        //test om første linje er indlæst korrekt
         assertEquals("START", monoReader.getFieldsText("TextFiles/Dansk")[0][0] );
         assertNotEquals(null, monoReader.getFieldsText("TextFiles/Dansk")[0][0] );
+
+        //test om sidste linje er indlæst korrekt
         assertEquals("STRAND- PROMENADEN", monoReader.getFieldsText("TextFiles/Dansk")[monoReader.getFieldsText("TextFiles/Dansk").length-1][0] );
         assertNotEquals(null, monoReader.getFieldsText("TextFiles/Dansk")[monoReader.getFieldsText("TextFiles/Dansk").length-1][0]);
 
