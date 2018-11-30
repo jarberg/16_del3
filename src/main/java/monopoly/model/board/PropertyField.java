@@ -34,6 +34,9 @@ public class PropertyField extends Field {
 
     public int getValue(){return value;}
 
+
+
+
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
