@@ -99,13 +99,7 @@ public class PlayerTest {
     @Test
     public void shouldNotEqualAnotherPlayerName(){
         String otherPlayerName = "Jens";
-        assertFalse(player.equals(otherPlayerName));
-    }
-
-    @Test
-    public void shouldEqualSamePlayerName(){
-        String samePlayerName = name;
-        assertTrue(player.equals(samePlayerName));
+        assertNotEquals(player, otherPlayerName);
     }
 
 }
