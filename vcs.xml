@@ -10,6 +10,10 @@
           <option name="url" value="https://github.com/jarberg/12_3uger.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/jdkramhoft/12_del1.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Michael\Documents" />
