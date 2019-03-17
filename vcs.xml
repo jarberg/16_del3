@@ -18,6 +18,10 @@
           <option name="url" value="https://github.com/NicolaiNisbeth/DataCom_Aflevering_1.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/jarberg/algo.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Michael\Documents" />
