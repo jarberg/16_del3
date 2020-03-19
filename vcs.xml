@@ -50,6 +50,10 @@
           <option name="url" value="https://github.com/jdkramhoft/CDIO_RoboCup.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/jdkramhoft/EyePlaySolitaire" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Michael\Documents" />
